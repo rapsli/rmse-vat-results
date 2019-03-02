@@ -6,7 +6,7 @@ Contributors: titaniumcoder
 Tags: handball, results, schweiz
 Requires at least: 4.7.3
 Tested up to: 5.1
-Stable tag: 1.0.4
+Stable tag: trunk
 License: Apache License, Version 2.
 License URI: http://www.apache.org/licenses/LICENSE-2.0
 

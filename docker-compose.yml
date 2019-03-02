@@ -8,6 +8,7 @@ services:
     environment:
       WORDPRESS_DB_PASSWORD: wordpress
     volumes:
+      - ./testing:/var/www/html/wp-content/
       - .:/var/www/html/wp-content/plugins/tc-shv-resultate
 
   mysql:
