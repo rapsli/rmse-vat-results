@@ -7,14 +7,11 @@ class TcShvResultateShortcodes
 {
     private static function isHomeclub($hometeam)
     {
-        /*
         foreach ($homenames as $homename) {
-        if (strpos($game->home, $homename) !== false) {
-        return true;
+            if (strpos($game->home, $homename) !== false) {
+                return true;
+            }
         }
-        }
-        return false;
-         */
         return false;
     }
 

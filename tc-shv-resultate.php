@@ -3,27 +3,16 @@
 /**
  * The plugin bootstrap file
  *
- * This file is read by WordPress to generate the plugin information in the plugin
- * admin area. This file also includes all of the dependencies used by the plugin,
- * registers the activation and deactivation functions, and defines a function
- * that starts the plugin.
- *
- * @link              https://gitlab.com/titaniumcoder/tc-shv-resultate-plugin
- * @since             1.0.0
- * @package           TcShvResultate
- *
  * @wordpress-plugin
  * Plugin Name: Handball SHV Resultate Anbindung
- * Plugin URI:  https://github.com/titaniumcoder/tc-shv-resultate-plugin
- * Description: Plugin um die Resultate des SHV in ein Wordpress einzubinden.
- * Version:     1.0.0
+ * Plugin URI:  http://plugins.svn.wordpress.org/tc-shv-resultate/
+ * Description: Aktualisiert die Resultate vom SHV direkt im eigenen Wordpress.
+ * Version:     1.0.4
  * Author:      Rico Metzger
  * Author URI:  https://titaniumcoder.com
  * License:     Apache License, Version 2.0
  * License URI: https://www.apache.org/licenses/LICENSE-2.0
  * Text Domain: tc-shv-resultate
- * Domain Path: /languages
- * GitHub Plugin URI: titaniumcoder/tc-shv-resultate-plugin
  */
 
 // If this file is called directly, abort.

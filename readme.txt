@@ -1,11 +1,12 @@
 === Plugin Name ===
+
 Plugin Name: Handball SHV Resultate Anbindung
 Plugin URI: https://github.com/titaniumcoder/tc-shv-resultate-plugin
 Contributors: titaniumcoder
 Tags: handball, results, schweiz
 Requires at least: 4.7.3
 Tested up to: 5.1
-Stable tag: 1.0
+Stable tag: 1.0.4
 License: Apache License, Version 2.
 License URI: http://www.apache.org/licenses/LICENSE-2.0
 
