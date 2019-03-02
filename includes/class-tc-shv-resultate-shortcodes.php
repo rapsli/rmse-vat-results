@@ -15,7 +15,7 @@ class TcShvResultateShortcodes
             $homenames = [];
         }
         foreach ($homenames as $homename) {
-            if (strpos($game->home, $homename) !== -1) {
+            if (strpos($hometeam, $homename) !== false) {
                 return true;
             }
         }
@@ -37,15 +37,12 @@ class TcShvResultateShortcodes
 
         $logged_in = $current_user->ID !== 0;
 
-        if (false === ($games = get_transient('last_results'))) {
-            $games = $wpdb->get_results(
-                "select a.id, a.game_date, a.league, a.home, a.guest, a.result_home,
-				a.result_guest, a.halftime_home, a.halftime_guest, a.report
-				from $last_results_table_name b inner join $game_table_name a on (a.id = b.game_id)
-				order by b.id"
-            );
-            set_transient('last_results', $games, get_option('tc_shv_transient_last_results'));
-        }
+        $games = $wpdb->get_results(
+            "select a.id, a.game_date, a.league, a.home, a.guest, a.result_home,
+            a.result_guest, a.halftime_home, a.halftime_guest, a.report
+            from $last_results_table_name b inner join $game_table_name a on (a.id = b.game_id)
+            order by b.id"
+        );
 
         // do something to $content
         $content .=
@@ -76,7 +73,7 @@ class TcShvResultateShortcodes
 
             $rowClass = ($weWon) ? "tc-shv-result-won" : ($draw ? "tc-shv-result-draw" : "tc-shv-result-lost");
 
-            $dateF = date_i18n('d.m.Y', strtotime($game->game_date));
+            $dateF = date_i18n('d.m.', strtotime($game->game_date));
             $timeF = date_i18n('H:i', strtotime($game->game_date));
 
             if ($lastdate == $dateF) {
@@ -130,14 +127,11 @@ class TcShvResultateShortcodes
         $next_games_table_name = $wpdb->prefix . 'tc_shv_next_games';
         $game_table_name = $wpdb->prefix . 'tc_shv_game';
 
-        if (false === ($games = get_transient('next_games'))) {
-            $games = $wpdb->get_results(
-                "select a.id, a.game_date, a.league, a.home, a.guest, a.venue, a.address, a.preview
-				from $next_games_table_name b inner join $game_table_name a on (a.id = b.game_id)
-				order by b.id"
-            );
-            set_transient('next_games', $games, get_option('tc_shv_transient_next_games'));
-        }
+        $games = $wpdb->get_results(
+            "select a.id, a.game_date, a.league, a.home, a.guest, a.venue, a.address, a.preview
+            from $next_games_table_name b inner join $game_table_name a on (a.id = b.game_id)
+            order by b.id"
+        );
 
         // do something to $content
         $content =
@@ -162,7 +156,8 @@ class TcShvResultateShortcodes
             $isHome = self::isHomeclub($game->home);
             $homegameClass = $isHome ? "tc-shv-resultate-heimspiel" : "";
 
-            $dateF = date_i18n('d.m.Y', strtotime($game->game_date));
+            // todo sort with header per date makes it probably more readable
+            $dateF = date_i18n('d.m.', strtotime($game->game_date));
             $timeF = date_i18n('H:i', strtotime($game->game_date));
 
             if ($lastdate == $dateF) {
@@ -210,24 +205,25 @@ class TcShvResultateShortcodes
         $logged_in = $current_user->ID !== 0;
         $venue = $atts['halle'];
 
-        if (!$team) {
+        if (!$venue) {
             return 'must enter a halle attribute';
         }
 
         $next_games_table_name = $wpdb->prefix . 'tc_shv_next_games';
         $game_table_name = $wpdb->prefix . 'tc_shv_game';
 
-        if (false === ($games = get_transient('home_games'))) {
-            $games = $wpdb->get_results(
-                "select a.id, a.game_date, a.league, a.home, a.guest, a.venue, a.address, a.preview
-				from $next_games_table_name b inner join $game_table_name a on (a.id = b.game_id)
-				where a.venue = '" . esc_sql($venue) - "'
-				order by b.id"
-            );
-            set_transient('home_games', $games, 2 * MINUTE_IN_SECONDS);
-        }
+        $games = $wpdb->get_results(
+            "select a.id, a.game_date, a.league, a.home, a.guest, a.venue, a.address, a.preview
+            from $next_games_table_name b inner join $game_table_name a on (a.id = b.game_id)
+            where a.venue = '" . esc_sql($venue) . "'
+            order by b.id"
+        );
 
         // do something to $content
+        if (!$games) {
+            return '<div>(Noch) keine Spiele vorhanden.</div>';
+        }
+
         $content =
             '<div class="tc-shv-resultate-nextgames">' .
             '  <table class="table table-sm">' .
@@ -239,7 +235,6 @@ class TcShvResultateShortcodes
             '        <th class="text-center">Liga</th>' .
             '        <th>Heim</th>' .
             '        <th>Gast</th>' .
-            '        <th class="text-center"></th>' .
             '    </thead>' .
             '    <tbody>';
 
@@ -250,7 +245,8 @@ class TcShvResultateShortcodes
             $isHome = self::isHomeclub($game->home);
             $homegameClass = $isHome ? "tc-shv-resultate-heimspiel" : "";
 
-            $dateF = date_i18n('d.m.Y', strtotime($game->game_date));
+            // TODO refactor this: make one title with the date and below the games!
+            $dateF = date_i18n('d.m.', strtotime($game->game_date));
             $timeF = date_i18n('H:i', strtotime($game->game_date));
 
             if ($lastdate == $dateF) {
@@ -270,7 +266,6 @@ class TcShvResultateShortcodes
 					</a>';
             }
             $content .= "</td>" .
-                ($logged_in ? "<td class=\"small\">$game->id</td>" : '') .
                 "<td>$dateF</td>
 					<td class=\"text-center\">$timeF</td>
 					<td class=\"text-center\">$game->league</td>
@@ -306,38 +301,29 @@ class TcShvResultateShortcodes
         $group_table_name = $wpdb->prefix . 'tc_shv_group';
         $ranking_table_name = $wpdb->prefix . 'tc_shv_ranking';
 
-        if (false === ($games = get_transient("team_games_$team"))) {
-            $games = $wpdb->get_results($wpdb->prepare(
-                "select a.id, a.game_date, a.league, a.home, a.guest, a.venue, a.address, a.preview,
-				a.result_home, a.result_guest, a.halftime_home, a.halftime_guest, a.report,
-				a.played
-				from $team_games_table_name b inner join $game_table_name a on (a.id = b.game_id)
-				where b.team_id = %d
-				order by a.game_date", $team
-            ));
-            set_transient("team_games_$team", $games, 2 * MINUTE_IN_SECONDS);
-        }
+        $games = $wpdb->get_results($wpdb->prepare(
+            "select a.id, a.game_date, a.league, a.home, a.guest, a.venue, a.address, a.preview,
+            a.result_home, a.result_guest, a.halftime_home, a.halftime_guest, a.report,
+            a.played
+            from $team_games_table_name b inner join $game_table_name a on (a.id = b.game_id)
+            where b.team_id = %d
+            order by a.game_date", $team
+        ));
 
-        if (false === ($teaminfo = get_transient("team_info_$team"))) {
-            $teaminfo = $wpdb->get_row($wpdb->prepare(
-                "select a.id, a.name,
-				b.group_text, b.league_short, a.group_id
-				from $team_table_name a left outer join $group_table_name b on (a.group_id = b.id)
-				where a.id = %d", $team
-            ));
-            set_transient("team_info_$team", $teaminfo, 10 * MINUTE_IN_SECONDS);
-        }
+        $teaminfo = $wpdb->get_row($wpdb->prepare(
+            "select a.id, a.name,
+            b.group_text, b.league_short, a.group_id
+            from $team_table_name a left outer join $group_table_name b on (a.group_id = b.id)
+            where a.id = %d", $team
+        ));
 
         $rankings = null;
-        if ($teaminfo && (false === ($rankings = get_transient("team_rankings_$team")))) {
-            $rankings = $wpdb->get_results($wpdb->prepare(
-                "select b.*
-				from $ranking_table_name b
-				where b.group_id = %d
-				order by b.ranking", $teaminfo->group_id
-            ));
-            set_transient("team_rankings_$team", $rankings, 2 * MINUTE_IN_SECONDS);
-        }
+        $rankings = $wpdb->get_results($wpdb->prepare(
+            "select b.*
+            from $ranking_table_name b
+            where b.group_id = %d
+            order by b.ranking", $teaminfo->group_id
+        ));
 
         if (!$teaminfo) {
             return '<div>(Noch) keine Daten vorhanden.</div>';
@@ -379,7 +365,7 @@ class TcShvResultateShortcodes
                     ($weWon) ? "tc-shv-result-won" : ($draw ? "tc-shv-result-draw" : "tc-shv-result-lost")
                 );
 
-                $dateF = date_i18n('d.m.Y', strtotime($game->game_date));
+                $dateF = date_i18n('d.m.', strtotime($game->game_date));
                 $timeF = date_i18n('H:i', strtotime($game->game_date));
 
                 $showResult = '';
@@ -488,18 +474,15 @@ class TcShvResultateShortcodes
         $group_table_name = $wpdb->prefix . 'tc_shv_group';
         $ranking_table_name = $wpdb->prefix . 'tc_shv_ranking';
 
-        if (false === ($game = get_transient("team_last_result_$team"))) {
-            $game = $wpdb->get_row($wpdb->prepare(
-                "select a.id, a.game_date, a.league, a.home, a.guest, a.venue, a.address,
-				a.result_home, a.result_guest, a.halftime_home, a.halftime_guest, a.report
-				from $team_games_table_name b inner join $game_table_name a on (a.id = b.game_id)
-				where b.team_id = %d
-				and a.played = 1
-				order by a.game_date desc
-				limit 1", $team
-            ));
-            set_transient("team_last_result_$team", $game, 2 * MINUTE_IN_SECONDS);
-        }
+        $game = $wpdb->get_row($wpdb->prepare(
+            "select a.id, a.game_date, a.league, a.home, a.guest, a.venue, a.address,
+            a.result_home, a.result_guest, a.halftime_home, a.halftime_guest, a.report
+            from $team_games_table_name b inner join $game_table_name a on (a.id = b.game_id)
+            where b.team_id = %d
+            and a.played = 1
+            order by a.game_date desc
+            limit 1", $team
+        ));
 
         // do something to $content
         if (!$game) {
@@ -516,9 +499,9 @@ class TcShvResultateShortcodes
 
             $result = '';
             if ($isHome) {
-                $result = "$game->result_home:$game->result_guest ($game->halftime_home:$game->halftime_guest) vs $opp (Heim)";
+                $result = "$game->result_home:$game->result_guest ($game->halftime_home:$game->halftime_guest) $opp (Heim)";
             } else {
-                $result = "$game->result_guest:$game->result_home ($game->halftime_guest:$game->halftime_home) vs $opp (Auswärts)";
+                $result = "$game->result_guest:$game->result_home ($game->halftime_guest:$game->halftime_home) $opp (Auswärts)";
             }
 
             $rowClass = ($weWon) ? "tc-shv-resultate-lastresult-won" : ($draw ? "tc-shv-resultate-lastresult-draw" : "tc-shv-resultate-lastresult-lost");
@@ -531,7 +514,6 @@ class TcShvResultateShortcodes
             return (
                 "<span class=\"tc-shv-resultate-lastresult $rowClass\">$link</span>"
             );
-            '<span class="tc-shv-resultate-lastresult tc-shv-resultate-lastresult-win tc-shv-resultate-lastresult-draw tc-shv-resultate-lastresult-loss">33:21 Spono</span>';
         }
     }
 
@@ -553,18 +535,15 @@ class TcShvResultateShortcodes
         $group_table_name = $wpdb->prefix . 'tc_shv_group';
         $ranking_table_name = $wpdb->prefix . 'tc_shv_ranking';
 
-        if (false === ($game = get_transient("team_nextgame_$team"))) {
-            $game = $wpdb->get_row($wpdb->prepare(
-                "select a.id, a.game_date, a.league, a.home, a.guest, a.venue, a.address,
-				a.preview
-				from $team_games_table_name b inner join $game_table_name a on (a.id = b.game_id)
-				where b.team_id = %d
-				and a.played = 0
-				order by a.game_date asc
-				limit 1", $team
-            ));
-            set_transient("team_nextgame_$team", $game, 2 * MINUTE_IN_SECONDS);
-        }
+        $game = $wpdb->get_row($wpdb->prepare(
+            "select a.id, a.game_date, a.league, a.home, a.guest, a.venue, a.address,
+            a.preview
+            from $team_games_table_name b inner join $game_table_name a on (a.id = b.game_id)
+            where b.team_id = %d
+            and a.played = 0
+            order by a.game_date asc
+            limit 1", $team
+        ));
 
         // do something to $content
         if (!$game) {
@@ -573,16 +552,16 @@ class TcShvResultateShortcodes
             $isHome = self::isHomeclub($game->home);
             $opp = $isHome ? $game->guest : $game->home;
 
-            $typus = $isHome ? "Heimspiel" : "Auswärtsspiel";
+            $typus = $isHome ? "Heimspiel gegen" : "@";
 
             $rowClass = ($isHome) ? "tc-shv-resultate-nextgame-home" : "tc-shv-resultate-nextgame-guest";
 
-            $dateF = date_i18n('d.m.y', strtotime($game->game_date));
+            $dateF = date_i18n('d.m.', strtotime($game->game_date));
             $timeF = date_i18n('H:i', strtotime($game->game_date));
 
             $google = "<a href=\"https://www.google.com/maps/search/?api=1&query=$game->address\" target=\"_blank\"><img src=\"https://img.icons8.com/color/18/000000/google-maps.png\"></a>";
 
-            $whereWhen = "$dateF / $timeF $typus vs $opp $google";
+            $whereWhen = "$dateF / $timeF $typus $opp $google";
 
             $link = $game->preview ? "<a href=\"$game->preview\">$whereWhen</a>" : $whereWhen;
 
@@ -590,10 +569,6 @@ class TcShvResultateShortcodes
                 "<span class=\"tc-shv-resultate-nextgame $rowClass\">$link</span>"
             );
         }
-
-        // do something to $content
-        $content =
-            '<span class="tc-shv-resultate-team-nextgame tc-shv-resultate-team-nextgame-home tc-shv-resultate-team-nextgame-away">Sa 12.10.18 14:33 vs LK Zug (A)</span>';
 
         // always return
         return $content;

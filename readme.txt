@@ -4,7 +4,7 @@ Plugin Name:        Handball SHV Resultate Anbindung
 Plugin URI:         http://plugins.svn.wordpress.org/tc-shv-resultate/
 Contributors:       titaniumcoder
 Tags:               handball, resultate, schweiz
-Version:            1.0.5
+Version:            1.0.6
 Requires at least:  4.7.3
 Tested up to:       5.1
 Stable tag:         trunk
@@ -45,7 +45,7 @@ An answer to that question.
 
 == Changelog ==
 
-= 1.0.5 = 
+= 1.0.6 = 
 * Bugfix for home games detection
 
 = 1.0.0 =

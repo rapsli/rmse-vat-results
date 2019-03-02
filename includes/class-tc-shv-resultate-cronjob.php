@@ -18,7 +18,9 @@ class TcShvResultateCronjob
         // insert the club check (24h job), which will then be executed on the next run...
         $update_count = $wpdb->get_var("select count(*) from $updated_table_name");
 
-        if ($update_count == 0) {
+        $club_id = get_option('tc_shv_club_id');
+
+        if ($update_count == 0 && !!$club_id && $club_id !== 0) {
             $wpdb->insert($updated_table_name,
                 array(
                     'type' => 'club_update',
@@ -479,6 +481,7 @@ class TcShvResultateCronjob
 
         $within_3_weeks = $diff < 1900800;
 
+        // TODO not sure whether I even need this because it's probably cheap to get them anyways...
         if (false === ($reports = get_transient("game-reports-$gameId"))) {
             $args = array(
                 'post_type' => 'post',

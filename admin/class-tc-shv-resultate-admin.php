@@ -94,8 +94,6 @@ class TcShvResultateAdmin {
 		register_setting('tc-shv-group', 'tc_shv_transient_time_preview_distant', array('type' => 'integer', 'description' => 'Wie lange soll die Verlinkung zwischen Vorschau und Spiel gespeichert werden (lange, 3 Wochen vor oder nach dem Spiel).'));
 		register_setting('tc-shv-group', 'tc_shv_transient_time_nothing_actual', array('type' => 'integer', 'description' => 'Wie lange soll die Verlinkung zwischen fehlendem Bericht und Spiel gespeichert werden (nicht zu lange).'));
 		register_setting('tc-shv-group', 'tc_shv_transient_time_nothing_distant', array('type' => 'integer', 'description' => 'Wie lange soll die Verlinkung zwischen fehlendem Bericht und Spiel gespeichert werden (lange, 3 Wochen vor oder nach dem Spiel).'));
-		register_setting('tc-shv-group', 'tc_shv_transient_last_results', array('type' => 'integer', 'description' => 'Wie lange sollen die letzten Resultate im Cache bleiben.'));
-		register_setting('tc-shv-group', 'tc_shv_transient_next_games', array('type' => 'integer', 'description' => 'Wie lange sollen die nächsten Spiele im Cache bleiben.'));
 		register_setting('tc-shv-group', 'tc_shv_home_names', array('type' => 'string', 'description' => 'Namen für den Heimverein.'));
 
 		add_settings_section('tc-shv-group', 'SHV Resultate Einstellungen', array(&$this, 'tc_shv_description'), 'tc-shv-group');
@@ -116,8 +114,6 @@ class TcShvResultateAdmin {
 		$this::create_setting('tc_shv_transient_time_preview_distant', 'Cache Zeit Vorschau (nicht aktuell)');
 		$this::create_setting('tc_shv_transient_time_nothing_actual', 'Cache Zeit leer (aktuell)');
 		$this::create_setting('tc_shv_transient_time_nothing_distant', 'Cache Zeit leer (nicht aktuell)');
-		$this::create_setting('tc_shv_transient_last_results', 'Cache Zeit Letzte Resultate (in Sekunden)');
-		$this::create_setting('tc_shv_transient_next_games', 'Cache Zeit Nächste Spiele (in Sekunden)');
 		$this::create_setting('tc_shv_home_names', 'Namen für Heimverein (komma-separiert)');
 	}
 
