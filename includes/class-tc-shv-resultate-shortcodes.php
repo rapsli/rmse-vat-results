@@ -7,8 +7,15 @@ class TcShvResultateShortcodes
 {
     private static function isHomeclub($hometeam)
     {
+        global $wpdb;
+        $tHomenames = get_option('tc_shv_home_names');
+        if (!!$tHomenames) {
+            $homenames = explode(',', get_option('tc_shv_home_names'));
+        } else {
+            $homenames = [];
+        }
         foreach ($homenames as $homename) {
-            if (strpos($game->home, $homename) !== false) {
+            if (strpos($game->home, $homename) !== -1) {
                 return true;
             }
         }
@@ -201,6 +208,11 @@ class TcShvResultateShortcodes
         global $wpdb, $current_user;
 
         $logged_in = $current_user->ID !== 0;
+        $venue = $atts['halle'];
+
+        if (!$team) {
+            return 'must enter a halle attribute';
+        }
 
         $next_games_table_name = $wpdb->prefix . 'tc_shv_next_games';
         $game_table_name = $wpdb->prefix . 'tc_shv_game';
@@ -209,7 +221,7 @@ class TcShvResultateShortcodes
             $games = $wpdb->get_results(
                 "select a.id, a.game_date, a.league, a.home, a.guest, a.venue, a.address, a.preview
 				from $next_games_table_name b inner join $game_table_name a on (a.id = b.game_id)
-				where a.venue = 'Herzogenbuchsee Mittelholz'
+				where a.venue = '" . esc_sql($venue) - "'
 				order by b.id"
             );
             set_transient('home_games', $games, 2 * MINUTE_IN_SECONDS);
