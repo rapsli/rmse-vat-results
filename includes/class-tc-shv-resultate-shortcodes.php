@@ -153,6 +153,7 @@ class TcShvResultateShortcodes
                 '      <tr>' .
                 '        <th class="text-center"></th>' .
                 ($logged_in ? ('<th class=\"small\">No</th>') : '') .
+                '        <th>Datum</th>' .
                 '        <th>Zeit</th>' .
                 '        <th class="text-center">Liga</th>' .
                 '        <th>Heim</th>' .

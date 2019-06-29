@@ -4,7 +4,7 @@ Plugin Name:        Handball SHV Resultate Anbindung
 Plugin URI:         http://plugins.svn.wordpress.org/tc-shv-resultate/
 Contributors:       titaniumcoder
 Tags:               handball, resultate, schweiz
-Version:            1.0.7
+Version:            1.0.8
 Requires at least:  4.7.3
 Tested up to:       5.1
 Stable tag:         trunk
@@ -53,6 +53,9 @@ then you can just follow the log with docker-compose logs -f wordpress to see ev
 == Screenshots ==
 
 == Changelog ==
+
+= 1.0.8 =
+* Missing Field in Table header
 
 = 1.0.7 =
 * Refactored the lastresults and nextgames views to have less information
