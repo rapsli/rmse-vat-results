@@ -111,6 +111,7 @@ class TcShvResultateLoader
         add_shortcode('tc-shv-team', array('TcShvResultateShortcodes', 'team'));
         add_shortcode('tc-shv-team-lastresult', array('TcShvResultateShortcodes', 'teamlastresult'));
         add_shortcode('tc-shv-team-nextgame', array('TcShvResultateShortcodes', 'teamnextgame'));
+        add_shortcode('tc-shv-team-highlight', array('TcShvResultateShortcodes', 'teamhighlight'));
     }
 
     // add custom interval

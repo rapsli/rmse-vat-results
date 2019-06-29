@@ -28,9 +28,11 @@ class TcShvResultateShortcodes
 
         $m_atts = shortcode_atts([
             'max' => '50',
+            'header' => 'false',
         ], $atts, $tag);
 
         $maxRecords = intval($m_atts['max']);
+        $header = $m_atts['header'] === 'true';
 
         $last_results_table_name = $wpdb->prefix . 'tc_shv_last_results';
         $game_table_name = $wpdb->prefix . 'tc_shv_game';
@@ -47,18 +49,22 @@ class TcShvResultateShortcodes
         // do something to $content
         $content .=
             '<div class="tc-shv-resultate-lastresults">' .
-            '  <table class="table table-sm">' .
-            '    <thead>' .
-            '      <tr>' .
-            '        <th class="text-center"></th>' .
-            ($logged_in ? ('<th class=\"small\">No</th>') : '') .
-            '        <th>Datum</th>' .
-            '        <th class="text-center">Zeit</th>' .
-            '        <th class="text-center">Liga</th>' .
-            '        <th>Heim</th>' .
-            '        <th>Gast</th>' .
-            '        <th class="text-center">Resultat</th>' .
-            '    </thead>' .
+            '  <table class="table table-sm">';
+
+        if ($header) {
+            $content .=
+                '    <thead>' .
+                '      <tr>' .
+                '        <th class="text-center"></th>' .
+                ($logged_in ? ('<th class=\"small\">No</th>') : '') .
+                '        <th>Datum</th>' .
+                '        <th class="text-center">Liga</th>' .
+                '        <th>Heim</th>' .
+                '        <th>Gast</th>' .
+                '        <th class="text-center">Resultat</th>' .
+                '    </thead>';
+        }
+        $content .=
             '    <tbody>';
 
         // games
@@ -74,7 +80,6 @@ class TcShvResultateShortcodes
             $rowClass = ($weWon) ? "tc-shv-result-won" : ($draw ? "tc-shv-result-draw" : "tc-shv-result-lost");
 
             $dateF = date_i18n('d.m.', strtotime($game->game_date));
-            $timeF = date_i18n('H:i', strtotime($game->game_date));
 
             if ($lastdate == $dateF) {
                 $dateF = '';
@@ -92,10 +97,13 @@ class TcShvResultateShortcodes
             <img src="' . plugins_url('../public/images/document-icon.png', __FILE__) . '" height="18" width="18">
           </a>';
             }
+
+            $upload_dir = wp_upload_dir();
+            $upload_url = "${upload_dir['url']}/tc-shv-resultate/team-logo/";
+
             $content .= "</td>" .
                 ($logged_in ? "<td class=\"small\">$game->id</td>" : '') .
                 "<td>$dateF</td>
-					<td class=\"text-center\">$timeF</td>
 					<td class=\"text-center\">$game->league</td>
 					<td>$game->home</td>
 					<td>$game->guest</td>
@@ -117,6 +125,7 @@ class TcShvResultateShortcodes
         global $wpdb, $current_user;
 
         $m_atts = shortcode_atts([
+            'header' => 'false',
             'max' => '50',
         ], $atts, $tag);
 
@@ -126,6 +135,7 @@ class TcShvResultateShortcodes
 
         $next_games_table_name = $wpdb->prefix . 'tc_shv_next_games';
         $game_table_name = $wpdb->prefix . 'tc_shv_game';
+        $header = $m_atts['header'] === 'true';
 
         $games = $wpdb->get_results(
             "select a.id, a.game_date, a.league, a.home, a.guest, a.venue, a.address, a.preview
@@ -136,18 +146,21 @@ class TcShvResultateShortcodes
         // do something to $content
         $content =
             '<div class="tc-shv-resultate-nextgames">' .
-            '  <table class="table table-sm">' .
-            '    <thead>' .
-            '      <tr>' .
-            '        <th class="text-center"></th>' .
-            ($logged_in ? ('<th class=\"small\">No</th>') : '') .
-            '        <th>Datum</th>' .
-            '        <th class="text-center">Zeit</th>' .
-            '        <th class="text-center">Liga</th>' .
-            '        <th>Heim</th>' .
-            '        <th>Gast</th>' .
-            '        <th>Ort</th>' .
-            '    </thead>' .
+            '  <table class="table table-sm">';
+        if ($header) {
+            $content .=
+                '    <thead>' .
+                '      <tr>' .
+                '        <th class="text-center"></th>' .
+                ($logged_in ? ('<th class=\"small\">No</th>') : '') .
+                '        <th>Zeit</th>' .
+                '        <th class="text-center">Liga</th>' .
+                '        <th>Heim</th>' .
+                '        <th>Gast</th>' .
+                '        <th>Ort</th>' .
+                '    </thead>';
+        }
+        $content .=
             '    <tbody>';
 
         // games
@@ -572,5 +585,30 @@ class TcShvResultateShortcodes
 
         // always return
         return $content;
+    }
+
+    public static function teamhighlight($atts = [], $content = null)
+    {
+        $title = $atts['title'];
+        $team = intval($atts['team']);
+
+        if (!$team || !$title) {
+            return 'must enter a team no and a title';
+        }
+
+        $nextgame = self::teamnextgame($atts, null);
+        $lastresult = self::teamlastresult($atts, null);
+
+        return "
+            <div class=\"card hvh-bg-dark-cards text-light\">
+                <h3 class=\"card-header\">$title</h3>
+                <div class=\"card-body\">
+                    <div class=\"card-text\">$nextgame</div>
+                </div>
+                <div class=\"card-footer\">
+                    <div class=\"text-white\">Letztes Resultat: $lastresult</div>
+                </div>
+            </div>
+        ";
     }
 }

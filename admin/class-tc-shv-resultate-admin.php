@@ -88,6 +88,7 @@ class TcShvResultateAdmin {
 		register_setting('tc-shv-group', 'tc_shv_wait_time_team_games_update', array('type' => 'integer', 'description' => 'Zeit zwischen Spiele-Updates der Teams (selten, da durch aktuelle Resultate / Spiele abgedeckt).'));
 		register_setting('tc-shv-group', 'tc_shv_wait_time_last_results', array('type' => 'integer', 'description' => 'Zeit zwischen Abrufen von aktuellen Resultaten des Klubs.'));
 		register_setting('tc-shv-group', 'tc_shv_wait_time_next_games', array('type' => 'integer', 'description' => 'Zeit zwischen Abrufen der nächsten Spiele des Vereins.'));
+		register_setting('tc-shv-group', 'tc_shv_wait_time_next_logos', array('type' => 'integer', 'description' => 'Zeit zwischen Abrufen um die Logos zu erhalten.'));
 		register_setting('tc-shv-group', 'tc_shv_wait_time_default', array('type' => 'integer', 'description' => 'Wartezeit zwischen allen anderen Aufgaben (selten).'));
 		register_setting('tc-shv-group', 'tc_shv_transient_time_report', array('type' => 'integer', 'description' => 'Wie lange soll die Verlinkung zwischen Bericht und Spiel gespeichert werden (lange).'));
 		register_setting('tc-shv-group', 'tc_shv_transient_time_preview_actual', array('type' => 'integer', 'description' => 'Wie lange soll die Verlinkung zwischen Vorschau und Spiel gespeichert werden (nicht zu lange).'));
@@ -108,6 +109,7 @@ class TcShvResultateAdmin {
 		$this::create_setting('tc_shv_wait_time_team_games_update', 'Warezeit Teamspiele');
 		$this::create_setting('tc_shv_wait_time_last_results', 'Wartezeit letzte Resultate');
 		$this::create_setting('tc_shv_wait_time_next_games', 'Wartezeit nächste Spiele');
+		$this::create_setting('tc_shv_wait_time_next_logos', 'Wartezeit zusätzliche Logos');
 		$this::create_setting('tc_shv_wait_time_default', 'Wartezeit Andere');
 		$this::create_setting('tc_shv_transient_time_report', 'Cache Zeit Bericht vorhanden');
 		$this::create_setting('tc_shv_transient_time_preview_actual', 'Cache Vorschau (aktuell)');
@@ -159,6 +161,10 @@ class TcShvResultateAdmin {
 
 	function tc_shv_wait_time_next_games() {
 		return $this::generic_field('tc_shv_wait_time_next_games', 'number');
+	}
+
+	function tc_shv_wait_time_next_logos() {
+		return $this::generic_field('tc_shv_wait_time_next_logos', 'number');
 	}
 
 	function tc_shv_wait_time_team_games_update() {

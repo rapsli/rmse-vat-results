@@ -11,7 +11,7 @@ class TcShvResultateCronjob
 
         $updated_table_name = $wpdb->prefix . 'tc_shv_updates';
 
-		// check the config how many updates we should execute
+        // check the config how many updates we should execute
         $executions_per_minute = get_option('tc_shv_calls_per_minute');
 
         // make sure there is something. if nothing is inside the table,
@@ -33,8 +33,8 @@ class TcShvResultateCronjob
 
             $tobe_executed = $wpdb->get_results($sql);
 
-			// execute the correct job according to the job table. fall through if something is not yet there (for example
-			// if someone downgrades the plugin)
+            // execute the correct job according to the job table. fall through if something is not yet there (for example
+            // if someone downgrades the plugin)
             foreach ($tobe_executed as $update) {
                 switch ($update->type) {
                     case "club_update":
@@ -52,6 +52,9 @@ class TcShvResultateCronjob
                     case "next_games":
                         self::update_next_games($update->id, $update->param);
                         break;
+                    case "logos_update":
+                        self::update_next_logos($update->id, $update->param);
+                        break;
                     default:
                         error_log('Unexpected update type: ' . $update->type . ', updating row to make sure it\'s non-blocking.');
                         self::update_next_execute($update->id, $update->type);
@@ -61,7 +64,7 @@ class TcShvResultateCronjob
         }
     }
 
-	// helper function to enter the next execution time for the given job
+    // helper function to enter the next execution time for the given job
     private static function update_next_execute($id, $type)
     {
         global $wpdb;
@@ -77,7 +80,7 @@ class TcShvResultateCronjob
         );
     }
 
-	// calculate when the job should be run next
+    // calculate when the job should be run next
     private static function next_execute($type)
     {
         switch ($type) {
@@ -97,6 +100,8 @@ class TcShvResultateCronjob
                 return self::later_in_minutes(get_option('tc_shv_wait_time_last_results'));
             case 'next_games':
                 return self::later_in_minutes(get_option('tc_shv_wait_time_next_games'));
+            case 'logos_update':
+                return self::later_in_minutes(get_option('tc_shv_wait_time_next_logos'));
             default:
                 // come back in 15 minutes
                 return self::later_in_minutes(get_option('tc_shv_wait_time_default'));
@@ -108,7 +113,7 @@ class TcShvResultateCronjob
         return gmdate('Y-m-d H:i:s', current_time('timestamp') + $minutes * MINUTE_IN_SECONDS);
     }
 
-	// the Basic auth we need to send to the REST API
+    // the Basic auth we need to send to the REST API
     private static function authorization_headers()
     {
         return array(
@@ -123,7 +128,7 @@ class TcShvResultateCronjob
         return get_option('tc_shv_rest_api_base_url') . $url;
     }
 
-	// call the REST API
+    // call the REST API
     private static function request_shv($url)
     {
         $http_url = self::shv_url($url);
@@ -141,8 +146,8 @@ class TcShvResultateCronjob
         }
     }
 
-	// read out the information for the given club from the homepage
-	// this will read out all the teams so we can prepare the teams table
+    // read out the information for the given club from the homepage
+    // this will read out all the teams so we can prepare the teams table
     private static function update_club($upd_id, $param)
     {
         global $wpdb;
@@ -160,7 +165,6 @@ class TcShvResultateCronjob
             // extract the id and create the update jobs for the team.
             // important: team_group_update must run before team_games_update...
             $updated_table_name = $wpdb->prefix . 'tc_shv_updates';
-            $team_table_name = $wpdb->prefix . 'tc_shv_team';
 
             $wpdb->delete($updated_table_name, array('type' => 'team_group_update'));
             $wpdb->delete($updated_table_name, array('type' => 'team_games_update'));
@@ -187,6 +191,18 @@ class TcShvResultateCronjob
                 )
             );
 
+            // TODO reactivate this once we have the needed infos...
+            /*
+            $wpdb->insert(
+                $updated_table_name,
+                array(
+                    'type' => 'logos_update',
+                    'param' => $param,
+                    'next_execute' => current_time('mysql'),
+                )
+            );
+            */
+
             foreach ($ids as $id) {
                 $wpdb->insert(
                     $updated_table_name,
@@ -211,7 +227,7 @@ class TcShvResultateCronjob
         }
     }
 
-	// update the group information (general info + rankings) for a team
+    // update the group information (general info + rankings) for a team
     private static function update_team_group($upd_id, $param)
     {
         global $wpdb;
@@ -231,7 +247,7 @@ class TcShvResultateCronjob
             $group_table_name = $wpdb->prefix . 'tc_shv_group';
             $ranking_table_name = $wpdb->prefix . 'tc_shv_ranking';
 
-			// ranking rules: direct promotion, promotion, "white area", relegation, direct relegation
+            // ranking rules: direct promotion, promotion, "white area", relegation, direct relegation
             $directRelegationRank = $result->totalTeams - $result->directRelegation + 1;
             $relegationRank = $result->totalTeams - $result->directRelegation - $result->relegationCandidate + 1;
 
@@ -319,8 +335,9 @@ class TcShvResultateCronjob
             // we have now have the team info including the ranking
             // extract the group information.
             $team_table_name = $wpdb->prefix . 'tc_shv_team';
+            $logo_table_name = $wpdb->prefix . 'tc_shv_team_logos';
 
-            $count = $wpdb->replace(
+            $count1 = $wpdb->replace(
                 $team_table_name,
                 array(
                     'id' => $result_t->teamId,
@@ -337,12 +354,24 @@ class TcShvResultateCronjob
                     '%s',
                 )
             );
+
+            $count2 = $wpdb->replace(
+                $logo_table_name,
+                array(
+                    'id' => $result_t->teamId,
+                    'name' => $result_t->teamName
+                ),
+                array(
+                    '%d',
+                    '%s',
+                )
+            );
         }
 
         self::update_next_execute($upd_id, 'team_group_update');
     }
 
-	// update the games for a team (inkludes also the results of games for a team)
+    // update the games for a team (inkludes also the results of games for a team)
     private static function update_team_games($upd_id, $param)
     {
         global $wpdb;
@@ -379,7 +408,7 @@ class TcShvResultateCronjob
         self::update_next_execute($upd_id, 'team_games_update');
     }
 
-	// just update all results for a club
+    // just update all results for a club
     private static function update_last_results($upd_id, $param)
     {
         global $wpdb;
@@ -414,7 +443,7 @@ class TcShvResultateCronjob
         self::update_next_execute($upd_id, 'last_results');
     }
 
-	// update the next games for a club
+    // update the next games for a club
     private static function update_next_games($upd_id, $param)
     {
         global $wpdb;
@@ -449,7 +478,7 @@ class TcShvResultateCronjob
         self::update_next_execute($upd_id, 'next_games');
     }
 
-	// fall through so I never store "invalid" values
+    // fall through so I never store "invalid" values
     private static function defaultVal($val)
     {
         if (!!$val) {
@@ -459,8 +488,8 @@ class TcShvResultateCronjob
         }
     }
 
-	// we store the game only once but get it from multiple sources, so this function just makes
-	// sure there is still only one place where this is stored in the table
+    // we store the game only once but get it from multiple sources, so this function just makes
+    // sure there is still only one place where this is stored in the table
     private static function save_game($game)
     {
         global $wpdb;
@@ -591,5 +620,84 @@ class TcShvResultateCronjob
         );
 
         return $count;
+    }
+
+    public static function update_next_logos()
+    {
+        global $wpdb;
+
+        $team_table_name = $wpdb->prefix . 'tc_shv_team';
+
+        $last_update_too_old = gmdate('Y-m-d H:i:s', current_time('timestamp') - (86400 * 100));
+
+        $teaminfos = $wpdb->get_results($wpdb->prepare(
+            "select a.id, a.club_id
+                from $team_table_name a
+                where a.logo_last_update is null or a.logo_last_update < %s
+                order by a.logo_last_update is null desc, a.logo_last_update desc", $last_update_too_old
+        ));
+
+        foreach ($teaminfos as $teaminfo) {
+            $teamid = $teaminfo->id;
+            $clubid = $teaminfo->club_id;
+
+            $upload_dir = wp_upload_dir();
+
+            $filename = "logo-$teamid";
+            $upload_path = "${upload_dir['path']}/tc-shv-resultate/team-logo/";
+            $upload_url = "${upload_dir['url']}/tc-shv-resultate/team-logo/";
+
+            wp_mkdir_p( $upload_path );
+
+            error_log('Temp Dir: ' . get_temp_dir());
+
+            error_log("Testing Logos for $teamid ($clubid)");
+
+            // TODO check if the file exists, then we don't delete them...
+
+            if (
+                ($im90 = self::request_image($teamid, $clubid, 90, $filename . '-90.png')) &&
+                ($im60 = self::request_image($teamid, $clubid, 60, $filename . '-60.png')) &&
+                ($im35 = self::request_image($teamid, $clubid, 35, $filename . '-35.png'))
+            ) {
+                // TODO move files from temp to $upload_path
+                $tempdir = wp_temp_dir();
+
+                error_log("Temporary Directory: $tempdir, $im90, $im60, $im35");
+                $count = $wpdb->replace(
+                    $team_table_name,
+                    array(
+                        'id' => $teamid,
+                        'logo_path' => $upload_path,
+                        'logo_url' => $upload_url,
+                        'logo_last_update' => current_time('mysql'),
+                    ),
+                    array(
+                        '%d',
+                        '%s',
+                        '%s',
+                        '%s',
+                    )
+                );
+            }
+        }
+    }
+
+    private static function request_image($teamid, $clubid, $resolution, $filename)
+    {
+        $http_url = "https://www.handball.ch/images/logo/$teamid.png?fallbackType=club&fallbackId=$clubid&width=$resolution&height=$resolution&scale=canvas";
+
+        $result = wp_remote_get($http_url, array(
+            'stream' => true,
+            'filename' => $filename,
+        ));
+        
+        if (wp_remote_retrieve_response_code($result) === 200) { 
+            error_log('Fetched Images: ' . wp_remote_retrieve_response_code($result) . '(' . wp_remote_retrieve_response_message($result). ')');
+            return $filename;
+        } else {
+            error_log('Failed to fetch image: ' . wp_remote_retrieve_response_code($result) . '(' . wp_remote_retrieve_response_message($result). ')');
+            return false;
+        }
     }
 }
