@@ -4,9 +4,9 @@ Plugin Name:        Handball SHV Resultate Anbindung
 Plugin URI:         http://plugins.svn.wordpress.org/tc-shv-resultate/
 Contributors:       titaniumcoder
 Tags:               handball, resultate, schweiz
-Version:            1.0.9
+Version:            1.1.0
 Requires at least:  4.7.3
-Tested up to:       5.2.4
+Tested up to:       5.3
 Stable tag:         trunk
 License:            Apache License, Version 2.
 License URI:        http://www.apache.org/licenses/LICENSE-2.0
@@ -39,7 +39,14 @@ https://www.handball.ch/media/1845/vat-anleitung-dataservice_de.pdf
 
 == Frequently Asked Questions ==
 
-= Docker-Compose local development =
+= Docker local development =
+
+Just execute the 
+
+docker-compose up-d
+
+It will install everything and have an automatic link into this repository. The only thing that is missing
+is a sample page, but the idea is to add this to the admin page (of the plugin) to see samples.
 
 Everything needed is found in the docker-compose.yml that's included with this plugin.
 
@@ -47,12 +54,18 @@ I recommend to add this to the wp-config.php:
 define( 'WP_DEBUG', true );
 define( 'WP_DEBUG_DISPLAY', false );
 define( 'WP_DEBUG_LOG', '/dev/stderr' );
+define( 'DISABLE_WP_CRON', true );
 
-then you can just follow the log with docker-compose logs -f wordpress to see everything needed.
+and then create a cronjob to do the scheduling, because else the system will be very unreliable:
+
+
 
 == Screenshots ==
 
 == Changelog ==
+
+= 1.1.0 =
+* Adding logic for logos instead of using the name for teams.
 
 = 1.0.9 =
 * Just upgrading the readme.txt for "tested for"

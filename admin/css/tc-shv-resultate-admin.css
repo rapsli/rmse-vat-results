@@ -1,0 +1,12 @@
+table.tc-shv-resultate-admin-table {
+  border: 1px solid black;
+  border-collapse: true;
+}
+
+table.tc-shv-resultate-admin-table th {
+  border: 1px solid black;
+}
+
+table.tc-shv-resultate-admin-table td {
+  border: 1px solid black;
+}

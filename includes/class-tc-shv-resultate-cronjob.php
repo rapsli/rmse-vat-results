@@ -5,7 +5,7 @@
  */
 class TcShvResultateCronjob
 {
-    public static function updateData()
+    public static function update_data()
     {
         global $wpdb;
 
@@ -20,46 +20,39 @@ class TcShvResultateCronjob
 
         $club_id = get_option('tc_shv_club_id');
 
-        if ($update_count == 0 && !!$club_id && $club_id !== 0) {
-            $wpdb->insert($updated_table_name,
-                array(
-                    'type' => 'club_update',
-                    'param' => get_option('tc_shv_club_id'),
-                    'next_execute' => current_time('mysql'),
-                )
-            );
-        } else {
-            $sql = "select id, type, param from $updated_table_name where next_execute <= '" . current_time('mysql') . "' order by next_execute limit $executions_per_minute";
+        $sql = "select id, type, param from $updated_table_name where next_execute <= '" . current_time('mysql') . "' order by next_execute limit $executions_per_minute";
 
-            $tobe_executed = $wpdb->get_results($sql);
+        $tobe_executed = $wpdb->get_results($sql);
 
-            // execute the correct job according to the job table. fall through if something is not yet there (for example
-            // if someone downgrades the plugin)
-            foreach ($tobe_executed as $update) {
-                switch ($update->type) {
-                    case "club_update":
-                        self::update_club($update->id, $update->param);
-                        break;
-                    case "team_group_update":
-                        self::update_team_group($update->id, $update->param);
-                        break;
-                    case "team_games_update":
-                        self::update_team_games($update->id, $update->param);
-                        break;
-                    case "last_results":
-                        self::update_last_results($update->id, $update->param);
-                        break;
-                    case "next_games":
-                        self::update_next_games($update->id, $update->param);
-                        break;
-                    case "logos_update":
-                        self::update_next_logos($update->id, $update->param);
-                        break;
-                    default:
-                        error_log('Unexpected update type: ' . $update->type . ', updating row to make sure it\'s non-blocking.');
-                        self::update_next_execute($update->id, $update->type);
-                        break;
-                }
+        // execute the correct job according to the job table. fall through if something is not yet there (for example
+        // if someone downgrades the plugin)
+        foreach ($tobe_executed as $update) {
+            switch ($update->type) {
+                case "club_update":
+                    self::update_club($update->id, $update->param);
+                    break;
+                case "other_clubs_update":
+                    self::other_clubs_update($update->id, $update->param);
+                    break;
+                case "club_teams_update":
+                    self::club_teams_update($update->id, $update->param);
+                    break;
+                case "team_group_update":
+                    self::update_team_group($update->id, $update->param);
+                    break;
+                case "team_games_update":
+                    self::update_team_games($update->id, $update->param);
+                    break;
+                case "last_results":
+                    self::update_last_results($update->id, $update->param);
+                    break;
+                case "next_games":
+                    self::update_next_games($update->id, $update->param);
+                    break;
+                default:
+                    error_log('Unexpected update type: ' . $update->type . ', updating row to make sure it\'s non-blocking.');
+                    self::update_next_execute($update->id, $update->type);
+                    break;
             }
         }
     }
@@ -73,11 +66,19 @@ class TcShvResultateCronjob
 
         $next_execution = self::next_execute($type);
 
-        $wpdb->update(
-            $updated_table_name,
-            array('next_execute' => $next_execution),
-            array('id' => $id)
-        );
+        if ($next_execution === -1) {
+            // delete it
+            $wpdb->delete(
+                $updated_table_name,
+                array('id' => $id)
+            );
+        } else {
+            $wpdb->update(
+                $updated_table_name,
+                array('next_execute' => $next_execution),
+                array('id' => $id)
+            );
+        }
     }
 
     // calculate when the job should be run next
@@ -91,7 +92,11 @@ class TcShvResultateCronjob
             case 'medium':
                 return self::later_in_minutes(3);
             case 'club_update':
-                return self::later_in_minutes(get_option('tc_shv_wait_time_club_update'));
+                return -1;
+            case 'other_clubs_update':
+                return -1;
+            case 'club_teams_update':
+                return -1;
             case 'team_group_update':
                 return self::later_in_minutes(get_option('tc_shv_wait_time_team_group_update'));
             case 'team_games_update':
@@ -100,8 +105,6 @@ class TcShvResultateCronjob
                 return self::later_in_minutes(get_option('tc_shv_wait_time_last_results'));
             case 'next_games':
                 return self::later_in_minutes(get_option('tc_shv_wait_time_next_games'));
-            case 'logos_update':
-                return self::later_in_minutes(get_option('tc_shv_wait_time_next_logos'));
             default:
                 // come back in 15 minutes
                 return self::later_in_minutes(get_option('tc_shv_wait_time_default'));
@@ -191,18 +194,6 @@ class TcShvResultateCronjob
                 )
             );
 
-            // TODO reactivate this once we have the needed infos...
-            /*
-            $wpdb->insert(
-                $updated_table_name,
-                array(
-                    'type' => 'logos_update',
-                    'param' => $param,
-                    'next_execute' => current_time('mysql'),
-                )
-            );
-            */
-
             foreach ($ids as $id) {
                 $wpdb->insert(
                     $updated_table_name,
@@ -224,6 +215,89 @@ class TcShvResultateCronjob
             }
 
             self::update_next_execute($upd_id, 'club_update');
+        }
+    }
+
+    // read out the information for all available clubs and then add a job to update the table
+    // with all teams for a given club
+    private static function other_clubs_update($upd_id, $param)
+    {
+        global $wpdb;
+
+        $url = "clubs";
+
+        $result = self::request_shv($url);
+
+        if (false === $result) {
+            self::update_next_execute($id, 'error');
+            return;
+        } else {
+            // we now have a list of all clubs in the format
+            // { clubId, clubName }
+            // so we can now create updates to read all teams for a given club as a one time action
+            // we also only update this club info once every week because updates are expected to
+            // be very rare.
+            $updated_table_name = $wpdb->prefix . 'tc_shv_updates';
+
+            $wpdb->delete($updated_table_name, array('type' => 'club_teams_update'));
+
+            // just need the club id
+            $idfunc = function ($c) {return $c->clubId;};
+
+            // ignore own club
+            $filterfunc = function ($id) {return $id !== $param;};
+
+            $ids = array_unique(array_filter(array_map($idfunc, $result), $filterfunc));
+
+            foreach ($ids as $id) {
+                $wpdb->insert(
+                    $updated_table_name,
+                    array(
+                        'type' => 'club_teams_update',
+                        'param' => $id,
+                        'next_execute' => current_time('mysql'),
+                    )
+                );
+            }
+
+            self::update_next_execute($upd_id, 'other_clubs_update');
+        }
+    }
+
+    // read out the information for the given club from the homepage
+    // this will read out all the teams so we can prepare the teams table
+    private static function club_teams_update($upd_id, $param)
+    {
+        global $wpdb;
+
+        $url = "clubs/$param/teams";
+
+        $result = self::request_shv($url);
+
+        if (false === $result) {
+            self::update_next_execute($id, 'error');
+            return;
+        } else {
+            // we have now all teams in the format
+            // { "groupText": "...", "leagueId": 0, "teamId": 0, "teamName": "..." }
+            // extract the id and create the update jobs for the team-logos.
+            $updated_table_name = $wpdb->prefix . 'tc_shv_updates';
+
+            $idfunc = function ($t) {return $t->teamId;};
+
+            $ids = array_unique(array_map($idfunc, $result));
+
+            $success = true;
+
+            foreach ($ids as $id) {
+                $success = $success && self::logos_update($id, $param);
+            }
+
+            if ($success) {
+                self::update_next_execute($upd_id, 'club_teams_update');
+            } else {
+                self::update_next_execute($upd_id, 'error');
+            }
         }
     }
 
@@ -350,18 +424,6 @@ class TcShvResultateCronjob
                     '%d',
                     '%s',
                     '%d',
-                    '%d',
-                    '%s',
-                )
-            );
-
-            $count2 = $wpdb->replace(
-                $logo_table_name,
-                array(
-                    'id' => $result_t->teamId,
-                    'name' => $result_t->teamName
-                ),
-                array(
                     '%d',
                     '%s',
                 )
@@ -622,81 +684,70 @@ class TcShvResultateCronjob
         return $count;
     }
 
-    public static function update_next_logos()
+    public static function logos_update($teamid, $clubid)
     {
         global $wpdb;
 
-        $team_table_name = $wpdb->prefix . 'tc_shv_team';
+        $upload_dir = wp_upload_dir();
 
-        $last_update_too_old = gmdate('Y-m-d H:i:s', current_time('timestamp') - (86400 * 100));
+        $filename = "logo-$teamid";
+        $upload_path = "${upload_dir['path']}/tc-shv-resultate/team-logo/";
+        $upload_url = "${upload_dir['url']}/tc-shv-resultate/team-logo/";
 
-        $teaminfos = $wpdb->get_results($wpdb->prepare(
-            "select a.id, a.club_id
-                from $team_table_name a
-                where a.logo_last_update is null or a.logo_last_update < %s
-                order by a.logo_last_update is null desc, a.logo_last_update desc", $last_update_too_old
-        ));
+        wp_mkdir_p($upload_path);
 
-        foreach ($teaminfos as $teaminfo) {
-            $teamid = $teaminfo->id;
-            $clubid = $teaminfo->club_id;
+        error_log("Requesting Logos for $teamid ($clubid) into $upload_path");
 
-            $upload_dir = wp_upload_dir();
+        if (
+            ($im90 = self::request_image($teamid, $clubid, 90, $filename . '-90.png', $upload_path)) &&
+            ($im60 = self::request_image($teamid, $clubid, 60, $filename . '-60.png', $upload_path)) &&
+            ($im35 = self::request_image($teamid, $clubid, 35, $filename . '-35.png', $upload_path))
+        ) {
+            $logo_table_name = $wpdb->prefix . 'tc_shv_team_logos';
+            $existing = $wpdb->get_row("select * from $logo_table_name where id = $teamid");
 
-            $filename = "logo-$teamid";
-            $upload_path = "${upload_dir['path']}/tc-shv-resultate/team-logo/";
-            $upload_url = "${upload_dir['url']}/tc-shv-resultate/team-logo/";
-
-            wp_mkdir_p( $upload_path );
-
-            error_log('Temp Dir: ' . get_temp_dir());
-
-            error_log("Testing Logos for $teamid ($clubid)");
-
-            // TODO check if the file exists, then we don't delete them...
-
-            if (
-                ($im90 = self::request_image($teamid, $clubid, 90, $filename . '-90.png')) &&
-                ($im60 = self::request_image($teamid, $clubid, 60, $filename . '-60.png')) &&
-                ($im35 = self::request_image($teamid, $clubid, 35, $filename . '-35.png'))
-            ) {
-                // TODO move files from temp to $upload_path
-                $tempdir = wp_temp_dir();
-
-                error_log("Temporary Directory: $tempdir, $im90, $im60, $im35");
-                $count = $wpdb->replace(
-                    $team_table_name,
-                    array(
-                        'id' => $teamid,
-                        'logo_path' => $upload_path,
-                        'logo_url' => $upload_url,
-                        'logo_last_update' => current_time('mysql'),
-                    ),
-                    array(
-                        '%d',
-                        '%s',
-                        '%s',
-                        '%s',
-                    )
+            if ($existing) {
+                $wpdb->delete(
+                    $logo_table_name,
+                    array('id' => $teamid)
                 );
+
+                if ($existing->logo_path !== $upload_path . $filename) {
+                    unlink($existing->logo_path . '-90.png');
+                    unlink($existing->logo_path . '-60.png');
+                    unlink($existing->logo_path . '-35.png');
+                }
             }
+
+            $wpdb->insert(
+                $logo_table_name,
+                array(
+                    'id' => $teamid,
+                    'logo_url' => $upload_url . $filename,
+                    'logo_path' => $upload_path . $filename,
+                    'logo_last_update' => current_time('mysql'),
+                )
+            );
+
+            return true;
+        } else {
+            return false;
         }
     }
 
-    private static function request_image($teamid, $clubid, $resolution, $filename)
+    private static function request_image($teamid, $clubid, $resolution, $filename, $dir)
     {
         $http_url = "https://www.handball.ch/images/logo/$teamid.png?fallbackType=club&fallbackId=$clubid&width=$resolution&height=$resolution&scale=canvas";
 
         $result = wp_remote_get($http_url, array(
             'stream' => true,
-            'filename' => $filename,
+            'filename' => trailingslashit($dir) . $filename,
         ));
-        
-        if (wp_remote_retrieve_response_code($result) === 200) { 
-            error_log('Fetched Images: ' . wp_remote_retrieve_response_code($result) . '(' . wp_remote_retrieve_response_message($result). ')');
+
+        if (wp_remote_retrieve_response_code($result) === 200) {
             return $filename;
         } else {
-            error_log('Failed to fetch image: ' . wp_remote_retrieve_response_code($result) . '(' . wp_remote_retrieve_response_message($result). ')');
+            error_log('Failed to fetch image: ' . wp_remote_retrieve_response_code($result) . '(' . wp_remote_retrieve_response_message($result) . ')');
             return false;
         }
     }

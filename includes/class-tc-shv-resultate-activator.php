@@ -26,8 +26,8 @@ class TcShvResultateActivator
         $next_games_table_name = $wpdb->prefix . 'tc_shv_next_games';
         $last_results_table_name = $wpdb->prefix . 'tc_shv_last_results';
         $team_games_table_name = $wpdb->prefix . 'tc_shv_team_games';
-		$updated_table_name = $wpdb->prefix . 'tc_shv_updates';
-		$logo_table_name = $wpdb->prefix . 'tc_shv_team_logos';
+        $updated_table_name = $wpdb->prefix . 'tc_shv_updates';
+        $logo_table_name = $wpdb->prefix . 'tc_shv_team_logos';
 
         $sql = "CREATE TABLE $group_table_name (
 		  id mediumint(9) NOT NULL,
@@ -57,8 +57,6 @@ class TcShvResultateActivator
 		) $charset_collate;
 		CREATE TABLE $logo_table_name (
 			id mediumint(9) NOT NULL,
-			name tinytext NOT NULL,
-			club_id mediumint(9) DEFAULT -1 NOT NULL,
 			logo_url tinytext,
 			logo_path tinytext,
 			logo_last_update datetime,

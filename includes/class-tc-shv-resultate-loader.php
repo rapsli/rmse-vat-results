@@ -30,7 +30,7 @@ class TcShvResultateLoader
         $this->actions = array(
             array("hook" => "init", "component" => &$this, "callback" => "shortcodes_init"),
             array("hook" => "wp", "component" => &$this, "callback" => "cronstarter_activation"),
-            array("hook" => "tc-shv-resultate-update-data", "component" => "TcShvResultateCronJob", "callback" => "updateData"),
+            array("hook" => "tc-shv-resultate-update-data", "component" => "TcShvResultateCronJob", "callback" => "update_data"),
         );
         $this->filters = array(
             array("hook" => "cron_schedules", "component" => &$this, "callback" => "cron_add_minute", "accepted_args" => 1),
