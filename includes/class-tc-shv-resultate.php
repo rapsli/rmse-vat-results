@@ -33,7 +33,7 @@ class TcShvResultate
     {
         $this->plugin_name = 'tc-shv-resultate';
 
-        $this->version = '1.1.1';
+        $this->version = '1.1.2';
 
         $this->load_dependencies();
         $this->define_admin_hooks();

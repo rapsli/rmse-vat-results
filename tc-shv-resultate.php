@@ -7,7 +7,7 @@
  * Plugin Name: Handball SHV Resultate Anbindung
  * Plugin URI:  http://plugins.svn.wordpress.org/tc-shv-resultate/
  * Description: Aktualisiert die Resultate vom SHV direkt im eigenen Wordpress.
- * Version:     1.1.1
+ * Version:     1.1.2
  * Author:      Rico Metzger
  * Author URI:  https://titaniumcoder.com
  * License:     Apache License, Version 2.0
