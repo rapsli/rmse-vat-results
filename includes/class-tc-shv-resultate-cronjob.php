@@ -558,7 +558,7 @@ class TcShvResultateCronjob
 
         $game_table_name = $wpdb->prefix . 'tc_shv_game';
 
-        $played = $game->gameStatus == 'Gespielt';
+        $played = $game->gameStatus == 'Gespielt' || $game->teamAScoreFT > 0 || $game->teamBScoreFT > 0;
 
         $preview = null;
         $report = null;
