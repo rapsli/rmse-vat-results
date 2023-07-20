@@ -1,5 +1,5 @@
 {
-	"name": "tc-shv-resultate",
+	"name": "tc-shv-results",
 	"version": "0.1.0",
 	"description": "Example block scaffolded with Create Block tool.",
 	"author": "The WordPress Contributors",
@@ -16,5 +16,9 @@
 	},
 	"devDependencies": {
 		"@wordpress/scripts": "^26.9.0"
+	},
+	"dependencies": {
+		"@wordpress/core-data": "^6.15.0",
+		"@wordpress/data": "^9.8.0"
 	}
 }

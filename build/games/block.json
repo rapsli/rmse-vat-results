@@ -1,0 +1,18 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "tc-shv-results/games",
+  "version": "2.0.0",
+  "title": "Club Games and Results",
+  "category": "widgets",
+  "icon": "list-view",
+  "description": "Show the next games / last results of the club",
+  "supports": {
+    "html": true
+  },
+  "textdomain": "tc-shv-results",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "viewScript": "file:./view.js"
+}

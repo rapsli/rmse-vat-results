@@ -20,12 +20,10 @@ The plugin uses the VAT Dataservice Interface of the SHV (documentation is avail
 you have to set up your username and password for the access on the settings page. Once done the teams of the club will be read out
 and block quotes will be available for
 
-- Team information
-- Rankings per team
-- Team schedule / past results
-- Next game highlighting
-- Last result highlighting
-- Club Next / Last Games
+- Rankings per team (editor-table)
+- Team schedule / past results (calendar)
+- Club Next / Last Games (list-view)
+- Highlighting Next game / Last Result (format-status)
 
 == Installation ==
 
@@ -69,7 +67,7 @@ My recommended way of development is using wp-env: https://developer.wordpress.o
 = 1.0.7 =
 * Refactored the lastresults and nextgames views to have less information
 
-= 1.0.6 = 
+= 1.0.6 =
 * Bugfix for home games detection
 
 = 1.0.0 =

@@ -1,0 +1,1 @@
+{"version":3,"file":"highlight/view.js","mappings":";;;;;AAAA;AACAA,OAAO,CAACC,GAAG,CAAE,mDAAoD,CAAC;AAClE,8B","sources":["webpack://tc-shv-results/./src/highlight/view.js"],"sourcesContent":["/* eslint-disable no-console */\nconsole.log( 'Hello World! (from tc-shv-results rankings block)' );\n/* eslint-enable no-console */\n"],"names":["console","log"],"sourceRoot":""}
