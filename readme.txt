@@ -1,68 +1,61 @@
 === Plugin Name ===
 
-Plugin Name:        Handball SHV Resultate Anbindung
+Plugin Name:        Handball SHV Results
 Plugin URI:         http://plugins.svn.wordpress.org/tc-shv-resultate/
 Contributors:       titaniumcoder
-Tags:               handball, resultate, schweiz
-Version:            1.1.2
-Requires at least:  4.7.3
-Tested up to:       5.8
+Tags:               handball, results, schweiz, switzerland, vat
+Version:            2.0.0
+Requires at least:  6.0.0
+Tested up to:       6.2.2
 Stable tag:         trunk
 License:            Apache License, Version 2.
 License URI:        http://www.apache.org/licenses/LICENSE-2.0
 
-Mit diesem Plugin werden die Resultate des SHV auf einer Wordpress-Seite integriert.
+This plugin helps integrating the API for results presented by the Swiss Handball Federation (SHV) into a wordpress page.
 
 == Description ==
 
-Das Plugin verwendet die VAT Dataservice Schnittstelle des SHV (siehe auch
-https://www.handball.ch/media/1845/vat-anleitung-dataservice_de.pdf
-). Die Resultate werden über sogenannte Shortcodes verfügbar. Liste der Shortcodes:
+The plugin uses the VAT Dataservice Interface of the SHV (documentation is available in your VAT interface). After installation
+you have to set up your username and password for the access on the settings page. Once done the teams of the club will be read out
+and block quotes will be available for
 
-- tc-shv-resultate ->       Letzte Resultate des Vereins
-- tc-shv-spiele ->          Nächste Spiele des Vereins
-- tc-shv-halle ->           Parameter: halle=<HALLENAME>, nächste Spiele in einer Halle (bei welchen der Club beteiligt ist)
-                      
-- tc-shv-team ->            Parameter: team=<TEAMNO>, Info eines teams 
-- tc-shv-team-lastresult -> team=<TEAMNO>, letztes Resultat eines Teams
-- tc-shv-team-nextgame   -> team=<TEAMNO>, Nächtes Spiel eines Teams
-- tc-shv-team-highlight  -> team=<TEAMNO> title=<TITLE>, Schöne Darstellung (Nächstes Spiel + Resultat)
+- Team information
+- Rankings per team
+- Team schedule / past results
+- Next game highlighting
+- Last result highlighting
 
 == Installation ==
 
 1. Download from Plugins Directory
-2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Configure settings under "SHV Resultate" Settings page.
-4. Activate server cronjob as described here: https://developer.wordpress.org/plugins/cron/hooking-into-the-system-task-scheduler/
-   This is optional but the plugin will not be updated often enough.
-5. Use the shortcodes in the description above.
+2. Activate the plugin through the 'Plugins' menu in WordPress. It should take you to the settings page.
+3. From your VAT intreface, enter club id, username and password into the options form and save it. After saving it will try to load the teams.
+4. Check if the teams could be loaded. If that's the case, you can use the block quotes now
+
+== Caveats ==
+
+It's important to note that the team numbers change every season. This also means that you have to press the save button at the beginning of a season to
+get the actual teams. This is normally available as soon as the club gets the information about the groups. Or you can just use good old "try-and-error"
+and retry on a daily basis to check if they are available.
+
+This also means that all blocks must be edited and the correct teams be selected!
 
 == Frequently Asked Questions ==
 
-= Docker local development =
+= WP-ENV local development =
 
-Just execute the 
-
-docker-compose up-d
-
-It will install everything and have an automatic link into this repository. The only thing that is missing
-is a sample page, but the idea is to add this to the admin page (of the plugin) to see samples.
-
-Everything needed is found in the docker-compose.yml that's included with this plugin.
-
-I recommend to add this to the wp-config.php:
-define( 'WP_DEBUG', true );
-define( 'WP_DEBUG_DISPLAY', false );
-define( 'WP_DEBUG_LOG', '/dev/stderr' );
-define( 'DISABLE_WP_CRON', true );
-
-and then create a cronjob to do the scheduling, because else the system will be very unreliable:
-
-
+My recommended way of development is using wp-env: https://developer.wordpress.org/block-editor/reference-guides/packages/packages-env/
 
 == Screenshots ==
 
 == Changelog ==
+
+= 2.0.0 =
+* Complete rewrite of the plugin due to the API change by SHV
+* Removed short codes
+* Removed individual tables (not needed anymore)
+* Highlight and Rankings will now link to the logo of the teams / clubs
+* Default language is english with translation for german (naturally) and french (coming soon)
 
 = 1.1.2 =
 * Adding support for newer wordpress version (5), last pre-6 upgrade
