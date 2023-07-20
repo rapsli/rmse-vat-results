@@ -1,18 +1,16 @@
 <?php
 
 /**
- * The plugin bootstrap file
- *
- * @wordpress-plugin
- * Plugin Name: Handball SHV Resultate Anbindung
- * Plugin URI:  http://plugins.svn.wordpress.org/tc-shv-resultate/
- * Description: Aktualisiert die Resultate vom SHV direkt im eigenen Wordpress.
- * Version:     1.1.2
+ * Plugin Name: Handball VAT Results ClubAPI Integration
+ * Description: Reads and actualizes results and rankings directly via VAT interface
+ * Version:     2.0.0
  * Author:      Rico Metzger
- * Author URI:  https://titaniumcoder.com
+ * Author URI:  https://rmse.ch
  * License:     Apache License, Version 2.0
  * License URI: https://www.apache.org/licenses/LICENSE-2.0
  * Text Domain: tc-shv-resultate
+ *
+ * @package           create-block
  */
 
 // If this file is called directly, abort.
@@ -61,4 +59,12 @@ function run_tc_shv_resultate() {
 
 }
 run_tc_shv_resultate();
+
+*
+* @see https://developer.wordpress.org/reference/functions/register_block_type/
+*/
+function create_block_tc_shv_resultate_block_init() {
+ register_block_type( __DIR__ . '/build' );
+}
+add_action( 'init', 'create_block_tc_shv_resultate_block_init' );
 ?>

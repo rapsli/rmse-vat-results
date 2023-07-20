@@ -1,11 +1,12 @@
-=== Plugin Name ===
+=== SHV Results ===
 
 Plugin Name:        Handball SHV Results
 Plugin URI:         http://plugins.svn.wordpress.org/tc-shv-resultate/
 Contributors:       titaniumcoder
 Tags:               handball, results, schweiz, switzerland, vat
 Version:            2.0.0
-Requires at least:  6.0.0
+Requires at least:  6.1
+Requires PHP:       7.0
 Tested up to:       6.2.2
 Stable tag:         trunk
 License:            Apache License, Version 2.
@@ -24,21 +25,14 @@ and block quotes will be available for
 - Team schedule / past results
 - Next game highlighting
 - Last result highlighting
+- Club Next / Last Games
 
 == Installation ==
 
-1. Download from Plugins Directory
+1. Download from Plugins Directory or upload the ZIP from the Github Releases Page.
 2. Activate the plugin through the 'Plugins' menu in WordPress. It should take you to the settings page.
-3. From your VAT intreface, enter club id, username and password into the options form and save it. After saving it will try to load the teams.
-4. Check if the teams could be loaded. If that's the case, you can use the block quotes now
-
-== Caveats ==
-
-It's important to note that the team numbers change every season. This also means that you have to press the save button at the beginning of a season to
-get the actual teams. This is normally available as soon as the club gets the information about the groups. Or you can just use good old "try-and-error"
-and retry on a daily basis to check if they are available.
-
-This also means that all blocks must be edited and the correct teams be selected!
+3. From VAT interface (https://vat.handball.ch), copy club id, username and password into the options form and save it. After saving it will try to load the teams.
+4. Check if the teams could be loaded. If that's the case, you can use the blocks
 
 == Frequently Asked Questions ==
 
@@ -81,7 +75,10 @@ My recommended way of development is using wp-env: https://developer.wordpress.o
 = 1.0.0 =
 * First released version.
 
-== Upgrade Notice ==
+== Caveats ==
 
-= 1.0 =
-Initial version.
+It's important to note that the team numbers change every season. This also means that you have to press the save button at the beginning of a season to
+get the actual teams. This is normally available as soon as the club gets the information about the groups. Or you can just use good old "try-and-error"
+and retry on a daily basis to check if they are available.
+
+This also means that all blocks must be edited and the correct teams be selected!
