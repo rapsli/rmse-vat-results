@@ -4,9 +4,9 @@ function tc_shv_results_settings_init()
 {
 	register_setting('tc_shv_results', 'tc_shv_results_options');
 
-	register_setting('tc_shv_results', 'tc_shv_club_id', array('type' => 'string', 'description' => 'Club ID für den REST API Call'));
-	register_setting('tc_shv_results', 'tc_shv_vat_user', array('type' => 'string', 'description' => 'Benutzer für den VAT API Rest Call'));
-	register_setting('tc_shv_results', 'tc_shv_vat_password', array('type' => 'string', 'description' => 'Passwort für den VAT API Rest Call'));
+	register_setting('tc_shv_results', 'club_id', array('type' => 'string', 'description' => 'Club ID für den REST API Call'));
+	register_setting('tc_shv_results', 'vat_user', array('type' => 'string', 'description' => 'Benutzer für den VAT API Rest Call'));
+	register_setting('tc_shv_results', 'vat_password', array('type' => 'string', 'description' => 'Passwort für den VAT API Rest Call'));
 
 	add_settings_section('tc_shv_results_section', __('VAT Results Settings', 'tc-shv-results'), 'tc_shv_results_section_callback', 'tc_shv_results');
 
@@ -17,31 +17,31 @@ function tc_shv_results_settings_init()
 		'tc_shv_results',
 		'tc_shv_results_section',
 		array(
-			'label_for' => 'tc_shv_results_club_id',
+			'label_for' => 'club_id',
 			'type' => 'text'
 		)
 	);
 
 	add_settings_field(
-		'tc_shv_results_username',
+		'tc_shv_results_vat_user',
 		__('Username VAT', 'tc-shv-results'),
 		'tc_shv_results_text',
 		'tc_shv_results',
 		'tc_shv_results_section',
 		array(
-			'label_for' => 'tc_shv_results_username',
+			'label_for' => 'vat_user',
 			'type' => 'text'
 		)
 	);
 
 	add_settings_field(
-		'tc_shv_results_password',
+		'tc_shv_results_vat_password',
 		__('Password VAT', 'tc-shv-results'),
 		'tc_shv_results_text',
 		'tc_shv_results',
 		'tc_shv_results_section',
 		array(
-			'label_for' => 'tc_shv_results_password',
+			'label_for' => 'vat_password',
 			'type' => 'password'
 		)
 	);
@@ -56,10 +56,7 @@ function tc_shv_results_section_callback($args)
 {
 	?>
 	<p id="<?php echo esc_attr($args['id']); ?>">
-
-	<p id="<?php echo esc_attr($args['id']); ?>">
-		<?php __('<p>You need to configure the plugin, all information can be found in <a href="https://vat.handball.ch/">VAT</a> - assuming you have the rights else someone else in the club can give them.', 'tc-shv-results'); ?>
-
+		<?php esc_html_e('You need to configure the plugin, all information can be found in VAT (https://vat.handball.ch) - assuming you have the rights else someone else in the club can give them.', 'tc-shv-results'); ?>
 	</p>
 	<?php
 }
@@ -81,7 +78,7 @@ function tc_shv_results_text($args)
 	?>
 	<input id="<?php echo esc_attr($args['label_for']); ?>" type="<?php echo esc_attr($args['type']); ?>"
 		name="tc_shv_results_options[<?php echo esc_attr($args['label_for']); ?>]"
-		value="<?php echo isset( $options[ $args['label_for']]) ? esc_attr($options[$args['label_for']]) : '' ?>" />
+		value="<?php echo isset($options[$args['label_for']]) ? esc_attr($options[$args['label_for']]) : '' ?>" />
 	<?php
 }
 
@@ -90,9 +87,9 @@ function tc_shv_results_text($args)
  */
 function tc_shv_results_options_page()
 {
-	add_menu_page(
-		__ ('SHV Result Options', 'tc_shv_results'),
-		__ ('SHV Results Options', 'tc_shv_results'),
+	add_options_page(
+		__('SHV Result Options', 'tc_shv_results'),
+		__('SHV Results Options', 'tc_shv_results'),
 		'manage_options',
 		'tc_shv_results',
 		'tc_shv_results_options_page_html'
@@ -101,6 +98,13 @@ function tc_shv_results_options_page()
 
 add_action('admin_menu', 'tc_shv_results_options_page');
 
+function team__cmp($team_a, $team_b){
+	if ($team_a->groupText === $team_b->groupText) {
+		return 0;
+	}
+
+	return ($team_a->groupText < $team_b->groupText) ? -1 : 1;
+}
 
 /**
  * Top level menu callback function
@@ -118,8 +122,24 @@ function tc_shv_results_options_page_html()
 	// WordPress will add the "settings-updated" $_GET parameter to the url
 	if (isset($_GET['settings-updated'])) {
 		// add settings saved message with the class of "updated"
-		// TODO: do I need to replace here something?
-		add_settings_error('wporg_messages', 'wporg_message', __('Settings Saved', 'wporg'), 'updated');
+		// add_settings_error('wporg_messages', 'wporg_message', __('Settings Saved', 'wporg'), 'updated');
+
+		// try to load the teams here
+
+		$response_code = test_retrieve_club_info();
+
+		if ($response_code !== 200) {
+			echo '<div>D: ' . (delete_option('tc_shv_results_teams') ? 'yes' : 'no') . '</div>';
+
+			add_settings_error('wporg_messages', 'wporg_message', sprintf(__('Club Info could not be retrieved, response code %s', 'tc-shv-results'), $response_code));
+
+		} else {
+			$teams = retrieve_teams();
+
+			usort($teams, 'team__cmp');
+
+			update_option('tc_shv_results_teams', $teams);
+		}
 	}
 
 	// show error/update messages
@@ -140,6 +160,57 @@ function tc_shv_results_options_page_html()
 			submit_button(__('Save Settings', 'wporg'));
 			?>
 		</form>
+
+		<hr />
+
+		<h2>Teams</h2>
+		<?php
+		$teams = get_option('tc_shv_results_teams');
+
+		if (isset($teams) && is_array($teams)) {
+			?>
+			<div class="tc-shv-results-settings-teams">
+				<table>
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Name</th>
+							<th>Liga</th>
+							<th>Gruppe</th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php
+						foreach ($teams as $team) {
+							?>
+							<tr>
+								<td>
+									<?php echo $team->teamId ?>
+								</td>
+								<td>
+									<?php echo $team->teamName ?>
+								</td>
+								<td>
+									<?php echo $team->leagueLong . ' (' . $team->leagueShort . ')' ?>
+								</td>
+								<td>
+									<?php echo $team->groupText ?>
+								</td>
+							</tr>
+							<?php
+						}
+
+						unset($team);
+						?>
+					</tbody>
+				</table>
+			</div>
+			<?php
+		} else {
+			echo '<div>' . esc_html_e('No teams loaded yet', 'tc-shv-results') . '</div>';
+		}
+		?>
 	</div>
 	<?php
 }
+?>
