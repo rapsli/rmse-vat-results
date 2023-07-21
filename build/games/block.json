@@ -6,13 +6,21 @@
   "title": "Club Games and Results",
   "category": "widgets",
   "icon": "list-view",
-  "description": "Show the next games / last results of the club",
-  "supports": {
-    "html": true
+  "description": "Show the next games / last results of the club as a whole",
+  "attributes": {
+    "results": {
+      "type": "integer",
+      "default": 10
+    },
+    "scheduled": {
+      "type": "integer",
+      "default": 10
+    }
   },
   "textdomain": "tc-shv-results",
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
   "style": "file:./style-index.css",
-  "viewScript": "file:./view.js"
+  "viewScript": "file:./view.js",
+  "render": "file:./render.php"
 }

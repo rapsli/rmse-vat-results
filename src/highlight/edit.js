@@ -33,7 +33,7 @@ export default function Edit() {
 	return (
 		<p { ...useBlockProps() }>
 			{ __(
-				'<b><i>Team Rankings in the editor!</i></b>',
+				'Highlights in the editor!',
 				'tc-shv-results'
 			) }
 		</p>

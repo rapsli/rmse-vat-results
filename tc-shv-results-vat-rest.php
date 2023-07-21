@@ -59,7 +59,90 @@ function retrieve_teams()
 	return execute_request('v1/clubs/' . club_id() . '/teams');
 }
 
-function test_retrieve_club_info() {
+function update_club_teams()
+{
+	$teams = retrieve_teams();
+
+	usort(
+		$teams,
+		function ($team_a, $team_b) {
+			if ($team_a->groupText === $team_b->groupText) {
+				return 0;
+			}
+
+			return ($team_a->groupText < $team_b->groupText) ? -1 : 1;
+		}
+	);
+
+	update_option('tc_shv_results_teams', $teams);
+
+	return $teams;
+}
+
+function get_club_teams()
+{
+	$teams = get_option('tc_shv_results_teams');
+
+	if ($teams === false) {
+		return update_club_teams();
+	} else {
+		return $teams;
+	}
+}
+
+function get_club_team_ids()
+{
+	return array_map(function ($team) {
+		return $team->teamId;
+	}, get_club_teams());
+}
+
+function test_retrieve_club_info()
+{
 	return request_response_code('v1/clubs/' . club_id());
 }
+
+function retrieve_club_games()
+{
+	$club_games_played = get_transient('tc_shv_results_club_games_played');
+	$club_games_planned = get_transient('tc_shv_results_club_games_planned');
+
+	if ($club_games_played === false || $club_games_planned === false) {
+		// load the games for the club and save them to the transient too, unless we are in development mode (how to find out?)
+		$all_club_games = execute_request('v1/clubs/' . club_id() . '/games');
+
+		/*
+			foreach($all_club_games as $game) {
+				$game->gameDateTimeString = $game->gameDateTime;
+				$game->gameDateTime = date_parse($game->gameDateTime);
+				// $game->gameDateTimeString = datefmt_format($fmt, $game->gameDateTime);
+			}
+			*/
+
+		$club_games_planned = array_filter($all_club_games, function ($game) {
+			return $game->gameStatusId === 1; });
+		$club_games_played = array_filter($all_club_games, function ($game) {
+			return $game->gameStatusId !== 2; });
+
+		usort($club_games_planned, function ($a, $b) {
+			$adt = $a->gameDateTime;
+			$bdt = $b->gameDateTime;
+
+			return $adt === $bdt ? 0 : ($adt < $bdt ? -1 : 1);
+		});
+
+		usort($club_games_played, function ($a, $b) {
+			$adt = $a->gameDateTime;
+			$bdt = $b->gameDateTime;
+
+			return $adt === $bdt ? 0 : ($adt > $bdt ? -1 : 1);
+		});
+
+		set_transient('tc_shv_results_club_games_played', $club_games_played, MINUTE_IN_SECONDS * 5);
+		set_transient('tc_shv_results_club_games_planned', $club_games_planned, MINUTE_IN_SECONDS * 5);
+	}
+
+	return array($club_games_played, $club_games_planned);
+}
+
 ?>

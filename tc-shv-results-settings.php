@@ -98,14 +98,6 @@ function tc_shv_results_options_page()
 
 add_action('admin_menu', 'tc_shv_results_options_page');
 
-function team__cmp($team_a, $team_b){
-	if ($team_a->groupText === $team_b->groupText) {
-		return 0;
-	}
-
-	return ($team_a->groupText < $team_b->groupText) ? -1 : 1;
-}
-
 /**
  * Top level menu callback function
  */
@@ -129,16 +121,9 @@ function tc_shv_results_options_page_html()
 		$response_code = test_retrieve_club_info();
 
 		if ($response_code !== 200) {
-			echo '<div>D: ' . (delete_option('tc_shv_results_teams') ? 'yes' : 'no') . '</div>';
-
 			add_settings_error('wporg_messages', 'wporg_message', sprintf(__('Club Info could not be retrieved, response code %s', 'tc-shv-results'), $response_code));
-
 		} else {
-			$teams = retrieve_teams();
-
-			usort($teams, 'team__cmp');
-
-			update_option('tc_shv_results_teams', $teams);
+			update_club_teams();
 		}
 	}
 
@@ -165,7 +150,7 @@ function tc_shv_results_options_page_html()
 
 		<h2>Teams</h2>
 		<?php
-		$teams = get_option('tc_shv_results_teams');
+		$teams = get_club_teams();
 
 		if (isset($teams) && is_array($teams)) {
 			?>
