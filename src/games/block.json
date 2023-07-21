@@ -15,6 +15,22 @@
 		"scheduled": {
 			"type": "integer",
 			"default": 10
+		},
+		"header": {
+			"type": "boolean",
+			"default": true
+		},
+		"venue": {
+			"type": "boolean",
+			"default": true
+		},
+		"type": {
+			"type": "boolean",
+			"default": true
+		},
+		"dateformat": {
+			"type": "string",
+			"default": "d.m.y H:i"
 		}
 	},
 	"textdomain": "tc-shv-results",

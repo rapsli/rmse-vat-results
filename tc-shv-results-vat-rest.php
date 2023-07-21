@@ -2,7 +2,7 @@
 function authorization_headers()
 {
 	$options = get_option('tc_shv_results_options');
-	if (isset($options)) {
+	if (isset($options) && $options !== false) {
 		$username = $options['vat_user'];
 		$password = $options['vat_password'];
 
@@ -49,8 +49,10 @@ function request_response_code($url)
 function club_id()
 {
 	$options = get_option('tc_shv_results_options');
-	if (isset($options)) {
+	if (isset($options) && $options !== false) {
 		return $options['club_id'];
+	} else {
+		return '';
 	}
 }
 
@@ -63,18 +65,20 @@ function update_club_teams()
 {
 	$teams = retrieve_teams();
 
-	usort(
-		$teams,
-		function ($team_a, $team_b) {
-			if ($team_a->groupText === $team_b->groupText) {
-				return 0;
+	if ($teams !== false) {
+		usort(
+			$teams,
+			function ($team_a, $team_b) {
+				if ($team_a->groupText === $team_b->groupText) {
+					return 0;
+				}
+
+				return ($team_a->groupText < $team_b->groupText) ? -1 : 1;
 			}
+		);
 
-			return ($team_a->groupText < $team_b->groupText) ? -1 : 1;
-		}
-	);
-
-	update_option('tc_shv_results_teams', $teams);
+		update_option('tc_shv_results_teams', $teams);
+	}
 
 	return $teams;
 }
@@ -110,39 +114,46 @@ function retrieve_club_games()
 	if ($club_games_played === false || $club_games_planned === false) {
 		// load the games for the club and save them to the transient too, unless we are in development mode (how to find out?)
 		$all_club_games = execute_request('v1/clubs/' . club_id() . '/games');
+		$home_teams = get_club_team_ids();
+		if ($home_teams === false) {
+			$home_teams = array();
+		}
 
-		/*
-			foreach($all_club_games as $game) {
-				$game->gameDateTimeString = $game->gameDateTime;
-				$game->gameDateTime = date_parse($game->gameDateTime);
-				// $game->gameDateTimeString = datefmt_format($fmt, $game->gameDateTime);
+		if ($all_club_games !== false) {
+			foreach ($all_club_games as $game) {
+				$game->gameDateTime = new DateTimeImmutable($game->gameDateTime);
+				$game->homegame = in_array($game->teamAId, $home_teams);
 			}
-			*/
 
-		$club_games_planned = array_filter($all_club_games, function ($game) {
-			return $game->gameStatusId === 1; });
-		$club_games_played = array_filter($all_club_games, function ($game) {
-			return $game->gameStatusId !== 2; });
+			$club_games_planned = array_filter($all_club_games, function ($game) {
+				return $game->gameStatusId === 1;
+			});
+			$club_games_played = array_filter($all_club_games, function ($game) {
+				return $game->gameStatusId !== 1;
+			});
 
-		usort($club_games_planned, function ($a, $b) {
-			$adt = $a->gameDateTime;
-			$bdt = $b->gameDateTime;
+			usort($club_games_planned, function ($a, $b) {
+				$adt = $a->gameDateTime;
+				$bdt = $b->gameDateTime;
 
-			return $adt === $bdt ? 0 : ($adt < $bdt ? -1 : 1);
-		});
+				return $adt === $bdt ? 0 : ($adt < $bdt ? -1 : 1);
+			});
 
-		usort($club_games_played, function ($a, $b) {
-			$adt = $a->gameDateTime;
-			$bdt = $b->gameDateTime;
+			usort($club_games_played, function ($a, $b) {
+				$adt = $a->gameDateTime;
+				$bdt = $b->gameDateTime;
 
-			return $adt === $bdt ? 0 : ($adt > $bdt ? -1 : 1);
-		});
+				return $adt === $bdt ? 0 : ($adt > $bdt ? -1 : 1);
+			});
 
-		set_transient('tc_shv_results_club_games_played', $club_games_played, MINUTE_IN_SECONDS * 5);
-		set_transient('tc_shv_results_club_games_planned', $club_games_planned, MINUTE_IN_SECONDS * 5);
+			set_transient('tc_shv_results_club_games_played', $club_games_played, MINUTE_IN_SECONDS * 5);
+			set_transient('tc_shv_results_club_games_planned', $club_games_planned, MINUTE_IN_SECONDS * 5);
+		} else {
+			$club_games_played = false;
+			$club_games_planned = false;
+		}
 	}
 
 	return array($club_games_played, $club_games_planned);
 }
-
 ?>

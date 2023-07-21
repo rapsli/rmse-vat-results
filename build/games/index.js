@@ -60,10 +60,9 @@ function Edit({
 }) {
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)()
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Placeholder, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Next Games / Last Results of the club', 'tc-shv-results'),
-    instructions: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Choose how many elements (last results and next games) should be displayed. 0 or less means it will not be shown at all. Will add a preview in a future version.', 'tc-shv-results')
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalNumberControl, {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h5", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Next Games / Last Results of the club', 'tc-shv-results')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    class: "instructions"
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Choose how many elements (last results and next games) should be displayed. 0 or less means it will not be shown at all. Will add a preview in a future version.', 'tc-shv-results')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalNumberControl, {
     isShiftStepEnabled: true,
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Last Results', 'tc-shv-results'),
     shiftStep: 5,
@@ -79,7 +78,31 @@ function Edit({
     onChange: val => setAttributes({
       scheduled: val
     })
-  })));
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Date Format', 'tc-shv-results'),
+    value: attributes.dateformat,
+    onChange: val => setAttributes({
+      dateformat: val
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.CheckboxControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Show Header?', 'tc-shv-results'),
+    checked: attributes.header,
+    onChange: val => setAttributes({
+      header: val
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.CheckboxControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Show game type?', 'tc-shv-results'),
+    checked: attributes.type,
+    onChange: val => setAttributes({
+      type: val
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.CheckboxControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Show Venue?', 'tc-shv-results'),
+    checked: attributes.venue,
+    onChange: val => setAttributes({
+      venue: val
+    })
+  }));
 }
 
 /***/ }),
@@ -212,7 +235,7 @@ module.exports = window["wp"]["i18n"];
   \******************************/
 /***/ ((module) => {
 
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"tc-shv-results/games","version":"2.0.0","title":"Club Games and Results","category":"widgets","icon":"list-view","description":"Show the next games / last results of the club as a whole","attributes":{"results":{"type":"integer","default":10},"scheduled":{"type":"integer","default":10}},"textdomain":"tc-shv-results","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js","render":"file:./render.php"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"tc-shv-results/games","version":"2.0.0","title":"Club Games and Results","category":"widgets","icon":"list-view","description":"Show the next games / last results of the club as a whole","attributes":{"results":{"type":"integer","default":10},"scheduled":{"type":"integer","default":10},"header":{"type":"boolean","default":true},"venue":{"type":"boolean","default":true},"type":{"type":"boolean","default":true},"dateformat":{"type":"string","default":"d.m.y H:i"}},"textdomain":"tc-shv-results","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js","render":"file:./render.php"}');
 
 /***/ })
 

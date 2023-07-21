@@ -35,9 +35,9 @@ require_once plugin_dir_path(__FILE__) . 'tc-shv-results-settings.php';
 function create_block_tc_shv_results_block_init()
 {
 	register_block_type(__DIR__ . '/build/games');
-	register_block_type(__DIR__ . '/build/highlight');
-	register_block_type(__DIR__ . '/build/rankings');
-	register_block_type(__DIR__ . '/build/schedule');
+	// register_block_type(__DIR__ . '/build/highlight');
+	// register_block_type(__DIR__ . '/build/rankings');
+	// register_block_type(__DIR__ . '/build/schedule');
 }
 add_action('init', 'create_block_tc_shv_results_block_init');
 

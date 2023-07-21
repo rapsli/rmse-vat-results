@@ -5,7 +5,7 @@
  */
 import { __ } from '@wordpress/i18n';
 
-import { TextControl, Placeholder, __experimentalNumberControl as NumberControl } from '@wordpress/components';
+import { TextControl, CheckboxControl, Placeholder, __experimentalNumberControl as NumberControl } from '@wordpress/components';
 
 /**
  * React hook that is used to mark the block wrapper element.
@@ -34,25 +34,44 @@ import './editor.scss';
 export default function Edit({ attributes, setAttributes }) {
 	return (
 		<div {...useBlockProps()}>
-			<Placeholder
-				label={__('Next Games / Last Results of the club', 'tc-shv-results')}
-				instructions={__('Choose how many elements (last results and next games) should be displayed. 0 or less means it will not be shown at all. Will add a preview in a future version.', 'tc-shv-results')}
-			>
-				<NumberControl
-					isShiftStepEnabled={true}
-					label={__('Last Results', 'tc-shv-results')}
-					shiftStep={5}
-					value={attributes.results}
-					onChange={(val) => setAttributes({ results: val })}
-				/>
-				<NumberControl
-					isShiftStepEnabled={true}
-					label={__('Scheduled Games', 'tc-shv-results')}
-					shiftStep={5}
-					value={attributes.scheduled}
-					onChange={(val) => setAttributes({ scheduled: val })}
-				/>
-			</Placeholder>
+			<h5>{__('Next Games / Last Results of the club', 'tc-shv-results')}</h5>
+			<div class="instructions">
+				{__('Choose how many elements (last results and next games) should be displayed. 0 or less means it will not be shown at all. Will add a preview in a future version.', 'tc-shv-results')}
+			</div>
+			<NumberControl
+				isShiftStepEnabled={true}
+				label={__('Last Results', 'tc-shv-results')}
+				shiftStep={5}
+				value={attributes.results}
+				onChange={(val) => setAttributes({ results: val })}
+			/>
+			<NumberControl
+				isShiftStepEnabled={true}
+				label={__('Scheduled Games', 'tc-shv-results')}
+				shiftStep={5}
+				value={attributes.scheduled}
+				onChange={(val) => setAttributes({ scheduled: val })}
+			/>
+			<TextControl
+				label={__('Date Format', 'tc-shv-results')}
+				value={attributes.dateformat}
+				onChange={(val) => setAttributes({ dateformat: val })}
+			/>
+			<CheckboxControl
+				label={__('Show Header?', 'tc-shv-results')}
+				checked={attributes.header}
+				onChange={(val) => setAttributes({ header: val })}
+			/>
+			<CheckboxControl
+				label={__('Show game type?', 'tc-shv-results')}
+				checked={attributes.type}
+				onChange={(val) => setAttributes({ type: val })}
+			/>
+			<CheckboxControl
+				label={__('Show Venue?', 'tc-shv-results')}
+				checked={attributes.venue}
+				onChange={(val) => setAttributes({ venue: val })}
+			/>
 		</div>
 	);
 }
