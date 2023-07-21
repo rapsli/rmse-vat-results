@@ -1,4 +1,7 @@
 {
-  "core": null,
-  "plugins": [ "." ]
+	"core": null,
+	"plugins": [
+		".",
+		"https://downloads.wordpress.org/plugin/debug-bar.1.1.4.zip"
+	]
 }
