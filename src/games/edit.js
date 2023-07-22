@@ -5,7 +5,7 @@
  */
 import { __ } from '@wordpress/i18n';
 
-import { TextControl, CheckboxControl, Placeholder, __experimentalNumberControl as NumberControl } from '@wordpress/components';
+import { TextControl, CheckboxControl, __experimentalNumberControl as NumberControl } from '@wordpress/components';
 
 /**
  * React hook that is used to mark the block wrapper element.
@@ -35,7 +35,7 @@ export default function Edit({ attributes, setAttributes }) {
 	return (
 		<div {...useBlockProps()}>
 			<h5>{__('Next Games / Last Results of the club', 'tc-shv-results')}</h5>
-			<div class="instructions">
+			<div className="instructions">
 				{__('Choose how many elements (last results and next games) should be displayed. 0 or less means it will not be shown at all. Will add a preview in a future version.', 'tc-shv-results')}
 			</div>
 			<NumberControl
@@ -71,6 +71,11 @@ export default function Edit({ attributes, setAttributes }) {
 				label={__('Show Venue?', 'tc-shv-results')}
 				checked={attributes.venue}
 				onChange={(val) => setAttributes({ venue: val })}
+			/>
+			<CheckboxControl
+				label={__('Show Results?', 'tc-shv-results')}
+				checked={attributes.with_result}
+				onChange={(val) => setAttributes({ with_result: val })}
 			/>
 		</div>
 	);

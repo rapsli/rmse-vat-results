@@ -36,8 +36,15 @@ function create_block_tc_shv_results_block_init()
 {
 	register_block_type(__DIR__ . '/build/games');
 	// register_block_type(__DIR__ . '/build/highlight');
-	// register_block_type(__DIR__ . '/build/rankings');
+	register_block_type(__DIR__ . '/build/rankings');
 	// register_block_type(__DIR__ . '/build/schedule');
+
+	$team_selection = tc_shv_results_load_team_selection();
+	if (false !== $team_selection) {
+		$team_selection = json_encode($team_selection);
+		wp_add_inline_script('tc-shv-results-rankings-editor-script', 'var tc_shv_team_selection = ' . $team_selection . '; console.log(tc_shv_team_selection);', 'before');
+	}
+
 }
 add_action('init', 'create_block_tc_shv_results_block_init');
 
@@ -51,4 +58,19 @@ function tc_shv_results_admin_enqueue()
 
 // you may want to wrap add_action() in a conditional to prevent enqueue on every page
 add_action('admin_enqueue_scripts', 'tc_shv_results_admin_enqueue');
+
+// rest endpoint preparation, for now just the teams with team id and group short cut for the selection fields
+function tc_shv_results_rest_api_routes()
+{
+	add_action('rest_api_init', function () {
+		register_rest_route('tc-shv-results/v2', '/teams', array(
+			'methods' => 'GET',
+			'callback' => 'tc_shv_results_load_team_selection',
+			'permission_callback' => '__return_true'
+		)
+		);
+	});
+}
+
+add_action('init', 'tc_shv_results_rest_api_routes');
 ?>

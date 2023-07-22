@@ -7,6 +7,7 @@ function tc_shv_results_settings_init()
 	register_setting('tc_shv_results', 'club_id', array('type' => 'string', 'description' => 'Club ID für den REST API Call'));
 	register_setting('tc_shv_results', 'vat_user', array('type' => 'string', 'description' => 'Benutzer für den VAT API Rest Call'));
 	register_setting('tc_shv_results', 'vat_password', array('type' => 'string', 'description' => 'Passwort für den VAT API Rest Call'));
+	register_setting('tc_shv_results', 'logo_url', array('type' => 'string', 'description' => 'Logo URL called with sprintf(..., team_id, club_id, width, height)', 'default' => 'https://www.handball.ch/images/logo/%s.png?fallbackType=club&fallbackId=%s&height=%d&width=%d&rmode=pad&format=png'));
 
 	add_settings_section('tc_shv_results_section', __('VAT Results Settings', 'tc-shv-results'), 'tc_shv_results_section_callback', 'tc_shv_results');
 
@@ -18,7 +19,7 @@ function tc_shv_results_settings_init()
 		'tc_shv_results_section',
 		array(
 			'label_for' => 'club_id',
-			'type' => 'text'
+			'type' => 'text',
 		)
 	);
 
@@ -30,7 +31,7 @@ function tc_shv_results_settings_init()
 		'tc_shv_results_section',
 		array(
 			'label_for' => 'vat_user',
-			'type' => 'text'
+			'type' => 'text',
 		)
 	);
 
@@ -42,7 +43,20 @@ function tc_shv_results_settings_init()
 		'tc_shv_results_section',
 		array(
 			'label_for' => 'vat_password',
-			'type' => 'password'
+			'type' => 'password',
+		)
+	);
+
+	add_settings_field(
+		'tc_shv_results_logo_url',
+		__('Logo URL', 'tc-shv-results'),
+		'tc_shv_results_text',
+		'tc_shv_results',
+		'tc_shv_results_section',
+		array(
+			'label_for' => 'logo_url',
+			'type' => 'text',
+			'default' => 'https://www.handball.ch/images/logo/%s.png?fallbackType=club&fallbackId=%s&height=%d&width=%d&rmode=pad&format=png'
 		)
 	);
 }
@@ -75,10 +89,13 @@ function tc_shv_results_text($args)
 {
 	// Get the value of the setting we've registered with register_setting()
 	$options = get_option('tc_shv_results_options');
-	?>
+	$option_value = isset($options[$args['label_for']]) ? esc_attr($options[$args['label_for']]) : (isset($args['default']) ? $args['default'] : '') ;
+
+?>
 	<input id="<?php echo esc_attr($args['label_for']); ?>" type="<?php echo esc_attr($args['type']); ?>"
+		size="150"
 		name="tc_shv_results_options[<?php echo esc_attr($args['label_for']); ?>]"
-		value="<?php echo isset($options[$args['label_for']]) ? esc_attr($options[$args['label_for']]) : '' ?>" />
+		value="<?php echo $option_value; ?>" />
 	<?php
 }
 
@@ -118,12 +135,12 @@ function tc_shv_results_options_page_html()
 
 		// try to load the teams here
 
-		$response_code = test_retrieve_club_info();
+		$response_code = tc_shv_results_test_retrieve_club_info();
 
 		if ($response_code !== 200) {
 			add_settings_error('wporg_messages', 'wporg_message', sprintf(__('Club Info could not be retrieved, response code %s', 'tc-shv-results'), $response_code));
 		} else {
-			update_club_teams();
+			tc_shv_results_update_club_teams();
 		}
 	}
 
@@ -150,7 +167,7 @@ function tc_shv_results_options_page_html()
 
 		<h2>Teams</h2>
 		<?php
-		$teams = get_club_teams();
+		$teams = tc_shv_results_get_club_teams();
 
 		if (isset($teams) && is_array($teams)) {
 			?>
@@ -159,6 +176,7 @@ function tc_shv_results_options_page_html()
 					<thead>
 						<tr>
 							<th>ID</th>
+							<th>Logo</th>
 							<th>Name</th>
 							<th>Liga</th>
 							<th>Gruppe</th>
@@ -171,6 +189,9 @@ function tc_shv_results_options_page_html()
 							<tr>
 								<td>
 									<?php echo $team->teamId ?>
+								</td>
+								<td>
+									<img src="<?php echo tc_shv_results_team_logo($team->teamId, $team->clubId, 35, 35); ?>" alt="Logo <?php $team->teamName; ?>" width="35" height="35" />
 								</td>
 								<td>
 									<?php echo $team->teamName ?>

@@ -7,8 +7,19 @@
 	"category": "widgets",
 	"icon": "index-card",
 	"description": "Show Ranking of the team and the general information",
-	"supports": {
-		"html": true
+	"attributes": {
+		"team": {
+			"type": "string",
+			"default": ""
+		},
+		"header": {
+			"type": "boolean",
+			"default": true
+		},
+		"logo": {
+			"type": "boolean",
+			"default": true
+		}
 	},
 	"textdomain": "tc-shv-results",
 	"editorScript": "file:./index.js",

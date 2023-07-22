@@ -28,6 +28,10 @@
 			"type": "boolean",
 			"default": true
 		},
+		"with_result": {
+			"type": "boolean",
+			"default": true
+		},
 		"dateformat": {
 			"type": "string",
 			"default": "d.m.y H:i"
