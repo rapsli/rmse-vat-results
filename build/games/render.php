@@ -15,27 +15,27 @@ if ($games !== false) {
 			<?php if ($attributes['header'] === true) { ?>
 				<thead>
 					<tr>
-						<th>
+						<th class="tc-shv-results-date">
 							<?php esc_html_e('Datum / Zeit', 'tc-shv-results') ?>
 						</th>
 						<?php if ($attributes['type'] === true) { ?>
-							<th>
+							<th class="tc-shv-results-type">
 								<?php esc_html_e('Typ', 'tc-shv-results') ?>
 							</th>
 						<?php } ?>
-						<th>
+						<th class="tc-shv-results-hometeam">
 							<?php esc_html_e('Heim', 'tc-shv-results') ?>
 						</th>
-						<th>
+						<th class="tc-shv-results-guestteam">
 							<?php esc_html_e('Gast', 'tc-shv-results') ?>
 						</th>
 						<?php if ($attributes['venue'] === true) { ?>
-							<th>
+							<th class="tc-shv-results-venue">
 								<?php esc_html_e('Ort', 'tc-shv-results') ?>
 							</th>
 						<?php } ?>
 						<?php if ($attributes['with_result'] === true) { ?>
-							<th>
+							<th class="tc-shv-results-result">
 								<?php esc_html_e('Resultat', 'tc-shv-results') ?>
 							</th>
 						<?php } ?>
@@ -62,27 +62,27 @@ if ($games !== false) {
 					}
 					?>
 					<tr class="<?php echo $clz; ?>">
-						<td>
+						<td class="tc-shv-results-date">
 							<?php echo date_format($game->gameDateTime, $attributes['dateformat']); ?>
 						</td>
 						<?php if ($attributes['type'] === true) { ?>
-							<td>
+							<td class="tc-shv-results-type">
 								<?php echo $game->groupCupText; ?>
 							</td>
 						<?php } ?>
-						<td>
+						<td class="tc-shv-results-hometeam">
 							<?php echo $game->teamAName; ?>
 						</td>
-						<td>
+						<td class="tc-shv-results-guestteam">
 							<?php echo $game->teamBName; ?>
 						</td>
 						<?php if ($attributes['venue'] === true) { ?>
-							<td>
+							<td class="tc-shv-results-venue">
 								<?php echo $game->venue; ?>
 							</td>
 						<?php } ?>
 						<?php if ($attributes['with_result'] === true) { ?>
-							<td>
+							<td class="tc-shv-results-result">
 								<?php echo "$game->teamAScoreFT:$game->teamBScoreFT ($game->teamAScoreHT:$game->teamBScoreHT)"; ?>
 							</td>
 						<?php } ?>
@@ -95,26 +95,31 @@ if ($games !== false) {
 					$clz = 'tc-shv-results-game-planned tc-shv-results-game-type-' . strtolower($game->gameTypeShort) . ' tc-shv-results-game-' . ($game->homegame ? 'home' : 'away');
 					?>
 					<tr class="<?php echo $clz; ?>">
-						<td>
+						<td class="tc-shv-results-date">
 							<?php echo date_format($game->gameDateTime, $attributes['dateformat']); ?>
 						</td>
 						<?php if ($attributes['type'] === true) { ?>
-							<td>
+							<td class="tc-shv-results-type">
 								<?php echo $game->groupCupText; ?>
 							</td>
 						<?php } ?>
-						<td>
+						<td class="tc-shv-results-hometeam">
 							<?php echo $game->teamAName; ?>
 						</td>
-						<td>
+						<td class="tc-shv-results-guestteam">
 							<?php echo $game->teamBName; ?>
 						</td>
 						<?php if ($attributes['venue'] === true) { ?>
-							<td>
+							<td class="tc-shv-results-venue">
 								<?php echo $game->venue; ?>
 							</td>
 						<?php } ?>
-						<td></td>
+						<?php if ($attributes['with_result'] === true) { ?>
+							<td class="tc-shv-results-result">
+								<?php echo "$game->teamAScoreFT:$game->teamBScoreFT ($game->teamAScoreHT:$game->teamBScoreHT)"; ?>
+							</td>
+						<?php } ?>
+						<td class="tc-shv-results-result"></td>
 					</tr>
 					<?php
 				}

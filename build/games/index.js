@@ -111,96 +111,102 @@ function Edit({
       with_result: val
     })
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("table", null, attributes.header && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("thead", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("th", {
-    className: "text-center"
+    className: "tc-shv-results-date"
   }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Datum / Zeit', 'tc-shv-results')), attributes.type && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("th", {
-    className: "text-center"
+    className: "tc-shv-results-type"
   }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Typ', 'tc-shv-results')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("th", {
-    className: "text-left"
+    className: "tc-shv-results-hometeam"
   }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Heim', 'tc-shv-results')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("th", {
-    className: "text-left"
+    className: "tc-shv-results-guestteam"
   }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Gast', 'tc-shv-results')), attributes.venue && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("th", {
-    className: "text-left"
+    className: "tc-shv-results-venue"
   }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Ort', 'tc-shv-results')), attributes.with_result && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("th", {
-    className: "text-center"
+    className: "tc-shv-results-result"
   }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Resultat', 'tc-shv-results')))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tbody", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", {
     className: "tc-shv-results-game-played tc-shv-results-game-club-internal"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
-    className: "text-center"
+    className: "tc-shv-results-date"
   }, "21.10.23 14:25"), attributes.type && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
-    className: "text-center"
+    className: "tc-shv-results-type"
   }, "Clubintern"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
-    className: "text-left"
+    className: "tc-shv-results-hometeam"
   }, "Team A"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
-    className: "text-left"
+    className: "tc-shv-results-guestteam"
   }, "Team B"), attributes.venue && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
-    className: "text-left"
+    className: "tc-shv-results-venue"
   }, "Halle X"), attributes.with_result && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
-    className: "text-center"
+    className: "tc-shv-results-result"
   }, "33:30 (16:17)")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", {
     className: "tc-shv-results-game-played  tc-shv-results-game-win"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
-    className: "text-center"
+    className: "tc-shv-results-date"
   }, "21.10.23 14:25"), attributes.type && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
-    className: "text-center"
+    className: "tc-shv-results-type"
   }, "Sieg"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
-    className: "text-left"
+    className: "tc-shv-results-hometeam"
   }, "Team A"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
-    className: "text-left"
+    className: "tc-shv-results-guestteam"
   }, "Team B"), attributes.venue && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
-    className: "text-left"
+    className: "tc-shv-results-venue"
   }, "Halle X"), attributes.with_result && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
-    className: "text-center"
+    className: "tc-shv-results-result"
   }, "33:30 (16:17)")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", {
     className: "tc-shv-results-game-played  tc-shv-results-game-draw"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
-    className: "text-center"
+    className: "tc-shv-results-date"
   }, "21.10.23 14:25"), attributes.type && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
-    className: "text-center"
+    className: "tc-shv-results-type"
   }, "Unentschieden"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
-    className: "text-left"
+    className: "tc-shv-results-hometeam"
   }, "Team A"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
-    className: "text-left"
+    className: "tc-shv-results-guestteam"
   }, "Team B"), attributes.venue && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
-    className: "text-left"
+    className: "tc-shv-results-venue"
   }, "Halle X"), attributes.with_result && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
-    className: "text-center"
+    className: "tc-shv-results-result"
   }, "33:33 (16:17)")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", {
     className: "tc-shv-results-game-played  tc-shv-results-game-loss"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
-    className: "text-center"
+    className: "tc-shv-results-date"
   }, "21.10.23 14:25"), attributes.type && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
-    className: "text-center"
+    className: "tc-shv-results-type"
   }, "Niederlage"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
-    className: "text-left"
+    className: "tc-shv-results-hometeam"
   }, "Team B"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
-    className: "text-left"
+    className: "tc-shv-results-guestteam"
   }, "Team A"), attributes.venue && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
-    className: "text-left"
+    className: "tc-shv-results-venue"
   }, "Halle X"), attributes.with_result && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
-    className: "text-center"
+    className: "tc-shv-results-result"
   }, "30:33 (16:17)")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", {
     className: "tc-shv-results-game-planned tc-shv-results-game-home"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
-    className: "text-center"
+    className: "tc-shv-results-date"
   }, "21.10.23 14:25"), attributes.type && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
-    className: "text-center"
+    className: "tc-shv-results-type"
   }, "Heimspiel"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
-    className: "text-left"
+    className: "tc-shv-results-hometeam"
   }, "Team A"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
-    className: "text-left"
-  }, "Team B"), attributes.venue && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", null, "Halle X"), attributes.with_result && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", null)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", {
+    className: "tc-shv-results-guestteam"
+  }, "Team B"), attributes.venue && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+    className: "tc-shv-results-venue"
+  }, "Halle X"), attributes.with_result && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+    className: "tc-shv-results-result"
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", {
     className: "tc-shv-results-game-planned tc-shv-results-game-away"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
-    className: "text-center"
+    className: "tc-shv-results-date"
   }, "21.10.23 14:25"), attributes.type && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
-    className: "text-center"
+    className: "tc-shv-results-type"
   }, "Ausw\xE4rtsspiel"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
-    className: "text-left"
+    className: "tc-shv-results-hometeam"
   }, "Team A"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
-    className: "text-left"
+    className: "tc-shv-results-guestteam"
   }, "Team B"), attributes.venue && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
-    className: "text-left"
-  }, "Halle X"), attributes.with_result && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", null)))));
+    className: "tc-shv-results-venue"
+  }, "Halle X"), attributes.with_result && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+    className: "tc-shv-results-result"
+  })))));
 }
 
 /***/ }),

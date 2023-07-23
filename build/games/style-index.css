@@ -7,11 +7,32 @@
  *
  * Replace them with your own styles or remove the file completely.
  */
-.wp-block-tc-shv-results-games .text-center {
+.wp-block-tc-shv-results-games .tc-shv-results-result, .wp-block-tc-shv-results-games .tc-shv-results-type, .wp-block-tc-shv-results-games .tc-shv-results-date {
   text-align: center;
 }
-.wp-block-tc-shv-results-games .text-left {
-  text-align: left;
+.wp-block-tc-shv-results-games .tc-shv-results-game-home {
+  font-weight: 700;
+  background-color: #eee;
+}
+.wp-block-tc-shv-results-games .tc-shv-results-game-win {
+  background-color: rgb(190, 239, 190);
+}
+.wp-block-tc-shv-results-games .tc-shv-results-game-draw {
+  background-color: rgb(222, 222, 222);
+}
+.wp-block-tc-shv-results-games .tc-shv-results-game-loss {
+  background-color: rgb(239, 190, 190);
+}
+.wp-block-tc-shv-results-games .tc-shv-results-game-club-internal {
+  background-color: rgb(87, 218, 122);
+}
+.wp-block-tc-shv-results-games .tc-shv-results-ranking-promotion {
+  background-color: rgb(9, 49, 20);
+  color: white;
+  font-weight: 700;
+}
+.wp-block-tc-shv-results-games .tc-shv-results-ranking-promotion-candidate {
+  background-color: rgb(45, 240, 97);
 }
 .wp-block-tc-shv-results-games table {
   width: 100%;

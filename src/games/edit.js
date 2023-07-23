@@ -92,27 +92,27 @@ export default function Edit({ attributes, setAttributes }) {
 				{attributes.header &&
 					<thead>
 						<tr>
-							<th className='text-center'>
+							<th className='tc-shv-results-date'>
 								{__('Datum / Zeit', 'tc-shv-results')}
 							</th>
 							{attributes.type &&
-								<th className='text-center'>
+								<th className='tc-shv-results-type'>
 									{__('Typ', 'tc-shv-results')}
 								</th>
 							}
-							<th className='text-left'>
+							<th className='tc-shv-results-hometeam'>
 								{__('Heim', 'tc-shv-results')}
 							</th>
-							<th className='text-left'>
+							<th className='tc-shv-results-guestteam'>
 								{__('Gast', 'tc-shv-results')}
 							</th>
 							{attributes.venue &&
-								<th className='text-left'>
+								<th className='tc-shv-results-venue'>
 									{__('Ort', 'tc-shv-results')}
 								</th>
 							}
 							{attributes.with_result &&
-								<th className='text-center'>
+								<th className='tc-shv-results-result'>
 									{__('Resultat', 'tc-shv-results')}
 								</th>
 							}
@@ -121,157 +121,157 @@ export default function Edit({ attributes, setAttributes }) {
 				}
 				<tbody>
 					<tr className="tc-shv-results-game-played tc-shv-results-game-club-internal">
-						<td className='text-center'>
+						<td className='tc-shv-results-date'>
 							21.10.23 14:25
 						</td>
 						{attributes.type &&
-							<td className='text-center'>
+							<td className='tc-shv-results-type'>
 								Clubintern
 							</td>
 						}
-						<td className='text-left'>
+						<td className='tc-shv-results-hometeam'>
 							Team A
 						</td>
-						<td className='text-left'>
+						<td className='tc-shv-results-guestteam'>
 							Team B
 						</td>
 						{attributes.venue &&
-							<td className='text-left'>
+							<td className='tc-shv-results-venue'>
 								Halle X
 							</td>
 						}
 						{attributes.with_result &&
-							<td className='text-center'>
+							<td className='tc-shv-results-result'>
 								33:30 (16:17)
 							</td>
 						}
 					</tr>
 					<tr className="tc-shv-results-game-played  tc-shv-results-game-win">
-						<td className='text-center'>
+					<td className='tc-shv-results-date'>
 							21.10.23 14:25
 						</td>
 						{attributes.type &&
-							<td className='text-center'>
-								Sieg
+							<td className='tc-shv-results-type'>
+							Sieg
 							</td>
 						}
-						<td className='text-left'>
+						<td className='tc-shv-results-hometeam'>
 							Team A
 						</td>
-						<td className='text-left'>
+						<td className='tc-shv-results-guestteam'>
 							Team B
 						</td>
 						{attributes.venue &&
-							<td className='text-left'>
-								Halle X
+							<td className='tc-shv-results-venue'>
+							Halle X
 							</td>
 						}
 						{attributes.with_result &&
-							<td className='text-center'>
-								33:30 (16:17)
+							<td className='tc-shv-results-result'>
+							33:30 (16:17)
 							</td>
 						}
 					</tr>
 					<tr className="tc-shv-results-game-played  tc-shv-results-game-draw">
-						<td className='text-center'>
+					<td className='tc-shv-results-date'>
 							21.10.23 14:25
 						</td>
 						{attributes.type &&
-							<td className='text-center'>
-								Unentschieden
+							<td className='tc-shv-results-type'>
+							Unentschieden
 							</td>
 						}
-						<td className='text-left'>
+						<td className='tc-shv-results-hometeam'>
 							Team A
 						</td>
-						<td className='text-left'>
+						<td className='tc-shv-results-guestteam'>
 							Team B
 						</td>
 						{attributes.venue &&
-							<td className='text-left'>
-								Halle X
+							<td className='tc-shv-results-venue'>
+							Halle X
 							</td>
 						}
 						{attributes.with_result &&
-							<td className='text-center'>
-								33:33 (16:17)
+							<td className='tc-shv-results-result'>
+							33:33 (16:17)
 							</td>
 						}
 					</tr>
 					<tr className="tc-shv-results-game-played  tc-shv-results-game-loss">
-						<td className='text-center'>
+					<td className='tc-shv-results-date'>
 							21.10.23 14:25
 						</td>
 						{attributes.type &&
-							<td className='text-center'>
-								Niederlage
+							<td className='tc-shv-results-type'>
+							Niederlage
 							</td>
 						}
-						<td className='text-left'>
+						<td className='tc-shv-results-hometeam'>
 							Team B
 						</td>
-						<td className='text-left'>
+						<td className='tc-shv-results-guestteam'>
 							Team A
 						</td>
 						{attributes.venue &&
-							<td className='text-left'>
-								Halle X
+							<td className='tc-shv-results-venue'>
+							Halle X
 							</td>
 						}
 						{attributes.with_result &&
-							<td className='text-center'>
-								30:33 (16:17)
+							<td className='tc-shv-results-result'>
+							30:33 (16:17)
 							</td>
 						}
 					</tr>
 
 					<tr className="tc-shv-results-game-planned tc-shv-results-game-home">
-						<td className='text-center'>
+					<td className='tc-shv-results-date'>
 							21.10.23 14:25
 						</td>
 						{attributes.type &&
-							<td className='text-center'>
-								Heimspiel
+							<td className='tc-shv-results-type'>
+							Heimspiel
 							</td>
 						}
-						<td className='text-left'>
+						<td className='tc-shv-results-hometeam'>
 							Team A
 						</td>
-						<td className='text-left'>
+						<td className='tc-shv-results-guestteam'>
 							Team B
 						</td>
 						{attributes.venue &&
-							<td>
-								Halle X
+							<td className='tc-shv-results-venue'>
+							Halle X
 							</td>
 						}
 						{attributes.with_result &&
-							<td>
+							<td className='tc-shv-results-result'>
 							</td>
 						}
 					</tr>
 					<tr className="tc-shv-results-game-planned tc-shv-results-game-away">
-						<td className='text-center'>
+					<td className='tc-shv-results-date'>
 							21.10.23 14:25
 						</td>
 						{attributes.type &&
-							<td className='text-center'>
-								Auswärtsspiel
+							<td className='tc-shv-results-type'>
+							Auswärtsspiel
 							</td>
 						}
-						<td className='text-left'>
+						<td className='tc-shv-results-hometeam'>
 							Team A
 						</td>
-						<td className='text-left'>
+						<td className='tc-shv-results-guestteam'>
 							Team B
 						</td>
 						{attributes.venue &&
-							<td className='text-left'>
-								Halle X
+							<td className='tc-shv-results-venue'>
+							Halle X
 							</td>
 						}
 						{attributes.with_result &&
-							<td>
+							<td className='tc-shv-results-result'>
 							</td>
 						}
 					</tr>
