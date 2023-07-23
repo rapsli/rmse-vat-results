@@ -42,7 +42,7 @@ function create_block_tc_shv_results_block_init()
 	$team_selection = tc_shv_results_load_team_selection();
 	if (false !== $team_selection) {
 		$team_selection = json_encode($team_selection);
-		wp_add_inline_script('tc-shv-results-rankings-editor-script', 'var tc_shv_team_selection = ' . $team_selection . '; console.log(tc_shv_team_selection);', 'before');
+		wp_add_inline_script('tc-shv-results-rankings-editor-script', 'var tc_shv_team_selection = ' . $team_selection . ';', 'before');
 	}
 
 }

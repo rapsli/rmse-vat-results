@@ -7,5 +7,18 @@
  *
  * Replace them with your own styles or remove the file completely.
  */
+.wp-block-tc-shv-results-games .text-center {
+  text-align: center;
+}
+.wp-block-tc-shv-results-games .text-left {
+  text-align: left;
+}
+.wp-block-tc-shv-results-games table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.wp-block-tc-shv-results-games td, .wp-block-tc-shv-results-games th {
+  padding: 0.5em;
+}
 
 /*# sourceMappingURL=style-index.css.map*/

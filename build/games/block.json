@@ -7,6 +7,9 @@
   "category": "widgets",
   "icon": "list-view",
   "description": "Show the next games / last results of the club as a whole",
+  "supports": {
+    "align": true
+  },
   "attributes": {
     "results": {
       "type": "integer",
@@ -35,6 +38,30 @@
     "dateformat": {
       "type": "string",
       "default": "d.m.y H:i"
+    },
+    "homeColor": {
+      "type": "string",
+      "default": "#000"
+    },
+    "homeBgColor": {
+      "type": "string",
+      "default": "#ccc"
+    },
+    "homeBold": {
+      "type": "boolean",
+      "default": false
+    },
+    "awayColor": {
+      "type": "string",
+      "default": "#000"
+    },
+    "awayBgColor": {
+      "type": "string",
+      "default": "#000"
+    },
+    "awawyBold": {
+      "type": "boolean",
+      "default": false
     }
   },
   "textdomain": "tc-shv-results",

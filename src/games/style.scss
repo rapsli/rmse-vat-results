@@ -6,4 +6,17 @@
  */
 
  .wp-block-tc-shv-results-games {
+	.text-center {
+		text-align: center;
+	}
+	.text-left {
+		text-align: left;
+	}
+	table {
+		width: 100%;
+		border-collapse: collapse;
+	}
+	td, th {
+		padding: 0.5em;
+	}
 }
