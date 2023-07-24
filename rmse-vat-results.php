@@ -78,4 +78,21 @@ function rmse_vat_results_rest_api_routes()
 }
 
 add_action('init', 'rmse_vat_results_rest_api_routes');
+
+function rmse_vat_results_load_textdomain() {
+	load_plugin_textdomain( 'rmse-vat-results', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+}
+add_action('init', 'rmse_vat_results_load_textdomain');
+
+# TODO: remove once the plugin has been released and I can use translations of wordpress...
+function rmse_vat_load_own_textdomain( $mofile, $domain ) {
+	if ( 'rmse-vat-results' === $domain && false !== strpos( $mofile, WP_LANG_DIR . '/plugins/' ) ) {
+		$locale = apply_filters( 'plugin_locale', determine_locale(), $domain );
+		var_dump($locale);
+		$mofile = WP_PLUGIN_DIR . '/' . dirname( plugin_basename( __FILE__ ) ) . '/languages/' . $domain . '-' . $locale . '.mo';
+		var_dump($mofile);
+	}
+	return $mofile;
+}
+add_filter( 'load_textdomain_mofile', 'rmse_vat_load_own_textdomain', 10, 2 );
 ?>

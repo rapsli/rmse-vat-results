@@ -1,0 +1,303 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Handball VAT Results ClubAPI Integration\n"
+"POT-Creation-Date: 2023-07-24 15:56+0200\n"
+"PO-Revision-Date: 2023-07-24 16:06+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: de_CH\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.3.2\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: rmse-vat-results.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.min.js\n"
+"X-Poedit-SearchPathExcluded-1: node_modules\n"
+
+#: build/games/render.php:19 build/schedule/render.php:19 src/games/edit.js:96
+#: src/games/render.php:19 src/schedule/edit.js:87 src/schedule/render.php:19
+msgid "Date / Time"
+msgstr "Datum / Zeit"
+
+#: build/games/render.php:23 build/schedule/render.php:23 src/games/edit.js:100
+#: src/games/render.php:23 src/schedule/edit.js:91 src/schedule/render.php:23
+msgid "Type"
+msgstr "Typ"
+
+#: build/games/render.php:27 build/schedule/render.php:27 src/games/edit.js:104
+#: src/games/render.php:27 src/schedule/edit.js:95 src/schedule/render.php:27
+msgid "Home"
+msgstr "Heim"
+
+#: build/games/render.php:30 build/schedule/render.php:30 src/games/edit.js:107
+#: src/games/render.php:30 src/schedule/edit.js:98 src/schedule/render.php:30
+msgid "Guest"
+msgstr "Gast"
+
+#: build/games/render.php:34 build/schedule/render.php:34 src/games/edit.js:111
+#: src/games/render.php:34 src/schedule/edit.js:102 src/schedule/render.php:34
+msgid "Venue"
+msgstr "Halle"
+
+#: build/games/render.php:39 build/schedule/render.php:39 src/games/edit.js:116
+#: src/games/render.php:39 src/schedule/edit.js:107 src/schedule/render.php:39
+msgid "Result"
+msgstr "Resultat"
+
+#: build/games/render.php:134 build/schedule/render.php:134
+#: src/games/render.php:134 src/schedule/render.php:134
+msgid "No games loaded!"
+msgstr "Keine Spiele geladen!"
+
+#: build/highlight-preview/render.php:12 src/highlight-preview/render.php:12
+msgid "No games planned yet!"
+msgstr "Noch keine Spiele geplant!"
+
+#: build/highlight-result/render.php:12 src/highlight-result/render.php:12
+msgid "No games played yet!"
+msgstr "Noch keine Spiele gespielt!"
+
+#: build/highlight-result/render.php:54 src/highlight-result/edit.js:113
+#: src/highlight-result/render.php:54
+msgid "Spectators"
+msgstr "Zuschauer"
+
+#: build/rankings/render.php:18 src/rankings/edit.js:76
+#: src/rankings/render.php:18
+msgid "Rank"
+msgstr "Rang"
+
+#: build/rankings/render.php:19 src/highlight-preview/edit.js:50
+#: src/highlight-result/edit.js:50 src/rankings/edit.js:48
+#: src/rankings/edit.js:77 src/rankings/render.php:19 src/schedule/edit.js:49
+msgid "Team"
+msgstr "Team"
+
+#: build/rankings/render.php:21 src/rankings/edit.js:78
+#: src/rankings/render.php:21
+msgid "G"
+msgstr "Sp"
+
+#: build/rankings/render.php:22 src/rankings/edit.js:79
+#: src/rankings/render.php:22
+msgid "W"
+msgstr "S"
+
+#: build/rankings/render.php:23 src/rankings/edit.js:80
+#: src/rankings/render.php:23
+msgid "D"
+msgstr "U"
+
+#: build/rankings/render.php:24 src/rankings/edit.js:81
+#: src/rankings/render.php:24
+msgid "L"
+msgstr "N"
+
+#: build/rankings/render.php:25 src/rankings/edit.js:82
+#: src/rankings/render.php:25
+msgid "+/-"
+msgstr "+/-"
+
+#: build/rankings/render.php:26 src/rankings/edit.js:83
+#: src/rankings/render.php:26
+msgid "Pts"
+msgstr "Pkt"
+
+#: build/rankings/render.php:88 build/rankings/render.php:96
+#: src/rankings/edit.js:169 src/rankings/render.php:88
+#: src/rankings/render.php:96
+msgid "Modus"
+msgstr "Modus"
+
+#: build/rankings/render.php:106 src/rankings/render.php:106
+msgid "Team could not be loaded!"
+msgstr "Team konnte nicht geladen werden!"
+
+#: rmse-vat-results-settings.php:12
+msgid "VAT Results Settings"
+msgstr "Einstellungen VAT API"
+
+#: rmse-vat-results-settings.php:16
+msgid "Club ID"
+msgstr "Club ID"
+
+#: rmse-vat-results-settings.php:28
+msgid "Username VAT"
+msgstr "Benutzername VAT"
+
+#: rmse-vat-results-settings.php:40
+msgid "Password VAT"
+msgstr "Passwort VAT"
+
+#: rmse-vat-results-settings.php:52
+msgid "Logo URL"
+msgstr "Logo URL"
+
+#: rmse-vat-results-settings.php:73
+msgid ""
+"You need to configure the plugin, all information can be found in VAT "
+"(https://vat.handball.ch) - assuming you have the rights else someone else "
+"in the club can give them."
+msgstr ""
+"Sie müssen das Plugin konfigurieren, alle Informationen finden Sie im SHV "
+"VAT (https://vat.handball.ch) – vorausgesetzt, Sie haben die Rechte, sonst "
+"kann Ihnen die jemand anderes im Verein geben."
+
+#: rmse-vat-results-settings.php:108
+msgid "SHV Result Options"
+msgstr "VAT Resultate Optionen"
+
+#: rmse-vat-results-settings.php:109
+msgid "SHV Results Options"
+msgstr "VAT Resultate Optionen"
+
+#: rmse-vat-results-settings.php:141
+#, php-format
+msgid "Club Info could not be retrieved, response code %s"
+msgstr "Club Info konnte nicht geladen werden, Rückgabewert %s"
+
+#: rmse-vat-results-settings.php:162
+msgid "Save Settings"
+msgstr "Einstellungen speichern"
+
+#: rmse-vat-results-settings.php:216
+msgid "No teams loaded yet"
+msgstr "Es wurden noch keine Teams geladen"
+
+#: rmse-vat-results-vat-rest.php:201
+msgid "--- Choose a team"
+msgstr "— Wählen Sie ein Team aus"
+
+#: src/games/edit.js:39 src/highlight-preview/edit.js:45
+#: src/highlight-result/edit.js:45 src/schedule/edit.js:44
+msgid "Next Games / Last Results of the club"
+msgstr "Nächste Spiele / Letzte Resultate des Clubs"
+
+#: src/games/edit.js:41 src/highlight-preview/edit.js:47
+#: src/highlight-result/edit.js:47 src/schedule/edit.js:46
+msgid ""
+"Choose how many elements (last results and next games) should be displayed. "
+"0 or less means it will not be shown at all. Will add a preview in a future "
+"version."
+msgstr ""
+"Wählen Sie, wie viele Elemente (Resultate und Spielplan) angezeigt werden "
+"sollen. Bei 0 oder weniger wird nichts angezeigt."
+
+#: src/games/edit.js:47
+msgid "Last Results"
+msgstr "Letzte Resultate"
+
+#: src/games/edit.js:56
+msgid "Scheduled Games"
+msgstr "Geplante Spiele"
+
+#: src/games/edit.js:64 src/highlight-preview/edit.js:56
+#: src/highlight-result/edit.js:56 src/schedule/edit.js:55
+msgid "Date Format"
+msgstr "Datumsformat"
+
+#: src/games/edit.js:69 src/rankings/edit.js:54 src/schedule/edit.js:60
+msgid "Show Header?"
+msgstr "Zeige Kopfzeile?"
+
+#: src/games/edit.js:74 src/schedule/edit.js:65
+msgid "Show game type?"
+msgstr "Zeige Spieltyp?"
+
+#: src/games/edit.js:79 src/highlight-preview/edit.js:61
+#: src/highlight-result/edit.js:61 src/schedule/edit.js:70
+msgid "Show Venue?"
+msgstr "Zeige Halle?"
+
+#: src/games/edit.js:84 src/schedule/edit.js:75
+msgid "Show Results?"
+msgstr "Zeige Resultate?"
+
+#: src/highlight-preview/edit.js:66 src/highlight-result/edit.js:66
+msgid "Show Logos?"
+msgstr "Zeige Logos?"
+
+#: src/highlight-preview/edit.js:71 src/highlight-result/edit.js:71
+msgid "Show Team Names?"
+msgstr "Zeige Teamnamen?"
+
+#: src/highlight-preview/edit.js:76 src/highlight-result/edit.js:86
+#: src/rankings/edit.js:64
+msgid "Logo Size"
+msgstr "Logogrösse"
+
+#: src/highlight-result/edit.js:76
+msgid "Show Halftime Result?"
+msgstr "Zeige Halbzeit-Resultat?"
+
+#: src/highlight-result/edit.js:81
+msgid "Show Spectators?"
+msgstr "Zeige Zuschauer?"
+
+#: src/rankings/edit.js:43
+msgid "Ranking of a team's group"
+msgstr "Rangliste der Gruppe des Teams"
+
+#: src/rankings/edit.js:45
+msgid ""
+"Choose the team and whether headers should be displayed as well as whether "
+"the HTML from the tanking should be shown"
+msgstr ""
+"Wählen Sie das Team und ob Überschriften angezeigt werden sollen sowie ob "
+"der HTML-Code des Rankings angezeigt werden soll"
+
+#: src/rankings/edit.js:59
+msgid "Show Logo?"
+msgstr "Zeige Logo?"
+
+#: src/rankings/edit.js:93
+msgid "Promotion Team"
+msgstr "Aufstiegskandidat"
+
+#: src/rankings/edit.js:106
+msgid "Promotion Candidate"
+msgstr "Teilnehmer Aufstiegsrunde"
+
+#: src/rankings/edit.js:119
+msgid "Midfield Team"
+msgstr "Mittelfeld-Team"
+
+#: src/rankings/edit.js:132
+msgid "Our own team"
+msgstr "Eigenes Team"
+
+#: src/rankings/edit.js:145
+msgid "Relegation Candidate"
+msgstr "Abstiegsrunden-Teilnehmer"
+
+#: src/rankings/edit.js:158
+msgid "Relegation"
+msgstr "Direktabsteiger"
+
+#: src/rankings/edit.js:171
+msgid "Long Description of the mode of this ranking"
+msgstr "Der Modus wie er vom SHV übermittelt wird"
+
+#. Plugin Name of the plugin/theme
+msgid "Handball VAT Results ClubAPI Integration"
+msgstr "Handball VAT Resultate Integration (ClubAPI)"
+
+#. Description of the plugin/theme
+msgid "Reads and actualizes results and rankings directly via VAT interface"
+msgstr "Liest und aktualisiert Resultate und Ranglisten direkt via das VAT API"
+
+#. Author of the plugin/theme
+msgid "Rico Metzger"
+msgstr "Rico Metzger"
+
+#. Author URI of the plugin/theme
+msgid "https://rmse.ch"
+msgstr "https://rmse.ch"

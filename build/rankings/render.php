@@ -53,7 +53,7 @@ if ($group_info !== false) { ?>
 						<?php if ($attributes['logo'] === true) { ?>
 							<td class="rmse-vat-results-rankings-team-logo">
 								<img src="<?php echo rmse_vat_results_team_logo($ranking->teamId, $ranking->clubId, $attributes['logosize'], $attributes['logosize']); ?>"
-									alt="Team Logo <?php echo $team->teamName; ?>" />&nbsp;
+									alt="Logo <?php echo $ranking->teamName; ?>" />&nbsp;
 							</td>
 						<?php } ?>
 						<td class="rmse-vat-results-rankings-team">
