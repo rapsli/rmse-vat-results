@@ -2,6 +2,50 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./assets/demo-logo.svg":
+/*!******************************!*\
+  !*** ./assets/demo-logo.svg ***!
+  \******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ReactComponent: () => (/* binding */ SvgDemoLogo),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+var _circle, _text;
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+var SvgDemoLogo = function SvgDemoLogo(props) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", _extends({
+    width: 330,
+    height: 330,
+    xmlns: "http://www.w3.org/2000/svg"
+  }, props), _circle || (_circle = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("circle", {
+    cy: 165,
+    cx: 165,
+    stroke: "#000",
+    fill: "#fff",
+    r: 109.5
+  })), _text || (_text = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("text", {
+    fontWeight: "bold",
+    xmlSpace: "preserve",
+    fontFamily: "Noto Sans JP",
+    fontSize: 48,
+    strokeWidth: 0,
+    y: 180.5,
+    x: 114.336,
+    stroke: "#000",
+    fill: "#007f3f"
+  }, "Logo")));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzMwIiBoZWlnaHQ9IjMzMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KIDxnPgogIDx0aXRsZT5MYXllciAxPC90aXRsZT4KICA8ZWxsaXBzZSByeT0iMTA5LjUiIHJ4PSIxMDkuNSIgaWQ9InN2Z18xIiBjeT0iMTY1IiBjeD0iMTY1IiBzdHJva2U9IiMwMDAiIGZpbGw9IiNmZmYiLz4KICA8dGV4dCBmb250LXdlaWdodD0iYm9sZCIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgdGV4dC1hbmNob3I9InN0YXJ0IiBmb250LWZhbWlseT0iTm90byBTYW5zIEpQIiBmb250LXNpemU9IjQ4IiBzdHJva2Utd2lkdGg9IjAiIGlkPSJzdmdfMyIgeT0iMTgwLjUiIHg9IjExNC4zMzU5NCIgc3Ryb2tlPSIjMDAwIiBmaWxsPSIjMDA3ZjNmIj5Mb2dvPC90ZXh0PgogPC9nPgo8L3N2Zz4K");
+
+/***/ }),
+
 /***/ "./src/highlight-result/edit.js":
 /*!**************************************!*\
   !*** ./src/highlight-result/edit.js ***!
@@ -16,15 +60,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./editor.scss */ "./src/highlight-result/editor.scss");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./editor.scss */ "./src/highlight-result/editor.scss");
+/* harmony import */ var _assets_demo_logo_svg__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../assets/demo-logo.svg */ "./assets/demo-logo.svg");
 
 /**
  * Retrieves the translation of text.
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
  */
+
 
 
 /**
@@ -43,6 +91,7 @@ __webpack_require__.r(__webpack_exports__);
  */
 
 
+
 /**
  * The edit function describes the structure of your block in the context of the
  * editor. This represents what the editor will render when the block is used.
@@ -51,10 +100,108 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @return {WPElement} Element to render.
  */
-function Edit() {
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
-    ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)()
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Highlights in the editor!', 'tc-shv-results'));
+function Edit({
+  attributes,
+  setAttributes
+}) {
+  // this is actually a little bit dirty with global variables, but...
+
+  const teams = tc_shv_team_selection.map(x => ({
+    label: x.name,
+    value: x.id
+  }));
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)()
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InspectorControls, {
+    key: "settings"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h5", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Next Games / Last Results of the club', 'tc-shv-results')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "instructions"
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Choose how many elements (last results and next games) should be displayed. 0 or less means it will not be shown at all. Will add a preview in a future version.', 'tc-shv-results')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Team', 'tc-shv-results'),
+    value: attributes.team,
+    options: teams,
+    onChange: val => setAttributes({
+      team: val
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Date Format', 'tc-shv-results'),
+    value: attributes.dateformat,
+    onChange: val => setAttributes({
+      dateformat: val
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.CheckboxControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Show Venue?', 'tc-shv-results'),
+    checked: attributes.venue,
+    onChange: val => setAttributes({
+      venue: val
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.CheckboxControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Show Logos?', 'tc-shv-results'),
+    checked: attributes.logos,
+    onChange: val => setAttributes({
+      logos: val
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.CheckboxControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Show Team Names?', 'tc-shv-results'),
+    checked: attributes.names,
+    onChange: val => setAttributes({
+      names: val
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.CheckboxControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Show Halftime Result?', 'tc-shv-results'),
+    checked: attributes.halftime,
+    onChange: val => setAttributes({
+      halftime: val
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.CheckboxControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Show Spectators?', 'tc-shv-results'),
+    checked: attributes.spectators,
+    onChange: val => setAttributes({
+      spectators: val
+    })
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Logo Size', 'tc-shv-results'),
+    value: attributes.logosize,
+    onChange: val => setAttributes({
+      logosize: val
+    })
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "tc-shv-results-highlight-result"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "tc-shv-results-highlight-home"
+  }, attributes.logos && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "tc-shv-results-highlight-logo"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    src: _assets_demo_logo_svg__WEBPACK_IMPORTED_MODULE_5__["default"],
+    height: attributes.logosize,
+    width: attributes.logosize,
+    alt: "Team A"
+  })), attributes.names && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "tc-shv-results-highlight-name"
+  }, "Team A")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "tc-shv-results-highlight-info"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "tc-shv-results-highlight-info-result"
+  }, "33:31"), attributes.halftime && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "tc-shv-results-highlight-info-halftime"
+  }, "18:17"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "tc-shv-results-highlight-info-date"
+  }, "21.10.23"), attributes.venue && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "tc-shv-results-highlight-info-venue"
+  }, "Halle X"), attributes.spectators && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "tc-shv-results-highlight-info-spectators"
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Spectators', 'tc-shv-results'), ": 200")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "tc-shv-results-highlight-guest"
+  }, attributes.logos && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "tc-shv-results-highlight-logo"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    src: _assets_demo_logo_svg__WEBPACK_IMPORTED_MODULE_5__["default"],
+    height: attributes.logosize,
+    width: attributes.logosize,
+    alt: "Team B"
+  })), attributes.names && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "tc-shv-results-highlight-name"
+  }, "Team B"))));
 }
 
 /***/ }),
@@ -131,6 +278,16 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "react":
+/*!************************!*\
+  !*** external "React" ***!
+  \************************/
+/***/ ((module) => {
+
+module.exports = window["React"];
+
+/***/ }),
+
 /***/ "@wordpress/block-editor":
 /*!*************************************!*\
   !*** external ["wp","blockEditor"] ***!
@@ -148,6 +305,16 @@ module.exports = window["wp"]["blockEditor"];
 /***/ ((module) => {
 
 module.exports = window["wp"]["blocks"];
+
+/***/ }),
+
+/***/ "@wordpress/components":
+/*!************************************!*\
+  !*** external ["wp","components"] ***!
+  \************************************/
+/***/ ((module) => {
+
+module.exports = window["wp"]["components"];
 
 /***/ }),
 
@@ -177,7 +344,7 @@ module.exports = window["wp"]["i18n"];
   \*****************************************/
 /***/ ((module) => {
 
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"tc-shv-results/highlight-result","version":"2.0.0","title":"Highlight of the last results","category":"widgets","icon":"format-status","description":"Show a highlight of the last result","supports":{"align":true},"textdomain":"tc-shv-results","editorScript":"file:./index.js","editorStyle":"file:./index.css","viewScript":"file:./view.js","render":"file:./render.php"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"tc-shv-results/highlight-result","version":"2.0.0","title":"Highlight of the last results","category":"widgets","icon":"format-status","description":"Show a highlight of the last result","supports":{"align":true},"attributes":{"team":{"type":"string","default":""},"venue":{"type":"boolean","default":true},"dateformat":{"type":"string","default":"d.m.y"},"logos":{"type":"boolean","default":true},"names":{"type":"boolean","default":true},"spectators":{"type":"boolean","default":true},"halftime":{"type":"boolean","default":true},"logosize":{"type":"string","default":"90"}},"textdomain":"tc-shv-results","editorScript":"file:./index.js","editorStyle":"file:./index.css","viewScript":"file:./view.js","render":"file:./render.php"}');
 
 /***/ })
 

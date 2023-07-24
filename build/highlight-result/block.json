@@ -10,6 +10,40 @@
   "supports": {
     "align": true
   },
+  "attributes": {
+    "team": {
+      "type": "string",
+      "default": ""
+    },
+    "venue": {
+      "type": "boolean",
+      "default": true
+    },
+    "dateformat": {
+      "type": "string",
+      "default": "d.m.y"
+    },
+    "logos": {
+      "type": "boolean",
+      "default": true
+    },
+    "names": {
+      "type": "boolean",
+      "default": true
+    },
+    "spectators": {
+      "type": "boolean",
+      "default": true
+    },
+    "halftime": {
+      "type": "boolean",
+      "default": true
+    },
+    "logosize": {
+      "type": "string",
+      "default": "90"
+    }
+  },
   "textdomain": "tc-shv-results",
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",

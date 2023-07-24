@@ -111,3 +111,82 @@ table.tc-shv-results-table {
 	margin: 1.5em 10px;
 	padding: 0.5em 10px;
 }
+
+.tc-shv-results-highlight-result {
+	display: flex;
+	gap: 1em;
+	font-size: 2em;
+	padding: 1em;
+	border: 1 solid;
+	background: #ccc;
+}
+
+.tc-shv-results-highlight-preview {
+	display: flex;
+	gap: 1em;
+	font-size: 2em;
+	padding: 1em;
+	border: 1 solid;
+	background: #ccc;
+}
+
+.tc-shv-results-highlight-name {
+	font-size: 1.25em;
+	font-weight: bold;
+}
+
+.tc-shv-results-highlight-home {
+	flex: 1 1 0;
+	text-align: center;
+}
+
+.tc-shv-results-highlight-info {
+	flex: 0 0 auto;
+	text-align: center;
+	margin-top: auto;
+	margin-bottom: auto;
+}
+
+.tc-shv-results-highlight-guest {
+	flex: 1 1 0;
+	text-align: center;
+}
+
+.tc-shv-results-highlight-info-result {
+	font-weight: 700;
+	margin: 0 0.25em;
+}
+
+.tc-shv-results-highlight-info-halftime {
+	color: #333;
+	margin: 0.25em 0 0.75em;
+}
+
+.tc-shv-results-highlight-info-date {
+	margin: 1em 0 0.55em;
+	color: #666;
+}
+
+.tc-shv-results-highlight-info-venue {
+	font-size: 0.75em;
+	margin: 1em 0;
+}
+
+.tc-shv-results-highlight-info-spectators {
+	font-size: 0.75em;
+	margin: 1em 0 0;
+}
+
+.tc-shv-results-highlight-info-halftime::before {
+	content: '( ';
+}
+.tc-shv-results-highlight-info-halftime::after {
+	content: ' )';
+}
+
+.tc-shv-results-highlight-empty {
+	font-size: 2em;
+	padding: 1em;
+	border: 1px solid;
+	color: darkred;
+}
