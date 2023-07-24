@@ -88,9 +88,7 @@ add_action('init', 'rmse_vat_results_load_textdomain');
 function rmse_vat_load_own_textdomain( $mofile, $domain ) {
 	if ( 'rmse-vat-results' === $domain && false !== strpos( $mofile, WP_LANG_DIR . '/plugins/' ) ) {
 		$locale = apply_filters( 'plugin_locale', determine_locale(), $domain );
-		var_dump($locale);
 		$mofile = WP_PLUGIN_DIR . '/' . dirname( plugin_basename( __FILE__ ) ) . '/languages/' . $domain . '-' . $locale . '.mo';
-		var_dump($mofile);
 	}
 	return $mofile;
 }
