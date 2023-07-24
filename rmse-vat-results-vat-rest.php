@@ -190,9 +190,15 @@ function rmse_vat_results_load_team_selection()
 {
 	$teams = rmse_vat_results_get_club_teams();
 
+	if ($teams === false) {
+		return array();
+	}
+
 	$reduced_teams = array_map(function ($entry) {
 		return array('id' => $entry->teamId, 'name' => $entry->teamName . ' (' . $entry->leagueShort . ')');
 	}, $teams);
+
+	array_unshift($reduced_teams, array('id' => '', 'name' => __('--- Choose a team', 'rmse-vat-results')));
 
 	return $reduced_teams;
 }

@@ -97,7 +97,7 @@ table.rmse-vat-results-table {
 }
 
 .rmse-vat-results-ranking-modus {
-	padding-top: 1.5em;
+	padding-top: 1.25em;
 }
 
 .rmse-vat-results-ranking-modus h4 {
@@ -114,8 +114,8 @@ table.rmse-vat-results-table {
 
 .rmse-vat-results-highlight-result {
 	display: flex;
-	gap: 1em;
-	font-size: 2em;
+	gap: 0.5em;
+	font-size: 1.5em;
 	padding: 1em;
 	border: 1 solid;
 	background: #ccc;
@@ -123,8 +123,8 @@ table.rmse-vat-results-table {
 
 .rmse-vat-results-highlight-preview {
 	display: flex;
-	gap: 1em;
-	font-size: 2em;
+	gap: 0.5em;
+	font-size: 1.5em;
 	padding: 1em;
 	border: 1 solid;
 	background: #ccc;

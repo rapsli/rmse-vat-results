@@ -18,7 +18,7 @@ if ($games !== false) {
 			<div class="rmse-vat-results-highlight-result">
 				<div clas="rmse-vat-results-highlight-home">
 					<?php if ($attributes['logos']) { ?>
-						<div class="rmse-vat-results-highlight-logo">
+						<div title="<?php echo $game->teamAName; ?>" class="rmse-vat-results-highlight-logo">
 							<img
 								src="<?php echo rmse_vat_results_team_logo($game->teamAId, $game->clubTeamAId, $attributes['logosize'], $attributes['logosize']); ?>"
 								height="<?php echo $attributes['logosize']; ?>" width="<?php echo $attributes['logosize']; ?>"
@@ -45,10 +45,12 @@ if ($games !== false) {
 
 				<div clas="rmse-vat-results-highlight-guest">
 					<?php if ($attributes['logos']) { ?>
-						<div class="rmse-vat-results-highlight-logo"><img
+						<div title="<?php echo $game->teamBName; ?>" class="rmse-vat-results-highlight-logo">
+							<img
 								src="<?php echo rmse_vat_results_team_logo($game->teamBId, $game->clubTeamBId, $attributes['logosize'], $attributes['logosize']); ?>"
 								height="<?php echo $attributes['logosize']; ?>" width="<?php echo $attributes['logosize']; ?>"
-								alt="<?php echo $game->teamBName; ?>" /></div>
+								alt="<?php echo $game->teamBName; ?>" />
+						</div>
 					<?php } ?>
 					<?php if ($attributes['names']) { ?>
 						<div class="rmse-vat-results-highlight-name">

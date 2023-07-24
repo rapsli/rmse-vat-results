@@ -93,7 +93,7 @@ export default function Edit({ attributes, setAttributes }) {
 			<div className="rmse-vat-results-highlight-result">
 				<div className="rmse-vat-results-highlight-home">
 					{attributes.logos &&
-						<div className="rmse-vat-results-highlight-logo"><img src={logo} height={attributes.logosize} width={attributes.logosize} alt="Team A"/></div>
+						<div title="Team A" className="rmse-vat-results-highlight-logo"><img src={logo} height={attributes.logosize} width={attributes.logosize} alt="Team A"/></div>
 					}
 					{attributes.names &&
 						<div className="rmse-vat-results-highlight-name">Team A</div>
@@ -115,7 +115,7 @@ export default function Edit({ attributes, setAttributes }) {
 				</div>
 				<div className="rmse-vat-results-highlight-guest">
 					{attributes.logos &&
-						<div className="rmse-vat-results-highlight-logo"><img src={logo} height={attributes.logosize} width={attributes.logosize} alt="Team B"/></div>
+						<div title="Team B" className="rmse-vat-results-highlight-logo"><img src={logo} height={attributes.logosize} width={attributes.logosize} alt="Team B"/></div>
 					}
 					{attributes.names &&
 						<div className="rmse-vat-results-highlight-name">Team B</div>
