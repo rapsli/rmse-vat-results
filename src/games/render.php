@@ -11,32 +11,32 @@ if ($games !== false) {
 
 	?>
 	<div <?php echo get_block_wrapper_attributes(); ?>>
-		<table>
+		<table class="tc-shv-results-table">
 			<?php if ($attributes['header'] === true) { ?>
 				<thead>
 					<tr>
 						<th class="tc-shv-results-date">
-							<?php esc_html_e('Datum / Zeit', 'tc-shv-results') ?>
+							<?php _e('Date / Time', 'tc-shv-results') ?>
 						</th>
 						<?php if ($attributes['type'] === true) { ?>
 							<th class="tc-shv-results-type">
-								<?php esc_html_e('Typ', 'tc-shv-results') ?>
+								<?php _e('Type', 'tc-shv-results') ?>
 							</th>
 						<?php } ?>
 						<th class="tc-shv-results-hometeam">
-							<?php esc_html_e('Heim', 'tc-shv-results') ?>
+							<?php _e('Home', 'tc-shv-results') ?>
 						</th>
 						<th class="tc-shv-results-guestteam">
-							<?php esc_html_e('Gast', 'tc-shv-results') ?>
+							<?php _e('Guest', 'tc-shv-results') ?>
 						</th>
 						<?php if ($attributes['venue'] === true) { ?>
 							<th class="tc-shv-results-venue">
-								<?php esc_html_e('Ort', 'tc-shv-results') ?>
+								<?php _e('Venue', 'tc-shv-results') ?>
 							</th>
 						<?php } ?>
 						<?php if ($attributes['with_result'] === true) { ?>
 							<th class="tc-shv-results-result">
-								<?php esc_html_e('Resultat', 'tc-shv-results') ?>
+								<?php _e('Result', 'tc-shv-results') ?>
 							</th>
 						<?php } ?>
 					</tr>
@@ -116,7 +116,6 @@ if ($games !== false) {
 						<?php } ?>
 						<?php if ($attributes['with_result'] === true) { ?>
 							<td class="tc-shv-results-result">
-								<?php echo "$game->teamAScoreFT:$game->teamBScoreFT ($game->teamAScoreHT:$game->teamBScoreHT)"; ?>
 							</td>
 						<?php } ?>
 						<td class="tc-shv-results-result"></td>
@@ -132,7 +131,7 @@ if ($games !== false) {
 } else {
 	?>
 	<p <?php echo get_block_wrapper_attributes(); ?>>
-		<?php esc_html_e('No games loaded yet!!', 'tc-shv-results'); ?>
+		<?php _e('No games loaded!', 'tc-shv-results'); ?>
 	</p>
 	<?php
 }

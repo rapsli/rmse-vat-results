@@ -238,4 +238,49 @@ function tc_shv_results_team_logo($team_id, $club_id, $width, $height) {
 	return false;
 }
 
+function tc_shv_results_retrieve_team_schedule($team)
+{
+	$games_played = get_transient("tc_shv_results_team_played_$team");
+	$games_planned = get_transient("tc_shv_results_team_planned_$team");
+
+	if ($games_played === false || $games_planned === false) {
+		// load the games for the club and save them to the transient too, unless we are in development mode (how to find out?)
+		$team_games = tc_shv_results_execute_request('v1/teams/' . $team . '/games');
+
+		if ($team_games !== false) {
+			foreach ($team_games as $game) {
+				tc_shv_results_enrich_game_info($game, array($team));
+			}
+
+			$games_planned = array_filter($team_games, function ($game) {
+				return $game->gameStatusId === 1;
+			});
+			$games_played = array_filter($team_games, function ($game) {
+				return $game->gameStatusId !== 1;
+			});
+
+			usort($games_planned, function ($a, $b) {
+				$adt = $a->gameDateTime;
+				$bdt = $b->gameDateTime;
+
+				return $adt === $bdt ? 0 : ($adt < $bdt ? -1 : 1);
+			});
+
+			usort($games_played, function ($a, $b) {
+				$adt = $a->gameDateTime;
+				$bdt = $b->gameDateTime;
+
+				return $adt === $bdt ? 0 : ($adt > $bdt ? -1 : 1);
+			});
+
+			set_transient("tc_shv_results_team_played_$team", $games_played, MINUTE_IN_SECONDS * 1);
+			set_transient("tc_shv_results_team_planned_$team", $games_planned, MINUTE_IN_SECONDS * 1);
+		} else {
+			$games_played = false;
+			$games_planned = false;
+		}
+	}
+
+	return array($games_played, $games_planned);
+}
 ?>

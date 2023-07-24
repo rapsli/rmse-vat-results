@@ -1,0 +1,453 @@
+# Copyright (C) 2023 Rico Metzger
+# This file is distributed under the Apache License, Version 2.0.
+msgid ""
+msgstr ""
+"Project-Id-Version: Handball VAT Results ClubAPI Integration 2.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/tc-shv-resultate\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2023-07-24T10:14:22+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.8.1\n"
+"X-Domain: tc-shv-results\n"
+
+#. Plugin Name of the plugin
+msgid "Handball VAT Results ClubAPI Integration"
+msgstr ""
+
+#. Description of the plugin
+msgid "Reads and actualizes results and rankings directly via VAT interface"
+msgstr ""
+
+#. Author of the plugin
+msgid "Rico Metzger"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://rmse.ch"
+msgstr ""
+
+#: build/games/render.php:19
+#: build/schedule/render.php:19
+#: src/games/render.php:19
+#: src/schedule/render.php:19
+#: build/games/index.js:117
+#: build/schedule/index.js:115
+#: src/games/edit.js:96
+#: src/schedule/edit.js:87
+#: build/games/index.js:96
+#: build/schedule/index.js:87
+msgid "Date / Time"
+msgstr ""
+
+#: build/games/render.php:23
+#: build/schedule/render.php:23
+#: src/games/render.php:23
+#: src/schedule/render.php:23
+#: build/games/index.js:119
+#: build/schedule/index.js:117
+#: src/games/edit.js:100
+#: src/schedule/edit.js:91
+#: build/games/index.js:100
+#: build/schedule/index.js:91
+msgid "Type"
+msgstr ""
+
+#: build/games/render.php:27
+#: build/schedule/render.php:27
+#: src/games/render.php:27
+#: src/schedule/render.php:27
+#: build/games/index.js:121
+#: build/schedule/index.js:119
+#: src/games/edit.js:104
+#: src/schedule/edit.js:95
+#: build/games/index.js:104
+#: build/schedule/index.js:95
+msgid "Home"
+msgstr ""
+
+#: build/games/render.php:30
+#: build/schedule/render.php:30
+#: src/games/render.php:30
+#: src/schedule/render.php:30
+#: build/games/index.js:123
+#: build/schedule/index.js:121
+#: src/games/edit.js:107
+#: src/schedule/edit.js:98
+#: build/games/index.js:107
+#: build/schedule/index.js:98
+msgid "Guest"
+msgstr ""
+
+#: build/games/render.php:34
+#: build/schedule/render.php:34
+#: src/games/render.php:34
+#: src/schedule/render.php:34
+#: build/games/index.js:125
+#: build/schedule/index.js:123
+#: src/games/edit.js:111
+#: src/schedule/edit.js:102
+#: build/games/index.js:111
+#: build/schedule/index.js:102
+msgid "Venue"
+msgstr ""
+
+#: build/games/render.php:39
+#: build/schedule/render.php:39
+#: src/games/render.php:39
+#: src/schedule/render.php:39
+#: build/games/index.js:127
+#: build/schedule/index.js:125
+#: src/games/edit.js:116
+#: src/schedule/edit.js:107
+#: build/games/index.js:116
+#: build/schedule/index.js:107
+msgid "Result"
+msgstr ""
+
+#: build/games/render.php:134
+#: build/schedule/render.php:134
+#: src/games/render.php:134
+#: src/schedule/render.php:134
+msgid "No games loaded!"
+msgstr ""
+
+#: build/highlight-preview/render.php:8
+#: build/highlight-result/render.php:8
+#: src/highlight-preview/render.php:8
+#: src/highlight-result/render.php:8
+msgid "Dynamic Test – hello from highlight!"
+msgstr ""
+
+#: build/rankings/render.php:18
+#: src/rankings/render.php:18
+#: build/rankings/index.js:107
+#: src/rankings/edit.js:77
+#: build/rankings/index.js:77
+msgid "Rank"
+msgstr ""
+
+#: build/rankings/render.php:19
+#: src/rankings/render.php:19
+#: build/rankings/index.js:75
+#: build/rankings/index.js:110
+#: build/schedule/index.js:75
+#: src/rankings/edit.js:47
+#: src/rankings/edit.js:78
+#: src/schedule/edit.js:49
+#: build/rankings/index.js:47
+#: build/rankings/index.js:78
+#: build/schedule/index.js:49
+msgid "Team"
+msgstr ""
+
+#: build/rankings/render.php:21
+#: src/rankings/render.php:21
+#: build/rankings/index.js:112
+#: src/rankings/edit.js:79
+#: build/rankings/index.js:79
+msgid "G"
+msgstr ""
+
+#: build/rankings/render.php:22
+#: src/rankings/render.php:22
+#: build/rankings/index.js:114
+#: src/rankings/edit.js:80
+#: build/rankings/index.js:80
+msgid "W"
+msgstr ""
+
+#: build/rankings/render.php:23
+#: src/rankings/render.php:23
+#: build/rankings/index.js:116
+#: src/rankings/edit.js:81
+#: build/rankings/index.js:81
+msgid "D"
+msgstr ""
+
+#: build/rankings/render.php:24
+#: src/rankings/render.php:24
+#: build/rankings/index.js:118
+#: src/rankings/edit.js:82
+#: build/rankings/index.js:82
+msgid "L"
+msgstr ""
+
+#: build/rankings/render.php:25
+#: src/rankings/render.php:25
+#: build/rankings/index.js:120
+#: src/rankings/edit.js:83
+#: build/rankings/index.js:83
+msgid "+/-"
+msgstr ""
+
+#: build/rankings/render.php:26
+#: src/rankings/render.php:26
+#: build/rankings/index.js:122
+#: src/rankings/edit.js:84
+#: build/rankings/index.js:84
+msgid "Pts"
+msgstr ""
+
+#: build/rankings/render.php:88
+#: build/rankings/render.php:96
+#: src/rankings/render.php:88
+#: src/rankings/render.php:96
+#: build/rankings/index.js:274
+#: src/rankings/edit.js:170
+#: build/rankings/index.js:170
+msgid "Modus"
+msgstr ""
+
+#: build/rankings/render.php:106
+#: src/rankings/render.php:106
+msgid "Team could not be loaded!"
+msgstr ""
+
+#: tc-shv-results-settings.php:12
+msgid "VAT Results Settings"
+msgstr ""
+
+#: tc-shv-results-settings.php:16
+msgid "Club ID"
+msgstr ""
+
+#: tc-shv-results-settings.php:28
+msgid "Username VAT"
+msgstr ""
+
+#: tc-shv-results-settings.php:40
+msgid "Password VAT"
+msgstr ""
+
+#: tc-shv-results-settings.php:52
+msgid "Logo URL"
+msgstr ""
+
+#: tc-shv-results-settings.php:73
+msgid "You need to configure the plugin, all information can be found in VAT (https://vat.handball.ch) - assuming you have the rights else someone else in the club can give them."
+msgstr ""
+
+#: tc-shv-results-settings.php:141
+msgid "Club Info could not be retrieved, response code %s"
+msgstr ""
+
+#: tc-shv-results-settings.php:216
+msgid "No teams loaded yet"
+msgstr ""
+
+#: build/games/index.js:65
+#: build/schedule/index.js:72
+#: src/games/edit.js:39
+#: src/schedule/edit.js:44
+#: build/games/index.js:39
+#: build/schedule/index.js:44
+msgid "Next Games / Last Results of the club"
+msgstr ""
+
+#: build/games/index.js:67
+#: build/schedule/index.js:74
+#: src/games/edit.js:41
+#: src/schedule/edit.js:46
+#: build/games/index.js:41
+#: build/schedule/index.js:46
+msgid "Choose how many elements (last results and next games) should be displayed. 0 or less means it will not be shown at all. Will add a preview in a future version."
+msgstr ""
+
+#: build/games/index.js:69
+#: src/games/edit.js:47
+#: build/games/index.js:47
+msgid "Last Results"
+msgstr ""
+
+#: build/games/index.js:77
+#: src/games/edit.js:56
+#: build/games/index.js:56
+msgid "Scheduled Games"
+msgstr ""
+
+#: build/games/index.js:84
+#: build/schedule/index.js:82
+#: src/games/edit.js:64
+#: src/schedule/edit.js:55
+#: build/games/index.js:64
+#: build/schedule/index.js:55
+msgid "Date Format"
+msgstr ""
+
+#: build/games/index.js:90
+#: build/rankings/index.js:82
+#: build/schedule/index.js:88
+#: src/games/edit.js:69
+#: src/rankings/edit.js:53
+#: src/schedule/edit.js:60
+#: build/games/index.js:69
+#: build/rankings/index.js:53
+#: build/schedule/index.js:60
+msgid "Show Header?"
+msgstr ""
+
+#: build/games/index.js:96
+#: build/schedule/index.js:94
+#: src/games/edit.js:74
+#: src/schedule/edit.js:65
+#: build/games/index.js:74
+#: build/schedule/index.js:65
+msgid "Show game type?"
+msgstr ""
+
+#: build/games/index.js:102
+#: build/schedule/index.js:100
+#: src/games/edit.js:79
+#: src/schedule/edit.js:70
+#: build/games/index.js:79
+#: build/schedule/index.js:70
+msgid "Show Venue?"
+msgstr ""
+
+#: build/games/index.js:108
+#: build/schedule/index.js:106
+#: src/games/edit.js:84
+#: src/schedule/edit.js:75
+#: build/games/index.js:84
+#: build/schedule/index.js:75
+msgid "Show Results?"
+msgstr ""
+
+#: build/highlight-preview/index.js:57
+#: build/highlight-result/index.js:57
+#: src/highlight-preview/edit.js:35
+#: src/highlight-result/edit.js:35
+#: build/highlight-preview/index.js:35
+#: build/highlight-result/index.js:35
+msgid "Highlights in the editor!"
+msgstr ""
+
+#: build/rankings/index.js:72
+#: src/rankings/edit.js:42
+#: build/rankings/index.js:42
+msgid "Ranking of a team's group"
+msgstr ""
+
+#: build/rankings/index.js:74
+#: src/rankings/edit.js:44
+#: build/rankings/index.js:44
+msgid "Choose the team and whether headers should be displayed as well as whether the HTML from the tanking should be shown"
+msgstr ""
+
+#: build/rankings/index.js:88
+#: src/rankings/edit.js:58
+#: build/rankings/index.js:58
+msgid "Show Logo?"
+msgstr ""
+
+#: build/rankings/index.js:95
+#: src/rankings/edit.js:64
+#: build/rankings/index.js:64
+msgid "Logo Size"
+msgstr ""
+
+#: build/rankings/index.js:135
+#: src/rankings/edit.js:94
+#: build/rankings/index.js:94
+msgid "Promotion Team"
+msgstr ""
+
+#: build/rankings/index.js:160
+#: src/rankings/edit.js:107
+#: build/rankings/index.js:107
+msgid "Promotion Candidate"
+msgstr ""
+
+#: build/rankings/index.js:185
+#: src/rankings/edit.js:120
+#: build/rankings/index.js:120
+msgid "Midfield Team"
+msgstr ""
+
+#: build/rankings/index.js:210
+#: src/rankings/edit.js:133
+#: build/rankings/index.js:133
+msgid "Our own team"
+msgstr ""
+
+#: build/rankings/index.js:235
+#: src/rankings/edit.js:146
+#: build/rankings/index.js:146
+msgid "Relegation Candidate"
+msgstr ""
+
+#: build/rankings/index.js:260
+#: src/rankings/edit.js:159
+#: build/rankings/index.js:159
+msgid "Relegation"
+msgstr ""
+
+#: build/rankings/index.js:274
+#: src/rankings/edit.js:172
+#: build/rankings/index.js:172
+msgid "Long Description of the mode of this ranking"
+msgstr ""
+
+#: build/games/block.json
+#: src/games/block.json
+msgctxt "block title"
+msgid "Club Games and Results"
+msgstr ""
+
+#: build/games/block.json
+#: src/games/block.json
+msgctxt "block description"
+msgid "Show the next games / last results of the club as a whole"
+msgstr ""
+
+#: build/highlight-preview/block.json
+#: src/highlight-preview/block.json
+msgctxt "block title"
+msgid "Highlight of the next game"
+msgstr ""
+
+#: build/highlight-preview/block.json
+#: src/highlight-preview/block.json
+msgctxt "block description"
+msgid "Show a highlight of the next game"
+msgstr ""
+
+#: build/highlight-result/block.json
+#: src/highlight-result/block.json
+msgctxt "block title"
+msgid "Highlight of the last results"
+msgstr ""
+
+#: build/highlight-result/block.json
+#: src/highlight-result/block.json
+msgctxt "block description"
+msgid "Show a highlight of the last result"
+msgstr ""
+
+#: build/rankings/block.json
+#: src/rankings/block.json
+msgctxt "block title"
+msgid "Team Ranking"
+msgstr ""
+
+#: build/rankings/block.json
+#: src/rankings/block.json
+msgctxt "block description"
+msgid "Show Ranking of the team and the general information"
+msgstr ""
+
+#: build/schedule/block.json
+#: src/schedule/block.json
+msgctxt "block title"
+msgid "Team Schedule"
+msgstr ""
+
+#: build/schedule/block.json
+#: src/schedule/block.json
+msgctxt "block description"
+msgid "Show the schedule and last results of a team"
+msgstr ""

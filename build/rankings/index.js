@@ -2,6 +2,50 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./assets/demo-logo.svg":
+/*!******************************!*\
+  !*** ./assets/demo-logo.svg ***!
+  \******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ReactComponent: () => (/* binding */ SvgDemoLogo),
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+var _circle, _text;
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+var SvgDemoLogo = function SvgDemoLogo(props) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", _extends({
+    width: 330,
+    height: 330,
+    xmlns: "http://www.w3.org/2000/svg"
+  }, props), _circle || (_circle = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("circle", {
+    cy: 165,
+    cx: 165,
+    stroke: "#000",
+    fill: "#fff",
+    r: 109.5
+  })), _text || (_text = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("text", {
+    fontWeight: "bold",
+    xmlSpace: "preserve",
+    fontFamily: "Noto Sans JP",
+    fontSize: 48,
+    strokeWidth: 0,
+    y: 180.5,
+    x: 114.336,
+    stroke: "#000",
+    fill: "#007f3f"
+  }, "Logo")));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzMwIiBoZWlnaHQ9IjMzMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KIDxnPgogIDx0aXRsZT5MYXllciAxPC90aXRsZT4KICA8ZWxsaXBzZSByeT0iMTA5LjUiIHJ4PSIxMDkuNSIgaWQ9InN2Z18xIiBjeT0iMTY1IiBjeD0iMTY1IiBzdHJva2U9IiMwMDAiIGZpbGw9IiNmZmYiLz4KICA8dGV4dCBmb250LXdlaWdodD0iYm9sZCIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgdGV4dC1hbmNob3I9InN0YXJ0IiBmb250LWZhbWlseT0iTm90byBTYW5zIEpQIiBmb250LXNpemU9IjQ4IiBzdHJva2Utd2lkdGg9IjAiIGlkPSJzdmdfMyIgeT0iMTgwLjUiIHg9IjExNC4zMzU5NCIgc3Ryb2tlPSIjMDAwIiBmaWxsPSIjMDA3ZjNmIj5Mb2dvPC90ZXh0PgogPC9nPgo8L3N2Zz4K");
+
+/***/ }),
+
 /***/ "./src/rankings/edit.js":
 /*!******************************!*\
   !*** ./src/rankings/edit.js ***!
@@ -21,13 +65,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./editor.scss */ "./src/rankings/editor.scss");
+/* harmony import */ var _assets_demo_logo_svg__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../assets/demo-logo.svg */ "./assets/demo-logo.svg");
 
 /**
  * Retrieves the translation of text.
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
  */
-
 
 
 
@@ -47,6 +91,7 @@ __webpack_require__.r(__webpack_exports__);
  */
 
 
+
 /**
  * The edit function describes the structure of your block in the context of the
  * editor. This represents what the editor will render when the block is used.
@@ -61,22 +106,14 @@ function Edit({
 }) {
   // this is actually a little bit dirty with global variables, but...
 
-  var selTeams = [];
   const teams = tc_shv_team_selection.map(x => ({
     label: x.name,
     value: x.id
   }));
-  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    const teams = tc_shv_team_selection.map(x => ({
-      label: x.name,
-      value: x.id
-    }));
-    console.log(teams);
-    selTeams = teams;
-    setAttributes('teams', teams);
-  }, [tc_shv_team_selection]);
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)()
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InspectorControls, {
+    key: "settings"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h5", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Ranking of a team\'s group', 'tc-shv-results')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "instructions"
   }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Choose the team and whether headers should be displayed as well as whether the HTML from the tanking should be shown', 'tc-shv-results')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
@@ -98,7 +135,186 @@ function Edit({
     onChange: val => setAttributes({
       logo: val
     })
-  }));
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Logo Size', 'tc-shv-results'),
+    value: attributes.logosize,
+    onChange: val => setAttributes({
+      logosize: val
+    })
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", {
+    className: "tc-shv-results-rankings-header"
+  }, "Leaguename (LG)"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("table", {
+    className: "tc-shv-results-table"
+  }, attributes.header && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("thead", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("th", {
+    className: "tc-shv-results-rankings-rank"
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Rank', 'tc-shv-results')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("th", {
+    className: "tc-shv-results-rankings-team",
+    colSpan: attributes.logo ? 2 : 1
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Team', 'tc-shv-results')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("th", {
+    className: "tc-shv-results-rankings-games"
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('G', 'tc-shv-results')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("th", {
+    className: "tc-shv-results-rankings-wins"
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('W', 'tc-shv-results')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("th", {
+    className: "tc-shv-results-rankings-draws"
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('D', 'tc-shv-results')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("th", {
+    className: "tc-shv-results-rankings-losses"
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('L', 'tc-shv-results')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("th", {
+    className: "tc-shv-results-rankings-diff"
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('+/-', 'tc-shv-results')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("th", {
+    className: "tc-shv-results-rankings-points"
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Pts', 'tc-shv-results')))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tbody", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", {
+    className: "tc-shv-results-rankings-promotion"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+    className: "tc-shv-results-rankings-rank"
+  }, "1"), attributes.logo && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+    className: "tc-shv-results-rankings-team-logo"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    src: _assets_demo_logo_svg__WEBPACK_IMPORTED_MODULE_5__["default"],
+    height: attributes.logosize,
+    width: attributes.logosize,
+    alt: "Logo"
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+    className: "tc-shv-results-rankings-team"
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Promotion Team', 'tc-shv-results')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+    className: "tc-shv-results-rankings-games"
+  }, "5"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+    className: "tc-shv-results-rankings-wins"
+  }, "5"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+    className: "tc-shv-results-rankings-draws"
+  }, "0"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+    className: "tc-shv-results-rankings-losses"
+  }, "0"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+    className: "tc-shv-results-rankings-diff"
+  }, "100 (100:0)"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+    className: "tc-shv-results-rankings-points"
+  }, "10")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", {
+    className: "tc-shv-results-rankings-promotion-candidate"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+    className: "tc-shv-results-rankings-rank"
+  }, "2"), attributes.logo && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+    className: "tc-shv-results-rankings-team-logo"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    src: _assets_demo_logo_svg__WEBPACK_IMPORTED_MODULE_5__["default"],
+    height: attributes.logosize,
+    width: attributes.logosize,
+    alt: "Logo"
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+    className: "tc-shv-results-rankings-team"
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Promotion Candidate', 'tc-shv-results')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+    className: "tc-shv-results-rankings-games"
+  }, "5"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+    className: "tc-shv-results-rankings-wins"
+  }, "4"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+    className: "tc-shv-results-rankings-draws"
+  }, "0"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+    className: "tc-shv-results-rankings-losses"
+  }, "1"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+    className: "tc-shv-results-rankings-diff"
+  }, "90 (100:10)"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+    className: "tc-shv-results-rankings-points"
+  }, "8")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", {
+    className: ""
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+    className: "tc-shv-results-rankings-rank"
+  }, "3"), attributes.logo && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+    className: "tc-shv-results-rankings-team-logo"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    src: _assets_demo_logo_svg__WEBPACK_IMPORTED_MODULE_5__["default"],
+    height: attributes.logosize,
+    width: attributes.logosize,
+    alt: "Logo"
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+    className: "tc-shv-results-rankings-team"
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Midfield Team', 'tc-shv-results')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+    className: "tc-shv-results-rankings-games"
+  }, "5"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+    className: "tc-shv-results-rankings-wins"
+  }, "4"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+    className: "tc-shv-results-rankings-draws"
+  }, "0"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+    className: "tc-shv-results-rankings-losses"
+  }, "1"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+    className: "tc-shv-results-rankings-diff"
+  }, "90 (100:10)"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+    className: "tc-shv-results-rankings-points"
+  }, "8")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", {
+    className: "tc-shv-results-rankings-own-team"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+    className: "tc-shv-results-rankings-rank"
+  }, "4"), attributes.logo && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+    className: "tc-shv-results-rankings-team-logo"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    src: _assets_demo_logo_svg__WEBPACK_IMPORTED_MODULE_5__["default"],
+    height: attributes.logosize,
+    width: attributes.logosize,
+    alt: "Logo"
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+    className: "tc-shv-results-rankings-team"
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Our own team', 'tc-shv-results')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+    className: "tc-shv-results-rankings-games"
+  }, "5"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+    className: "tc-shv-results-rankings-wins"
+  }, "4"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+    className: "tc-shv-results-rankings-draws"
+  }, "0"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+    className: "tc-shv-results-rankings-losses"
+  }, "1"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+    className: "tc-shv-results-rankings-diff"
+  }, "90 (100:10)"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+    className: "tc-shv-results-rankings-points"
+  }, "8")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", {
+    className: "tc-shv-results-rankings-relegation-candidate"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+    className: "tc-shv-results-rankings-rank"
+  }, "5"), attributes.logo && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+    className: "tc-shv-results-rankings-team-logo"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    src: _assets_demo_logo_svg__WEBPACK_IMPORTED_MODULE_5__["default"],
+    height: attributes.logosize,
+    width: attributes.logosize,
+    alt: "Logo"
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+    className: "tc-shv-results-rankings-team"
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Relegation Candidate', 'tc-shv-results')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+    className: "tc-shv-results-rankings-games"
+  }, "5"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+    className: "tc-shv-results-rankings-wins"
+  }, "4"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+    className: "tc-shv-results-rankings-draws"
+  }, "0"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+    className: "tc-shv-results-rankings-losses"
+  }, "1"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+    className: "tc-shv-results-rankings-diff"
+  }, "90 (100:10)"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+    className: "tc-shv-results-rankings-points"
+  }, "8")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("tr", {
+    className: "tc-shv-results-rankings-relegation"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+    className: "tc-shv-results-rankings-rank"
+  }, "5"), attributes.logo && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+    className: "tc-shv-results-rankings-team-logo"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    src: _assets_demo_logo_svg__WEBPACK_IMPORTED_MODULE_5__["default"],
+    height: attributes.logosize,
+    width: attributes.logosize,
+    alt: "Logo"
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+    className: "tc-shv-results-rankings-team"
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Relegation', 'tc-shv-results')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+    className: "tc-shv-results-rankings-games"
+  }, "5"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+    className: "tc-shv-results-rankings-wins"
+  }, "4"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+    className: "tc-shv-results-rankings-draws"
+  }, "0"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+    className: "tc-shv-results-rankings-losses"
+  }, "1"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+    className: "tc-shv-results-rankings-diff"
+  }, "90 (100:10)"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("td", {
+    className: "tc-shv-results-rankings-points"
+  }, "8")))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    class: "tc-shv-results-ranking-modus"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h4", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Modus', 'tc-shv-results')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Long Description of the mode of this ranking', 'tc-shv-results')))));
 }
 
 /***/ }),
@@ -175,6 +391,16 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "react":
+/*!************************!*\
+  !*** external "React" ***!
+  \************************/
+/***/ ((module) => {
+
+module.exports = window["React"];
+
+/***/ }),
+
 /***/ "@wordpress/block-editor":
 /*!*************************************!*\
   !*** external ["wp","blockEditor"] ***!
@@ -231,7 +457,7 @@ module.exports = window["wp"]["i18n"];
   \*********************************/
 /***/ ((module) => {
 
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"tc-shv-results/rankings","version":"2.0.0","title":"Team Ranking","category":"widgets","icon":"index-card","description":"Show Ranking of the team and the general information","attributes":{"team":{"type":"string","default":""},"header":{"type":"boolean","default":true},"logo":{"type":"boolean","default":true}},"textdomain":"tc-shv-results","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js","render":"file:./render.php"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"tc-shv-results/rankings","version":"2.0.0","title":"Team Ranking","category":"widgets","icon":"index-card","description":"Show Ranking of the team and the general information","supports":{"align":true},"attributes":{"team":{"type":"string","default":""},"header":{"type":"boolean","default":true},"logo":{"type":"boolean","default":true},"logosize":{"type":"string","default":"35"}},"textdomain":"tc-shv-results","editorScript":"file:./index.js","editorStyle":"file:./index.css","viewScript":"file:./view.js","render":"file:./render.php"}');
 
 /***/ })
 

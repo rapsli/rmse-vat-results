@@ -2,10 +2,10 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/highlight/edit.js":
-/*!*******************************!*\
-  !*** ./src/highlight/edit.js ***!
-  \*******************************/
+/***/ "./src/highlight-result/edit.js":
+/*!**************************************!*\
+  !*** ./src/highlight-result/edit.js ***!
+  \**************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -18,7 +18,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./editor.scss */ "./src/highlight/editor.scss");
+/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./editor.scss */ "./src/highlight-result/editor.scss");
 
 /**
  * Retrieves the translation of text.
@@ -59,18 +59,18 @@ function Edit() {
 
 /***/ }),
 
-/***/ "./src/highlight/index.js":
-/*!********************************!*\
-  !*** ./src/highlight/index.js ***!
-  \********************************/
+/***/ "./src/highlight-result/index.js":
+/*!***************************************!*\
+  !*** ./src/highlight-result/index.js ***!
+  \***************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.scss */ "./src/highlight/style.scss");
-/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./edit */ "./src/highlight/edit.js");
-/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./block.json */ "./src/highlight/block.json");
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.scss */ "./src/highlight-result/style.scss");
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./edit */ "./src/highlight-result/edit.js");
+/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./block.json */ "./src/highlight-result/block.json");
 /**
  * Registers a new block provided a unique name and an object defining its behavior.
  *
@@ -107,10 +107,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./src/highlight/editor.scss":
-/*!***********************************!*\
-  !*** ./src/highlight/editor.scss ***!
-  \***********************************/
+/***/ "./src/highlight-result/editor.scss":
+/*!******************************************!*\
+  !*** ./src/highlight-result/editor.scss ***!
+  \******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -119,10 +119,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./src/highlight/style.scss":
-/*!**********************************!*\
-  !*** ./src/highlight/style.scss ***!
-  \**********************************/
+/***/ "./src/highlight-result/style.scss":
+/*!*****************************************!*\
+  !*** ./src/highlight-result/style.scss ***!
+  \*****************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -171,13 +171,13 @@ module.exports = window["wp"]["i18n"];
 
 /***/ }),
 
-/***/ "./src/highlight/block.json":
-/*!**********************************!*\
-  !*** ./src/highlight/block.json ***!
-  \**********************************/
+/***/ "./src/highlight-result/block.json":
+/*!*****************************************!*\
+  !*** ./src/highlight-result/block.json ***!
+  \*****************************************/
 /***/ ((module) => {
 
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"tc-shv-results/highlight","version":"2.0.0","title":"Highlight of the next game / last results","category":"widgets","icon":"format-status","description":"Show a highlight of the next game or last result","supports":{"html":true},"textdomain":"tc-shv-results","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js","render":"file:./render.php"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"tc-shv-results/highlight-result","version":"2.0.0","title":"Highlight of the last results","category":"widgets","icon":"format-status","description":"Show a highlight of the last result","supports":{"align":true},"textdomain":"tc-shv-results","editorScript":"file:./index.js","editorStyle":"file:./index.css","viewScript":"file:./view.js","render":"file:./render.php"}');
 
 /***/ })
 
@@ -293,8 +293,8 @@ module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json
 /******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
-/******/ 			"highlight/index": 0,
-/******/ 			"highlight/style-index": 0
+/******/ 			"highlight-result/index": 0,
+/******/ 			"highlight-result/style-index": 0
 /******/ 		};
 /******/ 		
 /******/ 		// no chunk on demand loading
@@ -346,7 +346,7 @@ module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["highlight/style-index"], () => (__webpack_require__("./src/highlight/index.js")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["highlight-result/style-index"], () => (__webpack_require__("./src/highlight-result/index.js")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

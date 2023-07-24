@@ -7,6 +7,9 @@
 	"category": "widgets",
 	"icon": "index-card",
 	"description": "Show Ranking of the team and the general information",
+	"supports": {
+		"align": true
+	},
 	"attributes": {
 		"team": {
 			"type": "string",
@@ -19,12 +22,15 @@
 		"logo": {
 			"type": "boolean",
 			"default": true
+		},
+		"logosize": {
+			"type": "string",
+			"default": "35"
 		}
 	},
 	"textdomain": "tc-shv-results",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
-	"style": "file:./style-index.css",
 	"viewScript": "file:./view.js",
 	"render": "file:./render.php"
 }

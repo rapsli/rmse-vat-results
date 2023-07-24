@@ -8,12 +8,37 @@
   "icon": "calendar",
   "description": "Show the schedule and last results of a team",
   "supports": {
-    "html": true
+    "align": true
+  },
+  "attributes": {
+    "team": {
+      "type": "string",
+      "default": ""
+    },
+    "header": {
+      "type": "boolean",
+      "default": true
+    },
+    "venue": {
+      "type": "boolean",
+      "default": true
+    },
+    "type": {
+      "type": "boolean",
+      "default": true
+    },
+    "with_result": {
+      "type": "boolean",
+      "default": true
+    },
+    "dateformat": {
+      "type": "string",
+      "default": "d.m.y H:i"
+    }
   },
   "textdomain": "tc-shv-results",
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
-  "style": "file:./style-index.css",
   "viewScript": "file:./view.js",
   "render": "file:./render.php"
 }

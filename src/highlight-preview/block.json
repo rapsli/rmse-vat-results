@@ -1,14 +1,14 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "tc-shv-results/highlight",
+	"name": "tc-shv-results/highlight-preview",
 	"version": "2.0.0",
-	"title": "Highlight of the next game / last results",
+	"title": "Highlight of the next game",
 	"category": "widgets",
 	"icon": "format-status",
-	"description": "Show a highlight of the next game or last result",
+	"description": "Show a highlight of the next game",
 	"supports": {
-		"html": true
+		"align": true
 	},
 	"textdomain": "tc-shv-results",
 	"editorScript": "file:./index.js",

@@ -88,32 +88,32 @@ export default function Edit({ attributes, setAttributes }) {
 				</InspectorControls>
 			}
 
-			<table>
+			<table className="tc-shv-results-table">
 				{attributes.header &&
 					<thead>
 						<tr>
 							<th className='tc-shv-results-date'>
-								{__('Datum / Zeit', 'tc-shv-results')}
+								{__('Date / Time', 'tc-shv-results')}
 							</th>
 							{attributes.type &&
 								<th className='tc-shv-results-type'>
-									{__('Typ', 'tc-shv-results')}
+									{__('Type', 'tc-shv-results')}
 								</th>
 							}
 							<th className='tc-shv-results-hometeam'>
-								{__('Heim', 'tc-shv-results')}
+								{__('Home', 'tc-shv-results')}
 							</th>
 							<th className='tc-shv-results-guestteam'>
-								{__('Gast', 'tc-shv-results')}
+								{__('Guest', 'tc-shv-results')}
 							</th>
 							{attributes.venue &&
 								<th className='tc-shv-results-venue'>
-									{__('Ort', 'tc-shv-results')}
+									{__('Venue', 'tc-shv-results')}
 								</th>
 							}
 							{attributes.with_result &&
 								<th className='tc-shv-results-result'>
-									{__('Resultat', 'tc-shv-results')}
+									{__('Result', 'tc-shv-results')}
 								</th>
 							}
 						</tr>
@@ -126,7 +126,7 @@ export default function Edit({ attributes, setAttributes }) {
 						</td>
 						{attributes.type &&
 							<td className='tc-shv-results-type'>
-								Clubintern
+								Club Internal
 							</td>
 						}
 						<td className='tc-shv-results-hometeam'>
@@ -257,6 +257,57 @@ export default function Edit({ attributes, setAttributes }) {
 						{attributes.type &&
 							<td className='tc-shv-results-type'>
 							Auswärtsspiel
+							</td>
+						}
+						<td className='tc-shv-results-hometeam'>
+							Team A
+						</td>
+						<td className='tc-shv-results-guestteam'>
+							Team B
+						</td>
+						{attributes.venue &&
+							<td className='tc-shv-results-venue'>
+							Halle X
+							</td>
+						}
+						{attributes.with_result &&
+							<td className='tc-shv-results-result'>
+							</td>
+						}
+					</tr>
+
+					<tr className="tc-shv-results-game-planned tc-shv-results-game-type-cup">
+					<td className='tc-shv-results-date'>
+							21.10.23 14:25
+						</td>
+						{attributes.type &&
+							<td className='tc-shv-results-type'>
+							Cupspiel
+							</td>
+						}
+						<td className='tc-shv-results-hometeam'>
+							Team A
+						</td>
+						<td className='tc-shv-results-guestteam'>
+							Team B
+						</td>
+						{attributes.venue &&
+							<td className='tc-shv-results-venue'>
+							Halle X
+							</td>
+						}
+						{attributes.with_result &&
+							<td className='tc-shv-results-result'>
+							</td>
+						}
+					</tr>
+					<tr className="tc-shv-results-game-planned tc-shv-results-game-type-ms">
+					<td className='tc-shv-results-date'>
+							21.10.23 14:25
+						</td>
+						{attributes.type &&
+							<td className='tc-shv-results-type'>
+							Meisterschaftsspiel
 							</td>
 						}
 						<td className='tc-shv-results-hometeam'>

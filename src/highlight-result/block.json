@@ -1,0 +1,18 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "tc-shv-results/highlight-result",
+	"version": "2.0.0",
+	"title": "Highlight of the last results",
+	"category": "widgets",
+	"icon": "format-status",
+	"description": "Show a highlight of the last result",
+	"supports": {
+		"align": true
+	},
+	"textdomain": "tc-shv-results",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"viewScript": "file:./view.js",
+	"render": "file:./render.php"
+}

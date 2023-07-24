@@ -5,13 +5,16 @@
  */
 import { __ } from '@wordpress/i18n';
 
+import { TextControl, CheckboxControl, __experimentalNumberControl as NumberControl, Flex, FlexBlock, SelectControl } from '@wordpress/components';
+
 /**
  * React hook that is used to mark the block wrapper element.
  * It provides all the necessary props like the class name.
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps } from '@wordpress/block-editor';
+import { useBlockProps, InspectorControls } from '@wordpress/block-editor';
+import { useEffect } from "@wordpress/element";
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -29,13 +32,242 @@ import './editor.scss';
  *
  * @return {WPElement} Element to render.
  */
-export default function Edit() {
+export default function Edit({ attributes, setAttributes }) {
+	// this is actually a little bit dirty with global variables, but...
+
+	const teams = tc_shv_team_selection.map((x) => ({ label: x.name, value: x.id }));
+
 	return (
-		<p { ...useBlockProps() }>
-			{ __(
-				'Team Schedule in the editor!',
-				'tc-shv-results'
-			) }
-		</p>
+		<div {...useBlockProps()}>
+			{
+				<InspectorControls key="settings">
+					<h5>{__('Next Games / Last Results of the club', 'tc-shv-results')}</h5>
+					<div className="instructions">
+						{__('Choose how many elements (last results and next games) should be displayed. 0 or less means it will not be shown at all. Will add a preview in a future version.', 'tc-shv-results')}
+					</div>
+					<SelectControl
+						label={__('Team', 'tc-shv-results')}
+						value={attributes.team}
+						options={teams}
+						onChange={(val) => setAttributes({ team: val })}
+					/>
+					<TextControl
+						label={__('Date Format', 'tc-shv-results')}
+						value={attributes.dateformat}
+						onChange={(val) => setAttributes({ dateformat: val })}
+					/>
+					<CheckboxControl
+						label={__('Show Header?', 'tc-shv-results')}
+						checked={attributes.header}
+						onChange={(val) => setAttributes({ header: val })}
+					/>
+					<CheckboxControl
+						label={__('Show game type?', 'tc-shv-results')}
+						checked={attributes.type}
+						onChange={(val) => setAttributes({ type: val })}
+					/>
+					<CheckboxControl
+						label={__('Show Venue?', 'tc-shv-results')}
+						checked={attributes.venue}
+						onChange={(val) => setAttributes({ venue: val })}
+					/>
+					<CheckboxControl
+						label={__('Show Results?', 'tc-shv-results')}
+						checked={attributes.with_result}
+						onChange={(val) => setAttributes({ with_result: val })}
+					/>
+				</InspectorControls>
+			}
+
+			<table className="tc-shv-results-table">
+				{attributes.header &&
+					<thead>
+						<tr>
+							<th className='tc-shv-results-date'>
+								{__('Date / Time', 'tc-shv-results')}
+							</th>
+							{attributes.type &&
+								<th className='tc-shv-results-type'>
+									{__('Type', 'tc-shv-results')}
+								</th>
+							}
+							<th className='tc-shv-results-hometeam'>
+								{__('Home', 'tc-shv-results')}
+							</th>
+							<th className='tc-shv-results-guestteam'>
+								{__('Guest', 'tc-shv-results')}
+							</th>
+							{attributes.venue &&
+								<th className='tc-shv-results-venue'>
+									{__('Venue', 'tc-shv-results')}
+								</th>
+							}
+							{attributes.with_result &&
+								<th className='tc-shv-results-result'>
+									{__('Result', 'tc-shv-results')}
+								</th>
+							}
+						</tr>
+					</thead>
+				}
+				<tbody>
+					<tr className="tc-shv-results-game-played tc-shv-results-game-club-internal">
+						<td className='tc-shv-results-date'>
+							21.10.23 14:25
+						</td>
+						{attributes.type &&
+							<td className='tc-shv-results-type'>
+								Clubintern
+							</td>
+						}
+						<td className='tc-shv-results-hometeam'>
+							Team A
+						</td>
+						<td className='tc-shv-results-guestteam'>
+							Team B
+						</td>
+						{attributes.venue &&
+							<td className='tc-shv-results-venue'>
+								Halle X
+							</td>
+						}
+						{attributes.with_result &&
+							<td className='tc-shv-results-result'>
+								33:30 (16:17)
+							</td>
+						}
+					</tr>
+					<tr className="tc-shv-results-game-played  tc-shv-results-game-win">
+						<td className='tc-shv-results-date'>
+							21.10.23 14:25
+						</td>
+						{attributes.type &&
+							<td className='tc-shv-results-type'>
+								Sieg
+							</td>
+						}
+						<td className='tc-shv-results-hometeam'>
+							Team A
+						</td>
+						<td className='tc-shv-results-guestteam'>
+							Team B
+						</td>
+						{attributes.venue &&
+							<td className='tc-shv-results-venue'>
+								Halle X
+							</td>
+						}
+						{attributes.with_result &&
+							<td className='tc-shv-results-result'>
+								33:30 (16:17)
+							</td>
+						}
+					</tr>
+					<tr className="tc-shv-results-game-played  tc-shv-results-game-draw">
+						<td className='tc-shv-results-date'>
+							21.10.23 14:25
+						</td>
+						{attributes.type &&
+							<td className='tc-shv-results-type'>
+								Unentschieden
+							</td>
+						}
+						<td className='tc-shv-results-hometeam'>
+							Team A
+						</td>
+						<td className='tc-shv-results-guestteam'>
+							Team B
+						</td>
+						{attributes.venue &&
+							<td className='tc-shv-results-venue'>
+								Halle X
+							</td>
+						}
+						{attributes.with_result &&
+							<td className='tc-shv-results-result'>
+								33:33 (16:17)
+							</td>
+						}
+					</tr>
+					<tr className="tc-shv-results-game-played  tc-shv-results-game-loss">
+						<td className='tc-shv-results-date'>
+							21.10.23 14:25
+						</td>
+						{attributes.type &&
+							<td className='tc-shv-results-type'>
+								Niederlage
+							</td>
+						}
+						<td className='tc-shv-results-hometeam'>
+							Team B
+						</td>
+						<td className='tc-shv-results-guestteam'>
+							Team A
+						</td>
+						{attributes.venue &&
+							<td className='tc-shv-results-venue'>
+								Halle X
+							</td>
+						}
+						{attributes.with_result &&
+							<td className='tc-shv-results-result'>
+								30:33 (16:17)
+							</td>
+						}
+					</tr>
+
+					<tr className="tc-shv-results-game-planned tc-shv-results-game-home">
+						<td className='tc-shv-results-date'>
+							21.10.23 14:25
+						</td>
+						{attributes.type &&
+							<td className='tc-shv-results-type'>
+								Heimspiel
+							</td>
+						}
+						<td className='tc-shv-results-hometeam'>
+							Team A
+						</td>
+						<td className='tc-shv-results-guestteam'>
+							Team B
+						</td>
+						{attributes.venue &&
+							<td className='tc-shv-results-venue'>
+								Halle X
+							</td>
+						}
+						{attributes.with_result &&
+							<td className='tc-shv-results-result'>
+							</td>
+						}
+					</tr>
+					<tr className="tc-shv-results-game-planned tc-shv-results-game-away">
+						<td className='tc-shv-results-date'>
+							21.10.23 14:25
+						</td>
+						{attributes.type &&
+							<td className='tc-shv-results-type'>
+								Auswärtsspiel
+							</td>
+						}
+						<td className='tc-shv-results-hometeam'>
+							Team A
+						</td>
+						<td className='tc-shv-results-guestteam'>
+							Team B
+						</td>
+						{attributes.venue &&
+							<td className='tc-shv-results-venue'>
+								Halle X
+							</td>
+						}
+						{attributes.with_result &&
+							<td className='tc-shv-results-result'>
+							</td>
+						}
+					</tr>
+				</tbody>
+			</table>
+		</div >
 	);
 }

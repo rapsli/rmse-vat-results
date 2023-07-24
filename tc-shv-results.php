@@ -35,29 +35,33 @@ require_once plugin_dir_path(__FILE__) . 'tc-shv-results-settings.php';
 function create_block_tc_shv_results_block_init()
 {
 	register_block_type(__DIR__ . '/build/games');
-	// register_block_type(__DIR__ . '/build/highlight');
+	register_block_type(__DIR__ . '/build/highlight-result');
+	register_block_type(__DIR__ . '/build/highlight-preview');
 	register_block_type(__DIR__ . '/build/rankings');
-	// register_block_type(__DIR__ . '/build/schedule');
+	register_block_type(__DIR__ . '/build/schedule');
 
 	$team_selection = tc_shv_results_load_team_selection();
 	if (false !== $team_selection) {
 		$team_selection = json_encode($team_selection);
 		wp_add_inline_script('tc-shv-results-rankings-editor-script', 'var tc_shv_team_selection = ' . $team_selection . ';', 'before');
+		wp_add_inline_script('tc-shv-results-schedule-editor-script', 'var tc_shv_team_selection = ' . $team_selection . ';', 'before');
+		wp_add_inline_script('tc-shv-results-highlight-result-editor-script', 'var tc_shv_team_selection = ' . $team_selection . ';', 'before');
+		wp_add_inline_script('tc-shv-results-highlight-preview-editor-script', 'var tc_shv_team_selection = ' . $team_selection . ';', 'before');
 	}
 
 }
 add_action('init', 'create_block_tc_shv_results_block_init');
 
-function tc_shv_results_admin_enqueue()
+function tc_shv_results_enqueue()
 {
 	wp_enqueue_style(
-		'tc_shv_results_admin_css',
-		plugin_dir_url(__FILE__) . 'admin.css'
+		'tc_shv_results_css',
+		plugin_dir_url(__FILE__) . 'styles.css'
 	);
 }
 
-// you may want to wrap add_action() in a conditional to prevent enqueue on every page
-add_action('admin_enqueue_scripts', 'tc_shv_results_admin_enqueue');
+add_action('wp_enqueue_scripts', 'tc_shv_results_enqueue');
+add_action('admin_enqueue_scripts', 'tc_shv_results_enqueue');
 
 // rest endpoint preparation, for now just the teams with team id and group short cut for the selection fields
 function tc_shv_results_rest_api_routes()
