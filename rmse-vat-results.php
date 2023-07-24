@@ -9,6 +9,7 @@
  * License:     Apache License, Version 2.0
  * License URI: https://www.apache.org/licenses/LICENSE-2.0
  * Text Domain: rmse-vat-results
+ * Domain Path: /languages
  *
  * @package           create-block
  */
