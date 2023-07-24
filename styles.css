@@ -137,7 +137,6 @@ table.rmse-vat-results-table {
 
 .rmse-vat-results-highlight-home {
 	flex: 1 1 0;
-	text-align: center;
 }
 
 .rmse-vat-results-highlight-info {
@@ -149,7 +148,6 @@ table.rmse-vat-results-table {
 
 .rmse-vat-results-highlight-guest {
 	flex: 1 1 0;
-	text-align: center;
 }
 
 .rmse-vat-results-highlight-info-result {
