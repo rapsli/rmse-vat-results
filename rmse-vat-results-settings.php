@@ -1,22 +1,22 @@
 <?php
 
-function tc_shv_results_settings_init()
+function rmse_vat_results_settings_init()
 {
-	register_setting('tc_shv_results', 'tc_shv_results_options');
+	register_setting('rmse_vat_results', 'rmse_vat_results_options');
 
-	register_setting('tc_shv_results', 'club_id', array('type' => 'string', 'description' => 'Club ID für den REST API Call'));
-	register_setting('tc_shv_results', 'vat_user', array('type' => 'string', 'description' => 'Benutzer für den VAT API Rest Call'));
-	register_setting('tc_shv_results', 'vat_password', array('type' => 'string', 'description' => 'Passwort für den VAT API Rest Call'));
-	register_setting('tc_shv_results', 'logo_url', array('type' => 'string', 'description' => 'Logo URL called with sprintf(..., team_id, club_id, width, height)', 'default' => 'https://www.handball.ch/images/logo/%s.png?fallbackType=club&fallbackId=%s&height=%d&width=%d&rmode=pad&format=png'));
+	register_setting('rmse_vat_results', 'club_id', array('type' => 'string', 'description' => 'Club ID für den REST API Call'));
+	register_setting('rmse_vat_results', 'vat_user', array('type' => 'string', 'description' => 'Benutzer für den VAT API Rest Call'));
+	register_setting('rmse_vat_results', 'vat_password', array('type' => 'string', 'description' => 'Passwort für den VAT API Rest Call'));
+	register_setting('rmse_vat_results', 'logo_url', array('type' => 'string', 'description' => 'Logo URL called with sprintf(..., team_id, club_id, width, height)', 'default' => 'https://www.handball.ch/images/logo/%s.png?fallbackType=club&fallbackId=%s&height=%d&width=%d&rmode=pad&format=png'));
 
-	add_settings_section('tc_shv_results_section', __('VAT Results Settings', 'tc-shv-results'), 'tc_shv_results_section_callback', 'tc_shv_results');
+	add_settings_section('rmse_vat_results_section', __('VAT Results Settings', 'rmse-vat-results'), 'rmse_vat_results_section_callback', 'rmse_vat_results');
 
 	add_settings_field(
-		'tc_shv_results_club_id',
-		__('Club ID', 'tc-shv-results'),
-		'tc_shv_results_text',
-		'tc_shv_results',
-		'tc_shv_results_section',
+		'rmse_vat_results_club_id',
+		__('Club ID', 'rmse-vat-results'),
+		'rmse_vat_results_text',
+		'rmse_vat_results',
+		'rmse_vat_results_section',
 		array(
 			'label_for' => 'club_id',
 			'type' => 'text',
@@ -24,11 +24,11 @@ function tc_shv_results_settings_init()
 	);
 
 	add_settings_field(
-		'tc_shv_results_vat_user',
-		__('Username VAT', 'tc-shv-results'),
-		'tc_shv_results_text',
-		'tc_shv_results',
-		'tc_shv_results_section',
+		'rmse_vat_results_vat_user',
+		__('Username VAT', 'rmse-vat-results'),
+		'rmse_vat_results_text',
+		'rmse_vat_results',
+		'rmse_vat_results_section',
 		array(
 			'label_for' => 'vat_user',
 			'type' => 'text',
@@ -36,11 +36,11 @@ function tc_shv_results_settings_init()
 	);
 
 	add_settings_field(
-		'tc_shv_results_vat_password',
-		__('Password VAT', 'tc-shv-results'),
-		'tc_shv_results_text',
-		'tc_shv_results',
-		'tc_shv_results_section',
+		'rmse_vat_results_vat_password',
+		__('Password VAT', 'rmse-vat-results'),
+		'rmse_vat_results_text',
+		'rmse_vat_results',
+		'rmse_vat_results_section',
 		array(
 			'label_for' => 'vat_password',
 			'type' => 'password',
@@ -48,11 +48,11 @@ function tc_shv_results_settings_init()
 	);
 
 	add_settings_field(
-		'tc_shv_results_logo_url',
-		__('Logo URL', 'tc-shv-results'),
-		'tc_shv_results_text',
-		'tc_shv_results',
-		'tc_shv_results_section',
+		'rmse_vat_results_logo_url',
+		__('Logo URL', 'rmse-vat-results'),
+		'rmse_vat_results_text',
+		'rmse_vat_results',
+		'rmse_vat_results_section',
 		array(
 			'label_for' => 'logo_url',
 			'type' => 'text',
@@ -64,13 +64,13 @@ function tc_shv_results_settings_init()
 /**
  * Register our wporg_settings_init to the admin_init action hook.
  */
-add_action('admin_init', 'tc_shv_results_settings_init');
+add_action('admin_init', 'rmse_vat_results_settings_init');
 
-function tc_shv_results_section_callback($args)
+function rmse_vat_results_section_callback($args)
 {
 	?>
 	<p id="<?php echo esc_attr($args['id']); ?>">
-		<?php esc_html_e('You need to configure the plugin, all information can be found in VAT (https://vat.handball.ch) - assuming you have the rights else someone else in the club can give them.', 'tc-shv-results'); ?>
+		<?php esc_html_e('You need to configure the plugin, all information can be found in VAT (https://vat.handball.ch) - assuming you have the rights else someone else in the club can give them.', 'rmse-vat-results'); ?>
 	</p>
 	<?php
 }
@@ -85,16 +85,16 @@ function tc_shv_results_section_callback($args)
  *
  * @param array $args
  */
-function tc_shv_results_text($args)
+function rmse_vat_results_text($args)
 {
 	// Get the value of the setting we've registered with register_setting()
-	$options = get_option('tc_shv_results_options');
+	$options = get_option('rmse_vat_results_options');
 	$option_value = isset($options[$args['label_for']]) ? esc_attr($options[$args['label_for']]) : (isset($args['default']) ? $args['default'] : '') ;
 
 ?>
 	<input id="<?php echo esc_attr($args['label_for']); ?>" type="<?php echo esc_attr($args['type']); ?>"
 		size="150"
-		name="tc_shv_results_options[<?php echo esc_attr($args['label_for']); ?>]"
+		name="rmse_vat_results_options[<?php echo esc_attr($args['label_for']); ?>]"
 		value="<?php echo $option_value; ?>" />
 	<?php
 }
@@ -102,23 +102,23 @@ function tc_shv_results_text($args)
 /**
  * Add the top level menu page.
  */
-function tc_shv_results_options_page()
+function rmse_vat_results_options_page()
 {
 	add_options_page(
-		__('SHV Result Options', 'tc_shv_results'),
-		__('SHV Results Options', 'tc_shv_results'),
+		__('SHV Result Options', 'rmse_vat_results'),
+		__('SHV Results Options', 'rmse_vat_results'),
 		'manage_options',
-		'tc_shv_results',
-		'tc_shv_results_options_page_html'
+		'rmse_vat_results',
+		'rmse_vat_results_options_page_html'
 	);
 }
 
-add_action('admin_menu', 'tc_shv_results_options_page');
+add_action('admin_menu', 'rmse_vat_results_options_page');
 
 /**
  * Top level menu callback function
  */
-function tc_shv_results_options_page_html()
+function rmse_vat_results_options_page_html()
 {
 	// check user capabilities
 	if (!current_user_can('manage_options')) {
@@ -135,12 +135,12 @@ function tc_shv_results_options_page_html()
 
 		// try to load the teams here
 
-		$response_code = tc_shv_results_test_retrieve_club_info();
+		$response_code = rmse_vat_results_test_retrieve_club_info();
 
 		if ($response_code !== 200) {
-			add_settings_error('wporg_messages', 'wporg_message', sprintf(__('Club Info could not be retrieved, response code %s', 'tc-shv-results'), $response_code));
+			add_settings_error('wporg_messages', 'wporg_message', sprintf(__('Club Info could not be retrieved, response code %s', 'rmse-vat-results'), $response_code));
 		} else {
-			tc_shv_results_update_club_teams();
+			rmse_vat_results_update_club_teams();
 		}
 	}
 
@@ -154,10 +154,10 @@ function tc_shv_results_options_page_html()
 		<form action="options.php" method="post">
 			<?php
 			// output security fields for the registered setting "wporg"
-			settings_fields('tc_shv_results');
+			settings_fields('rmse_vat_results');
 			// output setting sections and their fields
 			// (sections are registered for "wporg", each field is registered to a specific section)
-			do_settings_sections('tc_shv_results');
+			do_settings_sections('rmse_vat_results');
 			// output save settings button
 			submit_button(__('Save Settings', 'wporg'));
 			?>
@@ -167,11 +167,11 @@ function tc_shv_results_options_page_html()
 
 		<h2>Teams</h2>
 		<?php
-		$teams = tc_shv_results_get_club_teams();
+		$teams = rmse_vat_results_get_club_teams();
 
 		if (isset($teams) && is_array($teams)) {
 			?>
-			<div class="tc-shv-results-settings-teams">
+			<div class="rmse-vat-results-settings-teams">
 				<table>
 					<thead>
 						<tr>
@@ -191,7 +191,7 @@ function tc_shv_results_options_page_html()
 									<?php echo $team->teamId ?>
 								</td>
 								<td>
-									<img src="<?php echo tc_shv_results_team_logo($team->teamId, $team->clubId, 35, 35); ?>" alt="Logo <?php $team->teamName; ?>" width="35" height="35" />
+									<img src="<?php echo rmse_vat_results_team_logo($team->teamId, $team->clubId, 35, 35); ?>" alt="Logo <?php $team->teamName; ?>" width="35" height="35" />
 								</td>
 								<td>
 									<?php echo $team->teamName ?>
@@ -213,7 +213,7 @@ function tc_shv_results_options_page_html()
 			</div>
 			<?php
 		} else {
-			echo '<div>' . esc_html_e('No teams loaded yet', 'tc-shv-results') . '</div>';
+			echo '<div>' . esc_html_e('No teams loaded yet', 'rmse-vat-results') . '</div>';
 		}
 		?>
 	</div>

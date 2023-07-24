@@ -5,114 +5,114 @@
  * Replace them with your own styles or remove the file completely.
  */
 
-.tc-shv-results-result,
-.tc-shv-results-type,
-.tc-shv-results-date {
+.rmse-vat-results-result,
+.rmse-vat-results-type,
+.rmse-vat-results-date {
 	text-align: center;
 }
 
-.tc-shv-results-hometeam,
-.tc-shv-results-guestteam,
-.tc-shv-results-venue {
+.rmse-vat-results-hometeam,
+.rmse-vat-results-guestteam,
+.rmse-vat-results-venue {
 	text-align: left;
 }
 
-.tc-shv-results-game-home {
+.rmse-vat-results-game-home {
 	font-weight: 700;
 	background-color: #eee;
 }
 
-.tc-shv-results-game-win {
+.rmse-vat-results-game-win {
 	background-color: rgb(190, 239, 190);
 }
 
-.tc-shv-results-game-draw {
+.rmse-vat-results-game-draw {
 	background-color: rgb(222, 222, 222);
 }
 
-.tc-shv-results-game-loss {
+.rmse-vat-results-game-loss {
 	background-color: rgb(239, 190, 190);
 }
 
-.tc-shv-results-game-club-internal {
+.rmse-vat-results-game-club-internal {
 	background-color: rgb(87, 218, 122);
 }
 
-.tc-shv-results-rankings-promotion {
+.rmse-vat-results-rankings-promotion {
 	background-color: rgb(9, 49, 20);
 	color: white;
 }
 
-.tc-shv-results-rankings-promotion-candidate {
+.rmse-vat-results-rankings-promotion-candidate {
 	background-color: rgb(45, 240, 97);
 }
 
-.tc-shv-results-rankings-relegation {
+.rmse-vat-results-rankings-relegation {
 	background-color: rgb(39, 0, 0);
 	color: white;
 }
 
-.tc-shv-results-rankings-relegation-candidate {
+.rmse-vat-results-rankings-relegation-candidate {
 	background-color: rgb(210, 33, 33);
 	color: white;
 }
-.tc-shv-results-rankings-own-team {
+.rmse-vat-results-rankings-own-team {
 	font-weight: bold;
 }
 
-.tc-shv-results-game-type-cup {
+.rmse-vat-results-game-type-cup {
 	font-style: italic;
 }
 
-table.tc-shv-results-table {
+table.rmse-vat-results-table {
 	width: 100%;
 	border-collapse: collapse;
 	border: 1px solid;
 }
 
-.tc-shv-results-table :is(td, th) {
+.rmse-vat-results-table :is(td, th) {
 	padding: 0.5em;
 	vertical-align: middle;
 }
 
-.tc-shv-results-table td {
+.rmse-vat-results-table td {
 	border-top: 1px solid darkgray;
 }
 
-/* .tc-shv-results-rankings-header {} */
+/* .rmse-vat-results-rankings-header {} */
 
-.tc-shv-results-rankings-rank,
-.tc-shv-results-rankings-games,
-.tc-shv-results-rankings-wins,
-.tc-shv-results-rankings-draws,
-.tc-shv-results-rankings-losses,
-.tc-shv-results-rankings-diff,
-.tc-shv-results-rankings-points {
+.rmse-vat-results-rankings-rank,
+.rmse-vat-results-rankings-games,
+.rmse-vat-results-rankings-wins,
+.rmse-vat-results-rankings-draws,
+.rmse-vat-results-rankings-losses,
+.rmse-vat-results-rankings-diff,
+.rmse-vat-results-rankings-points {
 	text-align: center;
 }
 
-.tc-shv-results-rankings-team,
-.tc-shv-results-rankings-team-logo {
+.rmse-vat-results-rankings-team,
+.rmse-vat-results-rankings-team-logo {
 	text-align: left;
 }
 
-.tc-shv-results-ranking-modus {
+.rmse-vat-results-ranking-modus {
 	padding-top: 1.5em;
 }
 
-.tc-shv-results-ranking-modus h4 {
+.rmse-vat-results-ranking-modus h4 {
 	padding: 0;
 	margin: 0;
 }
 
-.tc-shv-results-ranking-modus div {
+.rmse-vat-results-ranking-modus div {
 	border-left: 10px solid #ccc;
 	background: #f9f9f9;
 	margin: 1.5em 10px;
 	padding: 0.5em 10px;
 }
 
-.tc-shv-results-highlight-result {
+.rmse-vat-results-highlight-result {
 	display: flex;
 	gap: 1em;
 	font-size: 2em;
@@ -121,7 +121,7 @@ table.tc-shv-results-table {
 	background: #ccc;
 }
 
-.tc-shv-results-highlight-preview {
+.rmse-vat-results-highlight-preview {
 	display: flex;
 	gap: 1em;
 	font-size: 2em;
@@ -130,61 +130,61 @@ table.tc-shv-results-table {
 	background: #ccc;
 }
 
-.tc-shv-results-highlight-name {
+.rmse-vat-results-highlight-name {
 	font-size: 1.25em;
 	font-weight: bold;
 }
 
-.tc-shv-results-highlight-home {
+.rmse-vat-results-highlight-home {
 	flex: 1 1 0;
 	text-align: center;
 }
 
-.tc-shv-results-highlight-info {
+.rmse-vat-results-highlight-info {
 	flex: 0 0 auto;
 	text-align: center;
 	margin-top: auto;
 	margin-bottom: auto;
 }
 
-.tc-shv-results-highlight-guest {
+.rmse-vat-results-highlight-guest {
 	flex: 1 1 0;
 	text-align: center;
 }
 
-.tc-shv-results-highlight-info-result {
+.rmse-vat-results-highlight-info-result {
 	font-weight: 700;
 	margin: 0 0.25em;
 }
 
-.tc-shv-results-highlight-info-halftime {
+.rmse-vat-results-highlight-info-halftime {
 	color: #333;
 	margin: 0.25em 0 0.75em;
 }
 
-.tc-shv-results-highlight-info-date {
+.rmse-vat-results-highlight-info-date {
 	margin: 1em 0 0.55em;
 	color: #666;
 }
 
-.tc-shv-results-highlight-info-venue {
+.rmse-vat-results-highlight-info-venue {
 	font-size: 0.75em;
 	margin: 1em 0;
 }
 
-.tc-shv-results-highlight-info-spectators {
+.rmse-vat-results-highlight-info-spectators {
 	font-size: 0.75em;
 	margin: 1em 0 0;
 }
 
-.tc-shv-results-highlight-info-halftime::before {
+.rmse-vat-results-highlight-info-halftime::before {
 	content: '( ';
 }
-.tc-shv-results-highlight-info-halftime::after {
+.rmse-vat-results-highlight-info-halftime::after {
 	content: ' )';
 }
 
-.tc-shv-results-highlight-empty {
+.rmse-vat-results-highlight-empty {
 	font-size: 2em;
 	padding: 1em;
 	border: 1px solid;

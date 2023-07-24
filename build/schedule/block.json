@@ -1,8 +1,8 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
-  "name": "tc-shv-results/schedule",
-  "version": "2.0.0",
+  "name": "rmse-vat-results/schedule",
+  "version": "1.0.0",
   "title": "Team Schedule",
   "category": "widgets",
   "icon": "calendar",
@@ -36,7 +36,7 @@
       "default": "d.m.y H:i"
     }
   },
-  "textdomain": "tc-shv-results",
+  "textdomain": "rmse-vat-results",
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
   "viewScript": "file:./view.js",

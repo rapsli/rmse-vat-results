@@ -2,8 +2,8 @@
 # This file is distributed under the Apache License, Version 2.0.
 msgid ""
 msgstr ""
-"Project-Id-Version: Handball VAT Results ClubAPI Integration 2.0.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/tc-shv-resultate\n"
+"Project-Id-Version: Handball VAT Results ClubAPI Integration 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/rmse-vat-resultate\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -12,7 +12,7 @@ msgstr ""
 "POT-Creation-Date: 2023-07-24T10:14:22+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.8.1\n"
-"X-Domain: tc-shv-results\n"
+"X-Domain: rmse-vat-results\n"
 
 #. Plugin Name of the plugin
 msgid "Handball VAT Results ClubAPI Integration"
@@ -207,35 +207,35 @@ msgstr ""
 msgid "Team could not be loaded!"
 msgstr ""
 
-#: tc-shv-results-settings.php:12
+#: rmse-vat-results-settings.php:12
 msgid "VAT Results Settings"
 msgstr ""
 
-#: tc-shv-results-settings.php:16
+#: rmse-vat-results-settings.php:16
 msgid "Club ID"
 msgstr ""
 
-#: tc-shv-results-settings.php:28
+#: rmse-vat-results-settings.php:28
 msgid "Username VAT"
 msgstr ""
 
-#: tc-shv-results-settings.php:40
+#: rmse-vat-results-settings.php:40
 msgid "Password VAT"
 msgstr ""
 
-#: tc-shv-results-settings.php:52
+#: rmse-vat-results-settings.php:52
 msgid "Logo URL"
 msgstr ""
 
-#: tc-shv-results-settings.php:73
+#: rmse-vat-results-settings.php:73
 msgid "You need to configure the plugin, all information can be found in VAT (https://vat.handball.ch) - assuming you have the rights else someone else in the club can give them."
 msgstr ""
 
-#: tc-shv-results-settings.php:141
+#: rmse-vat-results-settings.php:141
 msgid "Club Info could not be retrieved, response code %s"
 msgstr ""
 
-#: tc-shv-results-settings.php:216
+#: rmse-vat-results-settings.php:216
 msgid "No teams loaded yet"
 msgstr ""
 

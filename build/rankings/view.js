@@ -1,1 +1,1 @@
-console.log("Hello World! (from tc-shv-results rankings block)");
+console.log("Hello World! (from rmse-vat-results rankings block)");

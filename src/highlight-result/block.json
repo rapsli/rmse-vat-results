@@ -1,8 +1,8 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "tc-shv-results/highlight-result",
-	"version": "2.0.0",
+	"name": "rmse-vat-results/highlight-result",
+	"version": "1.0.0",
 	"title": "Highlight of the last results",
 	"category": "widgets",
 	"icon": "format-status",
@@ -44,7 +44,7 @@
 			"default": "90"
 		}
 	},
-	"textdomain": "tc-shv-results",
+	"textdomain": "rmse-vat-results",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
 	"viewScript": "file:./view.js",

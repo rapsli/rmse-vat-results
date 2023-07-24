@@ -3,7 +3,7 @@
  * @see https://github.com/WordPress/gutenberg/blob/trunk/docs/reference-guides/block-api/block-metadata.md#render
  */
 
-$games = tc_shv_results_retrieve_club_games();
+$games = rmse_vat_results_retrieve_club_games();
 
 if ($games !== false) {
 	$played = array_reverse(array_slice($games[0], 0, $attributes['results']));
@@ -11,32 +11,32 @@ if ($games !== false) {
 
 	?>
 	<div <?php echo get_block_wrapper_attributes(); ?>>
-		<table class="tc-shv-results-table">
+		<table class="rmse-vat-results-table">
 			<?php if ($attributes['header'] === true) { ?>
 				<thead>
 					<tr>
-						<th class="tc-shv-results-date">
-							<?php _e('Date / Time', 'tc-shv-results') ?>
+						<th class="rmse-vat-results-date">
+							<?php _e('Date / Time', 'rmse-vat-results') ?>
 						</th>
 						<?php if ($attributes['type'] === true) { ?>
-							<th class="tc-shv-results-type">
-								<?php _e('Type', 'tc-shv-results') ?>
+							<th class="rmse-vat-results-type">
+								<?php _e('Type', 'rmse-vat-results') ?>
 							</th>
 						<?php } ?>
-						<th class="tc-shv-results-hometeam">
-							<?php _e('Home', 'tc-shv-results') ?>
+						<th class="rmse-vat-results-hometeam">
+							<?php _e('Home', 'rmse-vat-results') ?>
 						</th>
-						<th class="tc-shv-results-guestteam">
-							<?php _e('Guest', 'tc-shv-results') ?>
+						<th class="rmse-vat-results-guestteam">
+							<?php _e('Guest', 'rmse-vat-results') ?>
 						</th>
 						<?php if ($attributes['venue'] === true) { ?>
-							<th class="tc-shv-results-venue">
-								<?php _e('Venue', 'tc-shv-results') ?>
+							<th class="rmse-vat-results-venue">
+								<?php _e('Venue', 'rmse-vat-results') ?>
 							</th>
 						<?php } ?>
 						<?php if ($attributes['with_result'] === true) { ?>
-							<th class="tc-shv-results-result">
-								<?php _e('Result', 'tc-shv-results') ?>
+							<th class="rmse-vat-results-result">
+								<?php _e('Result', 'rmse-vat-results') ?>
 							</th>
 						<?php } ?>
 					</tr>
@@ -45,44 +45,44 @@ if ($games !== false) {
 			<tbody>
 				<?php
 				foreach ($played as $game) {
-					$clz = 'tc-shv-results-game-played tc-shv-results-game-type-' . strtolower($game->gameTypeShort);
+					$clz = 'rmse-vat-results-game-played rmse-vat-results-game-type-' . strtolower($game->gameTypeShort);
 					if ($game->teamAInClub && $game->teamBInClub) {
 						// special case: two teams from the club played against each other, no winner or looser actually
-						$clz = $clz . ' tc-shv-results-game-club-internal';
+						$clz = $clz . ' rmse-vat-results-game-club-internal';
 					} else if ($game->teamAScoreFT === $game->teamBScoreFT) {
-						$clz = $clz . ' tc-shv-results-game-draw';
+						$clz = $clz . ' rmse-vat-results-game-draw';
 					} else if ($game->teamAInClub && $game->teamAScoreFT > $game->teamBScoreFT) {
-						$clz = $clz . ' tc-shv-results-game-win';
+						$clz = $clz . ' rmse-vat-results-game-win';
 					} else if ($game->teamAInClub && $game->teamAScoreFT < $game->teamBScoreFT) {
-						$clz = $clz . ' tc-shv-results-game-loss';
+						$clz = $clz . ' rmse-vat-results-game-loss';
 					} else if ($game->teamBInClub && $game->teamAScoreFT > $game->teamBScoreFT) {
-						$clz = $clz . ' tc-shv-results-game-loss';
+						$clz = $clz . ' rmse-vat-results-game-loss';
 					} else if ($game->teamBInClub && $game->teamAScoreFT < $game->teamBScoreFT) {
-						$clz = $clz . ' tc-shv-results-game-win';
+						$clz = $clz . ' rmse-vat-results-game-win';
 					}
 					?>
 					<tr class="<?php echo $clz; ?>">
-						<td class="tc-shv-results-date">
+						<td class="rmse-vat-results-date">
 							<?php echo date_format($game->gameDateTime, $attributes['dateformat']); ?>
 						</td>
 						<?php if ($attributes['type'] === true) { ?>
-							<td class="tc-shv-results-type">
+							<td class="rmse-vat-results-type">
 								<?php echo $game->groupCupText; ?>
 							</td>
 						<?php } ?>
-						<td class="tc-shv-results-hometeam">
+						<td class="rmse-vat-results-hometeam">
 							<?php echo $game->teamAName; ?>
 						</td>
-						<td class="tc-shv-results-guestteam">
+						<td class="rmse-vat-results-guestteam">
 							<?php echo $game->teamBName; ?>
 						</td>
 						<?php if ($attributes['venue'] === true) { ?>
-							<td class="tc-shv-results-venue">
+							<td class="rmse-vat-results-venue">
 								<?php echo $game->venue; ?>
 							</td>
 						<?php } ?>
 						<?php if ($attributes['with_result'] === true) { ?>
-							<td class="tc-shv-results-result">
+							<td class="rmse-vat-results-result">
 								<?php echo "$game->teamAScoreFT:$game->teamBScoreFT ($game->teamAScoreHT:$game->teamBScoreHT)"; ?>
 							</td>
 						<?php } ?>
@@ -92,33 +92,33 @@ if ($games !== false) {
 				unset($game);
 
 				foreach ($planned as $game) {
-					$clz = 'tc-shv-results-game-planned tc-shv-results-game-type-' . strtolower($game->gameTypeShort) . ' tc-shv-results-game-' . ($game->homegame ? 'home' : 'away');
+					$clz = 'rmse-vat-results-game-planned rmse-vat-results-game-type-' . strtolower($game->gameTypeShort) . ' rmse-vat-results-game-' . ($game->homegame ? 'home' : 'away');
 					?>
 					<tr class="<?php echo $clz; ?>">
-						<td class="tc-shv-results-date">
+						<td class="rmse-vat-results-date">
 							<?php echo date_format($game->gameDateTime, $attributes['dateformat']); ?>
 						</td>
 						<?php if ($attributes['type'] === true) { ?>
-							<td class="tc-shv-results-type">
+							<td class="rmse-vat-results-type">
 								<?php echo $game->groupCupText; ?>
 							</td>
 						<?php } ?>
-						<td class="tc-shv-results-hometeam">
+						<td class="rmse-vat-results-hometeam">
 							<?php echo $game->teamAName; ?>
 						</td>
-						<td class="tc-shv-results-guestteam">
+						<td class="rmse-vat-results-guestteam">
 							<?php echo $game->teamBName; ?>
 						</td>
 						<?php if ($attributes['venue'] === true) { ?>
-							<td class="tc-shv-results-venue">
+							<td class="rmse-vat-results-venue">
 								<?php echo $game->venue; ?>
 							</td>
 						<?php } ?>
 						<?php if ($attributes['with_result'] === true) { ?>
-							<td class="tc-shv-results-result">
+							<td class="rmse-vat-results-result">
 							</td>
 						<?php } ?>
-						<td class="tc-shv-results-result"></td>
+						<td class="rmse-vat-results-result"></td>
 					</tr>
 					<?php
 				}
@@ -131,7 +131,7 @@ if ($games !== false) {
 } else {
 	?>
 	<p <?php echo get_block_wrapper_attributes(); ?>>
-		<?php _e('No games loaded!', 'tc-shv-results'); ?>
+		<?php _e('No games loaded!', 'rmse-vat-results'); ?>
 	</p>
 	<?php
 }

@@ -35,234 +35,234 @@ import './editor.scss';
 export default function Edit({ attributes, setAttributes }) {
 	// this is actually a little bit dirty with global variables, but...
 
-	const teams = tc_shv_team_selection.map((x) => ({ label: x.name, value: x.id }));
+	const teams = rmse_vat_team_selection.map((x) => ({ label: x.name, value: x.id }));
 
 	return (
 		<div {...useBlockProps()}>
 			{
 				<InspectorControls key="settings">
-					<h5>{__('Next Games / Last Results of the club', 'tc-shv-results')}</h5>
+					<h5>{__('Next Games / Last Results of the club', 'rmse-vat-results')}</h5>
 					<div className="instructions">
-						{__('Choose how many elements (last results and next games) should be displayed. 0 or less means it will not be shown at all. Will add a preview in a future version.', 'tc-shv-results')}
+						{__('Choose how many elements (last results and next games) should be displayed. 0 or less means it will not be shown at all. Will add a preview in a future version.', 'rmse-vat-results')}
 					</div>
 					<SelectControl
-						label={__('Team', 'tc-shv-results')}
+						label={__('Team', 'rmse-vat-results')}
 						value={attributes.team}
 						options={teams}
 						onChange={(val) => setAttributes({ team: val })}
 					/>
 					<TextControl
-						label={__('Date Format', 'tc-shv-results')}
+						label={__('Date Format', 'rmse-vat-results')}
 						value={attributes.dateformat}
 						onChange={(val) => setAttributes({ dateformat: val })}
 					/>
 					<CheckboxControl
-						label={__('Show Header?', 'tc-shv-results')}
+						label={__('Show Header?', 'rmse-vat-results')}
 						checked={attributes.header}
 						onChange={(val) => setAttributes({ header: val })}
 					/>
 					<CheckboxControl
-						label={__('Show game type?', 'tc-shv-results')}
+						label={__('Show game type?', 'rmse-vat-results')}
 						checked={attributes.type}
 						onChange={(val) => setAttributes({ type: val })}
 					/>
 					<CheckboxControl
-						label={__('Show Venue?', 'tc-shv-results')}
+						label={__('Show Venue?', 'rmse-vat-results')}
 						checked={attributes.venue}
 						onChange={(val) => setAttributes({ venue: val })}
 					/>
 					<CheckboxControl
-						label={__('Show Results?', 'tc-shv-results')}
+						label={__('Show Results?', 'rmse-vat-results')}
 						checked={attributes.with_result}
 						onChange={(val) => setAttributes({ with_result: val })}
 					/>
 				</InspectorControls>
 			}
 
-			<table className="tc-shv-results-table">
+			<table className="rmse-vat-results-table">
 				{attributes.header &&
 					<thead>
 						<tr>
-							<th className='tc-shv-results-date'>
-								{__('Date / Time', 'tc-shv-results')}
+							<th className='rmse-vat-results-date'>
+								{__('Date / Time', 'rmse-vat-results')}
 							</th>
 							{attributes.type &&
-								<th className='tc-shv-results-type'>
-									{__('Type', 'tc-shv-results')}
+								<th className='rmse-vat-results-type'>
+									{__('Type', 'rmse-vat-results')}
 								</th>
 							}
-							<th className='tc-shv-results-hometeam'>
-								{__('Home', 'tc-shv-results')}
+							<th className='rmse-vat-results-hometeam'>
+								{__('Home', 'rmse-vat-results')}
 							</th>
-							<th className='tc-shv-results-guestteam'>
-								{__('Guest', 'tc-shv-results')}
+							<th className='rmse-vat-results-guestteam'>
+								{__('Guest', 'rmse-vat-results')}
 							</th>
 							{attributes.venue &&
-								<th className='tc-shv-results-venue'>
-									{__('Venue', 'tc-shv-results')}
+								<th className='rmse-vat-results-venue'>
+									{__('Venue', 'rmse-vat-results')}
 								</th>
 							}
 							{attributes.with_result &&
-								<th className='tc-shv-results-result'>
-									{__('Result', 'tc-shv-results')}
+								<th className='rmse-vat-results-result'>
+									{__('Result', 'rmse-vat-results')}
 								</th>
 							}
 						</tr>
 					</thead>
 				}
 				<tbody>
-					<tr className="tc-shv-results-game-played tc-shv-results-game-club-internal">
-						<td className='tc-shv-results-date'>
+					<tr className="rmse-vat-results-game-played rmse-vat-results-game-club-internal">
+						<td className='rmse-vat-results-date'>
 							21.10.23 14:25
 						</td>
 						{attributes.type &&
-							<td className='tc-shv-results-type'>
+							<td className='rmse-vat-results-type'>
 								Clubintern
 							</td>
 						}
-						<td className='tc-shv-results-hometeam'>
+						<td className='rmse-vat-results-hometeam'>
 							Team A
 						</td>
-						<td className='tc-shv-results-guestteam'>
+						<td className='rmse-vat-results-guestteam'>
 							Team B
 						</td>
 						{attributes.venue &&
-							<td className='tc-shv-results-venue'>
+							<td className='rmse-vat-results-venue'>
 								Halle X
 							</td>
 						}
 						{attributes.with_result &&
-							<td className='tc-shv-results-result'>
+							<td className='rmse-vat-results-result'>
 								33:30 (16:17)
 							</td>
 						}
 					</tr>
-					<tr className="tc-shv-results-game-played  tc-shv-results-game-win">
-						<td className='tc-shv-results-date'>
+					<tr className="rmse-vat-results-game-played  rmse-vat-results-game-win">
+						<td className='rmse-vat-results-date'>
 							21.10.23 14:25
 						</td>
 						{attributes.type &&
-							<td className='tc-shv-results-type'>
+							<td className='rmse-vat-results-type'>
 								Sieg
 							</td>
 						}
-						<td className='tc-shv-results-hometeam'>
+						<td className='rmse-vat-results-hometeam'>
 							Team A
 						</td>
-						<td className='tc-shv-results-guestteam'>
+						<td className='rmse-vat-results-guestteam'>
 							Team B
 						</td>
 						{attributes.venue &&
-							<td className='tc-shv-results-venue'>
+							<td className='rmse-vat-results-venue'>
 								Halle X
 							</td>
 						}
 						{attributes.with_result &&
-							<td className='tc-shv-results-result'>
+							<td className='rmse-vat-results-result'>
 								33:30 (16:17)
 							</td>
 						}
 					</tr>
-					<tr className="tc-shv-results-game-played  tc-shv-results-game-draw">
-						<td className='tc-shv-results-date'>
+					<tr className="rmse-vat-results-game-played  rmse-vat-results-game-draw">
+						<td className='rmse-vat-results-date'>
 							21.10.23 14:25
 						</td>
 						{attributes.type &&
-							<td className='tc-shv-results-type'>
+							<td className='rmse-vat-results-type'>
 								Unentschieden
 							</td>
 						}
-						<td className='tc-shv-results-hometeam'>
+						<td className='rmse-vat-results-hometeam'>
 							Team A
 						</td>
-						<td className='tc-shv-results-guestteam'>
+						<td className='rmse-vat-results-guestteam'>
 							Team B
 						</td>
 						{attributes.venue &&
-							<td className='tc-shv-results-venue'>
+							<td className='rmse-vat-results-venue'>
 								Halle X
 							</td>
 						}
 						{attributes.with_result &&
-							<td className='tc-shv-results-result'>
+							<td className='rmse-vat-results-result'>
 								33:33 (16:17)
 							</td>
 						}
 					</tr>
-					<tr className="tc-shv-results-game-played  tc-shv-results-game-loss">
-						<td className='tc-shv-results-date'>
+					<tr className="rmse-vat-results-game-played  rmse-vat-results-game-loss">
+						<td className='rmse-vat-results-date'>
 							21.10.23 14:25
 						</td>
 						{attributes.type &&
-							<td className='tc-shv-results-type'>
+							<td className='rmse-vat-results-type'>
 								Niederlage
 							</td>
 						}
-						<td className='tc-shv-results-hometeam'>
+						<td className='rmse-vat-results-hometeam'>
 							Team B
 						</td>
-						<td className='tc-shv-results-guestteam'>
+						<td className='rmse-vat-results-guestteam'>
 							Team A
 						</td>
 						{attributes.venue &&
-							<td className='tc-shv-results-venue'>
+							<td className='rmse-vat-results-venue'>
 								Halle X
 							</td>
 						}
 						{attributes.with_result &&
-							<td className='tc-shv-results-result'>
+							<td className='rmse-vat-results-result'>
 								30:33 (16:17)
 							</td>
 						}
 					</tr>
 
-					<tr className="tc-shv-results-game-planned tc-shv-results-game-home">
-						<td className='tc-shv-results-date'>
+					<tr className="rmse-vat-results-game-planned rmse-vat-results-game-home">
+						<td className='rmse-vat-results-date'>
 							21.10.23 14:25
 						</td>
 						{attributes.type &&
-							<td className='tc-shv-results-type'>
+							<td className='rmse-vat-results-type'>
 								Heimspiel
 							</td>
 						}
-						<td className='tc-shv-results-hometeam'>
+						<td className='rmse-vat-results-hometeam'>
 							Team A
 						</td>
-						<td className='tc-shv-results-guestteam'>
+						<td className='rmse-vat-results-guestteam'>
 							Team B
 						</td>
 						{attributes.venue &&
-							<td className='tc-shv-results-venue'>
+							<td className='rmse-vat-results-venue'>
 								Halle X
 							</td>
 						}
 						{attributes.with_result &&
-							<td className='tc-shv-results-result'>
+							<td className='rmse-vat-results-result'>
 							</td>
 						}
 					</tr>
-					<tr className="tc-shv-results-game-planned tc-shv-results-game-away">
-						<td className='tc-shv-results-date'>
+					<tr className="rmse-vat-results-game-planned rmse-vat-results-game-away">
+						<td className='rmse-vat-results-date'>
 							21.10.23 14:25
 						</td>
 						{attributes.type &&
-							<td className='tc-shv-results-type'>
+							<td className='rmse-vat-results-type'>
 								Auswärtsspiel
 							</td>
 						}
-						<td className='tc-shv-results-hometeam'>
+						<td className='rmse-vat-results-hometeam'>
 							Team A
 						</td>
-						<td className='tc-shv-results-guestteam'>
+						<td className='rmse-vat-results-guestteam'>
 							Team B
 						</td>
 						{attributes.venue &&
-							<td className='tc-shv-results-venue'>
+							<td className='rmse-vat-results-venue'>
 								Halle X
 							</td>
 						}
 						{attributes.with_result &&
-							<td className='tc-shv-results-result'>
+							<td className='rmse-vat-results-result'>
 							</td>
 						}
 					</tr>

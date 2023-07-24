@@ -1,10 +1,10 @@
 === SHV Results ===
 
-Plugin Name:        Handball SHV Results
-Plugin URI:         http://plugins.svn.wordpress.org/tc-shv-resultate/
-Contributors:       titaniumcoder
-Tags:               handball, results, schweiz, switzerland, vat
-Version:            2.0.0
+Plugin Name:        handball.ch Club API
+Plugin URI:         https://github.com/titaniumcoder/tc-shv-results
+Contributors:       metzgric
+Tags:               handball, results, schweiz, switzerland, suisse, vat
+Version:            1.0.0
 Requires at least:  6.1
 Requires PHP:       7.0
 Tested up to:       6.2.2
@@ -42,36 +42,8 @@ My recommended way of development is using wp-env: https://developer.wordpress.o
 
 == Changelog ==
 
-= 2.0.0 =
-* Complete rewrite of the plugin due to the API change by SHV
-* Removed short codes
-* Removed individual tables (not needed anymore)
-* Highlight and Rankings will now link to the logo of the teams / clubs
-* Default language is english with translation for german (naturally) and french (coming soon)
-
-= 1.1.2 =
-* Adding support for newer wordpress version (5), last pre-6 upgrade
-
-= 1.1.1 =
-* Hotfix for detecting played game (forfait)
-
-= 1.1.0 =
-* Adding logic for logos instead of using the name for teams.
-
-= 1.0.9 =
-* Just upgrading the readme.txt for "tested for"
-
-= 1.0.8 =
-* Missing Field in Table header
-
-= 1.0.7 =
-* Refactored the lastresults and nextgames views to have less information
-
-= 1.0.6 =
-* Bugfix for home games detection
-
 = 1.0.0 =
-* First released version.
+* Setup as blocks for all possible apis
 
 == Caveats ==
 

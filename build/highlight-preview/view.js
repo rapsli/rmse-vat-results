@@ -1,1 +1,1 @@
-console.log("Hello World! (from tc-shv-results highlight block)");
+console.log("Hello World! (from rmse-vat-results highlight block)");

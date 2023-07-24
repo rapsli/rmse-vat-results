@@ -1,8 +1,8 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "tc-shv-results/rankings",
-	"version": "2.0.0",
+	"name": "rmse-vat-results/rankings",
+	"version": "1.0.0",
 	"title": "Team Ranking",
 	"category": "widgets",
 	"icon": "index-card",
@@ -28,7 +28,7 @@
 			"default": "35"
 		}
 	},
-	"textdomain": "tc-shv-results",
+	"textdomain": "rmse-vat-results",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
 	"viewScript": "file:./view.js",
