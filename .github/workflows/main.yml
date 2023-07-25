@@ -29,5 +29,9 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: rmse-vat-results.zip
-        path: rmse-vat-results.zip
+        path: |
+          .
+          !node_modules/**
+          !.git/**
+          !.github/**
         retention-days: 5
