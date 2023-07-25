@@ -96,6 +96,10 @@ table.rmse-vat-results-table {
 	text-align: left;
 }
 
+.rmse-vat-results-rankings-team-logo img {
+	object-fit: contain;
+}
+
 .rmse-vat-results-ranking-modus {
 	padding-top: 1.25em;
 }
