@@ -23,6 +23,11 @@ jobs:
     - name: Create ZIP
       run: |
         echo "➤ Generating zip file..."
-        zip -r "${GITHUB_WORKSPACE}/${GITHUB_REPOSITORY#*/}.zip" .
-        echo "zip-path=${GITHUB_WORKSPACE}/${GITHUB_REPOSITORY#*/}.zip" >> "${GITHUB_OUTPUT}"
-        echo "✓ Zip file generated!"
+        zip -r rmse-vat-results.zip .
+
+    - name: 'Upload Artifact'
+      uses: actions/upload-artifact@v3
+      with:
+        name: rmse-vat-results.zip
+        path: rmse-vat-results.zip
+        retention-days: 5
