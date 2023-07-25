@@ -20,15 +20,10 @@ jobs:
         npm install
         npm run build
         
-    - name: Create ZIP
-      run: |
-        echo "➤ Generating zip file..."
-        zip -r rmse-vat-results.zip . -x "node_modules/**" -x ".git/**" -x ".github/**"
-
     - name: 'Upload Artifact'
       uses: actions/upload-artifact@v3
       with:
-        name: rmse-vat-results.zip
+        name: rmse-vat-results
         path: |
           .
           !node_modules/**
