@@ -140,7 +140,7 @@ table.rmse-vat-results-table {
 }
 
 .rmse-vat-results-highlight-info {
-	flex: 0 0 auto;
+	flex: 0 1 auto;
 	text-align: center;
 	margin-top: auto;
 	margin-bottom: auto;
