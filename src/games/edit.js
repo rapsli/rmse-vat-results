@@ -71,9 +71,9 @@ export default function Edit({ attributes, setAttributes }) {
 						onChange={(val) => setAttributes({ header: val })}
 					/>
 					<CheckboxControl
-						label={__('Show game type?', 'rmse-vat-results')}
-						checked={attributes.type}
-						onChange={(val) => setAttributes({ type: val })}
+						label={__('Show Group?', 'rmse-vat-results')}
+						checked={attributes.group}
+						onChange={(val) => setAttributes({ group: val })}
 					/>
 					<CheckboxControl
 						label={__('Show Venue?', 'rmse-vat-results')}
@@ -95,9 +95,9 @@ export default function Edit({ attributes, setAttributes }) {
 							<th className='rmse-vat-results-date'>
 								{__('Date / Time', 'rmse-vat-results')}
 							</th>
-							{attributes.type &&
-								<th className='rmse-vat-results-type'>
-									{__('Type', 'rmse-vat-results')}
+							{attributes.group &&
+								<th className='rmse-vat-results-group'>
+									{__('Group', 'rmse-vat-results')}
 								</th>
 							}
 							<th className='rmse-vat-results-hometeam'>
@@ -124,8 +124,8 @@ export default function Edit({ attributes, setAttributes }) {
 						<td className='rmse-vat-results-date'>
 							21.10.23 14:25
 						</td>
-						{attributes.type &&
-							<td className='rmse-vat-results-type'>
+						{attributes.group &&
+							<td className='rmse-vat-results-group'>
 								Club Internal
 							</td>
 						}
@@ -137,7 +137,7 @@ export default function Edit({ attributes, setAttributes }) {
 						</td>
 						{attributes.venue &&
 							<td className='rmse-vat-results-venue'>
-								Halle X
+								<a href="#">Halle X</a>
 							</td>
 						}
 						{attributes.with_result &&
@@ -150,8 +150,8 @@ export default function Edit({ attributes, setAttributes }) {
 					<td className='rmse-vat-results-date'>
 							21.10.23 14:25
 						</td>
-						{attributes.type &&
-							<td className='rmse-vat-results-type'>
+						{attributes.group &&
+							<td className='rmse-vat-results-group'>
 							Sieg
 							</td>
 						}
@@ -163,7 +163,7 @@ export default function Edit({ attributes, setAttributes }) {
 						</td>
 						{attributes.venue &&
 							<td className='rmse-vat-results-venue'>
-							Halle X
+								<a href="#">Halle X</a>
 							</td>
 						}
 						{attributes.with_result &&
@@ -176,8 +176,8 @@ export default function Edit({ attributes, setAttributes }) {
 					<td className='rmse-vat-results-date'>
 							21.10.23 14:25
 						</td>
-						{attributes.type &&
-							<td className='rmse-vat-results-type'>
+						{attributes.group &&
+							<td className='rmse-vat-results-group'>
 							Unentschieden
 							</td>
 						}
@@ -189,7 +189,7 @@ export default function Edit({ attributes, setAttributes }) {
 						</td>
 						{attributes.venue &&
 							<td className='rmse-vat-results-venue'>
-							Halle X
+								<a href="Ç">Halle X</a>
 							</td>
 						}
 						{attributes.with_result &&
@@ -202,8 +202,8 @@ export default function Edit({ attributes, setAttributes }) {
 					<td className='rmse-vat-results-date'>
 							21.10.23 14:25
 						</td>
-						{attributes.type &&
-							<td className='rmse-vat-results-type'>
+						{attributes.group &&
+							<td className='rmse-vat-results-group'>
 							Niederlage
 							</td>
 						}
@@ -215,7 +215,7 @@ export default function Edit({ attributes, setAttributes }) {
 						</td>
 						{attributes.venue &&
 							<td className='rmse-vat-results-venue'>
-							Halle X
+								<a href="#">Halle X</a>
 							</td>
 						}
 						{attributes.with_result &&
@@ -229,8 +229,8 @@ export default function Edit({ attributes, setAttributes }) {
 					<td className='rmse-vat-results-date'>
 							21.10.23 14:25
 						</td>
-						{attributes.type &&
-							<td className='rmse-vat-results-type'>
+						{attributes.group &&
+							<td className='rmse-vat-results-group'>
 							Heimspiel
 							</td>
 						}
@@ -242,7 +242,7 @@ export default function Edit({ attributes, setAttributes }) {
 						</td>
 						{attributes.venue &&
 							<td className='rmse-vat-results-venue'>
-							Halle X
+								<a href="#">Halle X</a>
 							</td>
 						}
 						{attributes.with_result &&
@@ -254,8 +254,8 @@ export default function Edit({ attributes, setAttributes }) {
 					<td className='rmse-vat-results-date'>
 							21.10.23 14:25
 						</td>
-						{attributes.type &&
-							<td className='rmse-vat-results-type'>
+						{attributes.group &&
+							<td className='rmse-vat-results-group'>
 							Auswärtsspiel
 							</td>
 						}
@@ -267,7 +267,7 @@ export default function Edit({ attributes, setAttributes }) {
 						</td>
 						{attributes.venue &&
 							<td className='rmse-vat-results-venue'>
-							Halle X
+								<a href="#">Halle X</a>
 							</td>
 						}
 						{attributes.with_result &&
@@ -280,8 +280,8 @@ export default function Edit({ attributes, setAttributes }) {
 					<td className='rmse-vat-results-date'>
 							21.10.23 14:25
 						</td>
-						{attributes.type &&
-							<td className='rmse-vat-results-type'>
+						{attributes.group &&
+							<td className='rmse-vat-results-tygrouppe'>
 							Cupspiel
 							</td>
 						}
@@ -293,7 +293,7 @@ export default function Edit({ attributes, setAttributes }) {
 						</td>
 						{attributes.venue &&
 							<td className='rmse-vat-results-venue'>
-							Halle X
+								<a href="#">Halle X</a>
 							</td>
 						}
 						{attributes.with_result &&
@@ -305,8 +305,8 @@ export default function Edit({ attributes, setAttributes }) {
 					<td className='rmse-vat-results-date'>
 							21.10.23 14:25
 						</td>
-						{attributes.type &&
-							<td className='rmse-vat-results-type'>
+						{attributes.group &&
+							<td className='rmse-vat-results-group'>
 							Meisterschaftsspiel
 							</td>
 						}
@@ -318,7 +318,7 @@ export default function Edit({ attributes, setAttributes }) {
 						</td>
 						{attributes.venue &&
 							<td className='rmse-vat-results-venue'>
-							Halle X
+								<a href="#">Halle X</a>
 							</td>
 						}
 						{attributes.with_result &&

@@ -2,14 +2,14 @@
 # This file is distributed under the Apache License, Version 2.0.
 msgid ""
 msgstr ""
-"Project-Id-Version: Handball VAT Results ClubAPI Integration 1.0.0\n"
+"Project-Id-Version: Handball VAT Results ClubAPI Integration 1.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/rmse-vat-results\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-07-25T13:48:24+00:00\n"
+"POT-Creation-Date: 2023-07-25T14:32:24+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.8.1\n"
 "X-Domain: rmse-vat-results\n"
@@ -100,7 +100,7 @@ msgstr ""
 #: build/schedule/render.php:134
 #: src/games/render.php:134
 #: src/schedule/render.php:134
-msgid "No games loaded!"
+msgid "No games loaded"
 msgstr ""
 
 #: build/highlight-result/render.php:54
@@ -184,7 +184,7 @@ msgstr ""
 
 #: build/rankings/render.php:106
 #: src/rankings/render.php:106
-msgid "Team could not be loaded!"
+msgid "Team could not be loaded"
 msgstr ""
 
 #: rmse-vat-results-settings.php:12
@@ -224,11 +224,11 @@ msgid "--- Choose a team"
 msgstr ""
 
 #: src/highlight-preview/render.php:12
-msgid "No games planned yet!"
+msgid "No games planned yet"
 msgstr ""
 
 #: src/highlight-result/render.php:12
-msgid "No games played yet!"
+msgid "No games played yet"
 msgstr ""
 
 #: build/games/index.js:1

@@ -1,8 +1,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Handball VAT Results ClubAPI Integration\n"
-"POT-Creation-Date: 2023-07-24 15:56+0200\n"
-"PO-Revision-Date: 2023-07-25 15:49+0200\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/rmse-vat-results\n"
+"POT-Creation-Date: 2023-07-25 17:34+0200\n"
+"PO-Revision-Date: 2023-07-25 17:34+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de_CH@informal\n"
@@ -28,8 +29,8 @@ msgstr "Datum / Zeit"
 
 #: build/games/render.php:23 build/schedule/render.php:23 src/games/edit.js:100
 #: src/games/render.php:23 src/schedule/edit.js:91 src/schedule/render.php:23
-msgid "Type"
-msgstr "Typ"
+msgid "Group"
+msgstr "Gruppe"
 
 #: build/games/render.php:27 build/schedule/render.php:27 src/games/edit.js:104
 #: src/games/render.php:27 src/schedule/edit.js:95 src/schedule/render.php:27
@@ -51,18 +52,18 @@ msgstr "Halle"
 msgid "Result"
 msgstr "Resultat"
 
-#: build/games/render.php:134 build/schedule/render.php:134
-#: src/games/render.php:134 src/schedule/render.php:134
-msgid "No games loaded!"
-msgstr "Keine Spiele geladen!"
+#: build/games/render.php:137 build/schedule/render.php:134
+#: src/games/render.php:137 src/schedule/render.php:134
+msgid "No games loaded"
+msgstr "Keine Spiele geladen"
 
 #: build/highlight-preview/render.php:12 src/highlight-preview/render.php:12
-msgid "No games planned yet!"
-msgstr "Noch keine Spiele geplant!"
+msgid "No games planned yet"
+msgstr "Noch keine Spiele geplant"
 
 #: build/highlight-result/render.php:12 src/highlight-result/render.php:12
-msgid "No games played yet!"
-msgstr "Noch keine Spiele gespielt!"
+msgid "No games played yet"
+msgstr "Noch keine Spiele gespielt"
 
 #: build/highlight-result/render.php:54 src/highlight-result/edit.js:113
 #: src/highlight-result/render.php:54
@@ -117,8 +118,8 @@ msgid "Modus"
 msgstr "Modus"
 
 #: build/rankings/render.php:106 src/rankings/render.php:106
-msgid "Team could not be loaded!"
-msgstr "Team konnte nicht geladen werden!"
+msgid "Team could not be loaded"
+msgstr "Team konnte nicht geladen werden"
 
 #: rmse-vat-results-settings.php:12
 msgid "VAT Results Settings"
@@ -210,8 +211,8 @@ msgid "Show Header?"
 msgstr "Zeige Kopfzeile?"
 
 #: src/games/edit.js:74 src/schedule/edit.js:65
-msgid "Show game type?"
-msgstr "Zeige Spieltyp?"
+msgid "Show Group?"
+msgstr "Zeige Gruppe?"
 
 #: src/games/edit.js:79 src/highlight-preview/edit.js:61
 #: src/highlight-result/edit.js:61 src/schedule/edit.js:70
@@ -304,3 +305,6 @@ msgstr "Rico Metzger"
 #. Author URI of the plugin/theme
 msgid "https://rmse.ch"
 msgstr "https://rmse.ch"
+
+#~ msgid "Show game type?"
+#~ msgstr "Zeige Spieltyp?"

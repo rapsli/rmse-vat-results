@@ -103,7 +103,7 @@ if ($group_info !== false) { ?>
 	<?php
 } else {
 	?>
-	<div <?php echo get_block_wrapper_attributes(); ?>><?php _e('Team could not be loaded!', 'rmse-vat-results'); ?>
+	<div <?php echo get_block_wrapper_attributes(); ?>><?php _e('Team could not be loaded', 'rmse-vat-results'); ?>
 	</div>
 	<?php
 }

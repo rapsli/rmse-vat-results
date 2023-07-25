@@ -220,7 +220,7 @@ function rmse_vat_results_retrieve_team_group($id)
 
 			$rankings = $group_info->ranking;
 
-			foreach($rankings as $idx => $ranking) {
+			foreach ($rankings as $idx => $ranking) {
 				$ranking->promotion = $idx + 1 <= $promotion_max_idx;
 				$ranking->promotion_candidate = !$ranking->promotion && $idx + 1 <= $promotion_candidate_max_idx;
 
@@ -235,7 +235,8 @@ function rmse_vat_results_retrieve_team_group($id)
 	return $group_info;
 }
 
-function rmse_vat_results_team_logo($team_id, $club_id, $width, $height) {
+function rmse_vat_results_team_logo($team_id, $club_id, $width, $height)
+{
 	$options = get_option('rmse_vat_results_options');
 	if (isset($options) && $options !== false) {
 		$logo_url = $options['logo_url'];
@@ -288,5 +289,10 @@ function rmse_vat_results_retrieve_team_schedule($team)
 	}
 
 	return array($games_played, $games_planned);
+}
+
+function rmse_vat_results_venue_link($game)
+{
+	return 'https://www.google.com/maps/search/?api=1&query=' . urlencode($game->venue . ', ' . $game->venueAddress . ', ' . $game->venueZip . ' ' . $game->venueCity);
 }
 ?>

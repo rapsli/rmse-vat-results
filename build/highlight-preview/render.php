@@ -9,19 +9,18 @@ if ($games !== false) {
 	$planned = $games[1];
 	if ($planned === false || count($planned) === 0) { ?>
 		<div class="rmse-vat-results-highlight-empty" <?php echo get_block_wrapper_attributes(); ?>>
-			<?php _e('No games planned yet!') ?>
+			<?php _e('No games planned yet', 'rmse-vat-results') ?>
 		</div>
 	<?php } else {
 		$game = $planned[0];
 		?>
 		<div <?php echo get_block_wrapper_attributes(); ?>>
 			<div class="rmse-vat-results-highlight-result">
-				<div clas="rmse-vat-results-highlight-home">
+				<div class="rmse-vat-results-highlight-home">
 					<?php if ($attributes['logos']) { ?>
 						<div title="<?php echo $game->teamAName; ?>" class="rmse-vat-results-highlight-logo">
 							<img
 								src="<?php echo rmse_vat_results_team_logo($game->teamAId, $game->clubTeamAId, $attributes['logosize'], $attributes['logosize']); ?>"
-								height="<?php echo $attributes['logosize']; ?>" width="<?php echo $attributes['logosize']; ?>"
 								alt="<?php echo $game->teamAName; ?>" />
 						</div>
 					<?php } ?>
@@ -38,17 +37,18 @@ if ($games !== false) {
 					</div>
 					<?php if ($attributes['venue']) { ?>
 						<div class="rmse-vat-results-highlight-info-venue">
-							<?php echo $game->venue; ?>
+						<a href="<?php echo rmse_vat_results_venue_link($game); ?>" target="_blank">
+									<?php echo $game->venue; ?>
+								</a>
 						</div>
 					<?php } ?>
 				</div>
 
-				<div clas="rmse-vat-results-highlight-guest">
+				<div class="rmse-vat-results-highlight-guest">
 					<?php if ($attributes['logos']) { ?>
 						<div title="<?php echo $game->teamBName; ?>" class="rmse-vat-results-highlight-logo">
 							<img
 								src="<?php echo rmse_vat_results_team_logo($game->teamBId, $game->clubTeamBId, $attributes['logosize'], $attributes['logosize']); ?>"
-								height="<?php echo $attributes['logosize']; ?>" width="<?php echo $attributes['logosize']; ?>"
 								alt="<?php echo $game->teamBName; ?>" />
 						</div>
 					<?php } ?>
@@ -59,6 +59,7 @@ if ($games !== false) {
 					<?php } ?>
 				</div>
 			</div>
-		<?php }
+		</div>
+	<?php }
 }
 ?>

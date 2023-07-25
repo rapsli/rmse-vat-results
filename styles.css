@@ -6,7 +6,7 @@
  */
 
 .rmse-vat-results-result,
-.rmse-vat-results-type,
+.rmse-vat-results-group,
 .rmse-vat-results-date {
 	text-align: center;
 }
@@ -15,6 +15,10 @@
 .rmse-vat-results-guestteam,
 .rmse-vat-results-venue {
 	text-align: left;
+}
+
+.rmse-vat-results-venue a {
+	text-decoration: none;
 }
 
 .rmse-vat-results-game-home {
@@ -120,8 +124,8 @@ table.rmse-vat-results-table {
 	gap: 0.5em;
 	font-size: 1.5em;
 	padding: 0.25em;
-	border: 1 solid #333;
-	align-items: center;
+	align-items: stretch;
+	width: 100%;
 }
 
 .rmse-vat-results-highlight-preview {
@@ -130,7 +134,18 @@ table.rmse-vat-results-table {
 	font-size: 1.5em;
 	padding: 0.25em;
 	border: 1 solid #333;
-	align-items: center;
+	align-items: stretch;
+	width: 100%;
+}
+
+.rmse-vat-results-highlight-logo {
+	text-align: center;
+}
+
+.rmse-vat-results-highlight-logo img {
+	object-fit: contain;
+	height: 100%;
+	width: clamp(35px, 100%, 150px);
 }
 
 .rmse-vat-results-highlight-name {
@@ -139,18 +154,18 @@ table.rmse-vat-results-table {
 }
 
 .rmse-vat-results-highlight-home {
-	flex: 1 1 0;
-}
-
-.rmse-vat-results-highlight-info {
-	flex: 0 1 auto;
-	text-align: center;
-	margin-top: auto;
-	margin-bottom: auto;
+	flex: 1 1 33%;
 }
 
 .rmse-vat-results-highlight-guest {
-	flex: 1 1 0;
+	flex: 1 1 33%;
+}
+
+.rmse-vat-results-highlight-info {
+	flex: 0 1 33%;
+	text-align: center;
+	margin-top: auto;
+	margin-bottom: auto;
 }
 
 .rmse-vat-results-highlight-info-result {
@@ -173,6 +188,10 @@ table.rmse-vat-results-table {
 	margin: 1em 0;
 }
 
+.rmse-vat-results-highlight-info-venue a {
+	text-decoration: none;
+}
+
 .rmse-vat-results-highlight-info-spectators {
 	font-size: 0.75em;
 	margin: 1em 0 0;
@@ -188,6 +207,6 @@ table.rmse-vat-results-table {
 .rmse-vat-results-highlight-empty {
 	font-size: 2em;
 	padding: 1em;
-	border: 1px solid;
 	color: darkred;
+	text-align: center;
 }

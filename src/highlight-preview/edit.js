@@ -83,7 +83,7 @@ export default function Edit({ attributes, setAttributes }) {
 			<div className="rmse-vat-results-highlight-preview">
 				<div className="rmse-vat-results-highlight-home">
 					{attributes.logos &&
-						<div title="Team A" className="rmse-vat-results-highlight-logo"><img src={logo} style={{maxWidth: attributes.logosize, maxHeight: attributes.logosize}} /></div>
+						<div title="Team A" className="rmse-vat-results-highlight-logo"><img src={logo} style={{ maxWidth: attributes.logosize, maxHeight: attributes.logosize }} /></div>
 					}
 					{attributes.names &&
 						<div className="rmse-vat-results-highlight-name">Team A</div>
@@ -93,12 +93,14 @@ export default function Edit({ attributes, setAttributes }) {
 				<div className="rmse-vat-results-highlight-info">
 					<div className="rmse-vat-results-highlight-info-date">21.10.23 14:11</div>
 					{attributes.venue &&
-						<div className="rmse-vat-results-highlight-info-venue">Halle X</div>
+						<div className="rmse-vat-results-highlight-info-venue">
+							<a href="#">Halle X</a>
+						</div>
 					}
 				</div>
 				<div className="rmse-vat-results-highlight-guest">
 					{attributes.logos &&
-						<div title="Team B" className="rmse-vat-results-highlight-logo"><img src={logo} style={{maxWidth: attributes.logosize, maxHeight: attributes.logosize}} /></div>
+						<div title="Team B" className="rmse-vat-results-highlight-logo"><img src={logo} style={{ maxWidth: attributes.logosize, maxHeight: attributes.logosize }} /></div>
 					}
 					{attributes.names &&
 						<div className="rmse-vat-results-highlight-name">Team B</div>

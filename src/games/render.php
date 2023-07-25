@@ -18,9 +18,9 @@ if ($games !== false) {
 						<th class="rmse-vat-results-date">
 							<?php _e('Date / Time', 'rmse-vat-results') ?>
 						</th>
-						<?php if ($attributes['type'] === true) { ?>
-							<th class="rmse-vat-results-type">
-								<?php _e('Type', 'rmse-vat-results') ?>
+						<?php if ($attributes['group'] === true) { ?>
+							<th class="rmse-vat-results-group">
+								<?php _e('Group', 'rmse-vat-results') ?>
 							</th>
 						<?php } ?>
 						<th class="rmse-vat-results-hometeam">
@@ -65,8 +65,8 @@ if ($games !== false) {
 						<td class="rmse-vat-results-date">
 							<?php echo date_format($game->gameDateTime, $attributes['dateformat']); ?>
 						</td>
-						<?php if ($attributes['type'] === true) { ?>
-							<td class="rmse-vat-results-type">
+						<?php if ($attributes['group'] === true) { ?>
+							<td class="rmse-vat-results-group">
 								<?php echo $game->groupCupText; ?>
 							</td>
 						<?php } ?>
@@ -78,7 +78,9 @@ if ($games !== false) {
 						</td>
 						<?php if ($attributes['venue'] === true) { ?>
 							<td class="rmse-vat-results-venue">
-								<?php echo $game->venue; ?>
+								<a href="<?php echo rmse_vat_results_venue_link($game); ?>" target="_blank">
+									<?php echo $game->venue; ?>
+								</a>
 							</td>
 						<?php } ?>
 						<?php if ($attributes['with_result'] === true) { ?>
@@ -98,8 +100,8 @@ if ($games !== false) {
 						<td class="rmse-vat-results-date">
 							<?php echo date_format($game->gameDateTime, $attributes['dateformat']); ?>
 						</td>
-						<?php if ($attributes['type'] === true) { ?>
-							<td class="rmse-vat-results-type">
+						<?php if ($attributes['group'] === true) { ?>
+							<td class="rmse-vat-results-group">
 								<?php echo $game->groupCupText; ?>
 							</td>
 						<?php } ?>
@@ -111,7 +113,9 @@ if ($games !== false) {
 						</td>
 						<?php if ($attributes['venue'] === true) { ?>
 							<td class="rmse-vat-results-venue">
-								<?php echo $game->venue; ?>
+							<a href="<?php echo rmse_vat_results_venue_link($game); ?>" target="_blank">
+									<?php echo $game->venue; ?>
+								</a>
 							</td>
 						<?php } ?>
 						<?php if ($attributes['with_result'] === true) { ?>
@@ -131,7 +135,7 @@ if ($games !== false) {
 } else {
 	?>
 	<p <?php echo get_block_wrapper_attributes(); ?>>
-		<?php _e('No games loaded!', 'rmse-vat-results'); ?>
+		<?php _e('No games loaded', 'rmse-vat-results'); ?>
 	</p>
 	<?php
 }
