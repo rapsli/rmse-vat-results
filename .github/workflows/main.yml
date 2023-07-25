@@ -20,12 +20,9 @@ jobs:
         npm install
         npm run build
         
-    - name: Download WP CLI
-      run: |
-        curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
-        php wp-cli.phar --info
-        php wp-cli.phar plugin install dist-archive
-        
     - name: Create ZIP
       run: |
-        php wp-cli.phar dist-archive .
+        echo "➤ Generating zip file..."
+        zip -r "${GITHUB_WORKSPACE}/${GITHUB_REPOSITORY#*/}.zip" .
+        echo "zip-path=${GITHUB_WORKSPACE}/${GITHUB_REPOSITORY#*/}.zip" >> "${GITHUB_OUTPUT}"
+        echo "✓ Zip file generated!"
