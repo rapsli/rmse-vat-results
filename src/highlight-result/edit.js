@@ -83,7 +83,7 @@ export default function Edit({ attributes, setAttributes }) {
 						onChange={(val) => setAttributes({ spectators: val })}
 					/>
 					<TextControl
-						label={__('Logo Size', 'rmse-vat-results')}
+						label={__('Logosize retrieved from server', 'rmse-vat-results')}
 						value={attributes.logosize}
 						onChange={(val) => setAttributes({ logosize: val })}
 					/>

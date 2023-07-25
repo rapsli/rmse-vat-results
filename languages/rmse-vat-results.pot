@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-07-24T13:20:42+00:00\n"
+"POT-Creation-Date: 2023-07-25T13:48:24+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.8.1\n"
 "X-Domain: rmse-vat-results\n"
@@ -223,6 +223,14 @@ msgstr ""
 msgid "--- Choose a team"
 msgstr ""
 
+#: src/highlight-preview/render.php:12
+msgid "No games planned yet!"
+msgstr ""
+
+#: src/highlight-result/render.php:12
+msgid "No games played yet!"
+msgstr ""
+
 #: build/games/index.js:1
 #: build/highlight-preview/index.js:1
 #: build/highlight-result/index.js:1
@@ -317,9 +325,6 @@ msgstr ""
 #: build/highlight-preview/index.js:1
 #: build/highlight-result/index.js:1
 #: build/rankings/index.js:1
-#: src/highlight-preview/edit.js:76
-#: src/highlight-result/edit.js:86
-#: src/rankings/edit.js:64
 msgid "Logo Size"
 msgstr ""
 
@@ -381,6 +386,12 @@ msgstr ""
 #: build/rankings/index.js:1
 #: src/rankings/edit.js:171
 msgid "Long Description of the mode of this ranking"
+msgstr ""
+
+#: src/highlight-preview/edit.js:76
+#: src/highlight-result/edit.js:86
+#: src/rankings/edit.js:64
+msgid "Logosize retrieved from server"
 msgstr ""
 
 #: build/games/block.json

@@ -73,7 +73,7 @@ export default function Edit({ attributes, setAttributes }) {
 						onChange={(val) => setAttributes({ names: val })}
 					/>
 					<TextControl
-						label={__('Logo Size', 'rmse-vat-results')}
+						label={__('Logosize retrieved from server', 'rmse-vat-results')}
 						value={attributes.logosize}
 						onChange={(val) => setAttributes({ logosize: val })}
 					/>
@@ -83,7 +83,7 @@ export default function Edit({ attributes, setAttributes }) {
 			<div className="rmse-vat-results-highlight-preview">
 				<div className="rmse-vat-results-highlight-home">
 					{attributes.logos &&
-						<div title="Team A" className="rmse-vat-results-highlight-logo"><img src={logo} height={attributes.logosize} width={attributes.logosize} alt="Team A"/></div>
+						<div title="Team A" className="rmse-vat-results-highlight-logo"><img src={logo} style={{maxWidth: attributes.logosize, maxHeight: attributes.logosize}} /></div>
 					}
 					{attributes.names &&
 						<div className="rmse-vat-results-highlight-name">Team A</div>
@@ -98,7 +98,7 @@ export default function Edit({ attributes, setAttributes }) {
 				</div>
 				<div className="rmse-vat-results-highlight-guest">
 					{attributes.logos &&
-						<div title="Team B" className="rmse-vat-results-highlight-logo"><img src={logo} height={attributes.logosize} width={attributes.logosize} alt="Team B"/></div>
+						<div title="Team B" className="rmse-vat-results-highlight-logo"><img src={logo} style={{maxWidth: attributes.logosize, maxHeight: attributes.logosize}} /></div>
 					}
 					{attributes.names &&
 						<div className="rmse-vat-results-highlight-name">Team B</div>

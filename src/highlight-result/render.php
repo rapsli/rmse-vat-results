@@ -9,7 +9,7 @@ if ($games !== false) {
 	$played = $games[0];
 	if ($played === false || count($played) === 0) { ?>
 		<div class="rmse-vat-results-highlight-empty" <?php echo get_block_wrapper_attributes(); ?>>
-			<?php _e('No games played yet!') ?>
+			<?php _e('No games played yet!', 'rmse-vat-results') ?>
 		</div>
 	<?php } else {
 		$game = $played[0];

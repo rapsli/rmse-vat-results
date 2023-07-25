@@ -191,7 +191,7 @@ function rmse_vat_results_options_page_html()
 									<?php echo $team->teamId ?>
 								</td>
 								<td>
-									<img src="<?php echo rmse_vat_results_team_logo($team->teamId, $team->clubId, 35, 35); ?>" alt="Logo <?php $team->teamName; ?>" width="35" height="35" />
+									<img src="<?php echo rmse_vat_results_team_logo($team->teamId, $team->clubId, 35, 35); ?>" alt="Logo <?php $team->teamName; ?>" />
 								</td>
 								<td>
 									<?php echo $team->teamName ?>

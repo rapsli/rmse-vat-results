@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Handball VAT Results ClubAPI Integration\n"
 "POT-Creation-Date: 2023-07-24 15:56+0200\n"
-"PO-Revision-Date: 2023-07-24 16:01+0200\n"
+"PO-Revision-Date: 2023-07-25 15:49+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de_CH@informal\n"
@@ -232,8 +232,8 @@ msgstr "Zeige Teamnamen?"
 
 #: src/highlight-preview/edit.js:76 src/highlight-result/edit.js:86
 #: src/rankings/edit.js:64
-msgid "Logo Size"
-msgstr "Logogrösse"
+msgid "Logosize retrieved from server"
+msgstr "Logogrösse (Server)"
 
 #: src/highlight-result/edit.js:76
 msgid "Show Halftime Result?"
@@ -251,7 +251,9 @@ msgstr "Rangliste der Gruppe des Teams"
 msgid ""
 "Choose the team and whether headers should be displayed as well as whether "
 "the HTML from the tanking should be shown"
-msgstr "Wähle die anzuzeigenden Informationen aus."
+msgstr ""
+"Wähle das Team und ob Überschriften angezeigt werden sollen sowie ob der "
+"HTML-Code des Tankens angezeigt werden soll"
 
 #: src/rankings/edit.js:59
 msgid "Show Logo?"
@@ -292,7 +294,8 @@ msgstr "Handball VAT Resultate Integration (ClubAPI)"
 #. Description of the plugin/theme
 msgid "Reads and actualizes results and rankings directly via VAT interface"
 msgstr ""
-"Liest und aktualisiert Resultate und Ranglisten direkt via das VAT API."
+"Liest und aktualisiert Ergebnisse und Rankings direkt über die VAT-"
+"Schnittstelle"
 
 #. Author of the plugin/theme
 msgid "Rico Metzger"

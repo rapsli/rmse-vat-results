@@ -231,7 +231,7 @@ msgstr "Zeige Teamnamen?"
 
 #: src/highlight-preview/edit.js:76 src/highlight-result/edit.js:86
 #: src/rankings/edit.js:64
-msgid "Logo Size"
+msgid "Logosize retrieved from server"
 msgstr "Logogrösse"
 
 #: src/highlight-result/edit.js:76

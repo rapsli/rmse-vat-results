@@ -9,7 +9,7 @@ if ($games !== false) {
 	$planned = $games[1];
 	if ($planned === false || count($planned) === 0) { ?>
 		<div class="rmse-vat-results-highlight-empty" <?php echo get_block_wrapper_attributes(); ?>>
-			<?php _e('No games planned yet!') ?>
+			<?php _e('No games planned yet!', 'rmse-vat-results') ?>
 		</div>
 	<?php } else {
 		$game = $planned[0];
@@ -21,7 +21,6 @@ if ($games !== false) {
 						<div title="<?php echo $game->teamAName; ?>" class="rmse-vat-results-highlight-logo">
 							<img
 								src="<?php echo rmse_vat_results_team_logo($game->teamAId, $game->clubTeamAId, $attributes['logosize'], $attributes['logosize']); ?>"
-								height="<?php echo $attributes['logosize']; ?>" width="<?php echo $attributes['logosize']; ?>"
 								alt="<?php echo $game->teamAName; ?>" />
 						</div>
 					<?php } ?>
@@ -48,7 +47,6 @@ if ($games !== false) {
 						<div title="<?php echo $game->teamBName; ?>" class="rmse-vat-results-highlight-logo">
 							<img
 								src="<?php echo rmse_vat_results_team_logo($game->teamBId, $game->clubTeamBId, $attributes['logosize'], $attributes['logosize']); ?>"
-								height="<?php echo $attributes['logosize']; ?>" width="<?php echo $attributes['logosize']; ?>"
 								alt="<?php echo $game->teamBName; ?>" />
 						</div>
 					<?php } ?>

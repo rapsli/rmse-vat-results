@@ -61,8 +61,8 @@ export default function Edit({ attributes, setAttributes }) {
 					onChange={(val) => setAttributes({ logo: val })}
 				/>
 				<TextControl
-					label={__('Logo Size', 'rmse-vat-results')}
-					value={attributes.logosize}
+						label={__('Logosize retrieved from server', 'rmse-vat-results')}
+						value={attributes.logosize}
 					onChange={(val) => setAttributes({ logosize: val })}
 				/>
 			</InspectorControls>
