@@ -23,7 +23,7 @@ jobs:
     - name: Create ZIP
       run: |
         echo "➤ Generating zip file..."
-        zip -r rmse-vat-results.zip .
+        zip -r rmse-vat-results.zip . -x "node_modules/" -x ".git/" -x ".github/"
 
     - name: 'Upload Artifact'
       uses: actions/upload-artifact@v3
