@@ -155,13 +155,12 @@ function rmse_vat_results_retrieve_club_games()
 			}
 
 			$club_games_planned = array_filter($all_club_games, function ($game) {
-				return $game->gameStatusId === 1;
+				return $game->gameStatusId === 1 || $game->gameStatusId === 6;
 			});
 			$club_games_played = array_filter($all_club_games, function ($game) {
-				return $game->gameStatusId !== 1;
+				return $game->gameStatusId === 2;
 			});
 
-			/*
 			usort($club_games_planned, function ($a, $b) {
 				$adt = $a->gameDateTime;
 				$bdt = $b->gameDateTime;
@@ -175,7 +174,6 @@ function rmse_vat_results_retrieve_club_games()
 
 				return $adt === $bdt ? 0 : ($adt > $bdt ? -1 : 1);
 			});
-			*/
 
 			set_transient('rmse_vat_results_club_games_played', $club_games_played, MINUTE_IN_SECONDS * 1);
 			set_transient('rmse_vat_results_club_games_planned', $club_games_planned, MINUTE_IN_SECONDS * 1);
@@ -262,13 +260,12 @@ function rmse_vat_results_retrieve_team_schedule($team)
 			}
 
 			$games_planned = array_filter($team_games, function ($game) {
-				return $game->gameStatusId === 1;
+				return $game->gameStatusId === 1 || $game->gameStatusId === 6;
 			});
 			$games_played = array_filter($team_games, function ($game) {
-				return $game->gameStatusId !== 1;
+				return $game->gameStatusId === 2;
 			});
 
-			/*
 			usort($games_planned, function ($a, $b) {
 				$adt = $a->gameDateTime;
 				$bdt = $b->gameDateTime;
@@ -282,7 +279,6 @@ function rmse_vat_results_retrieve_team_schedule($team)
 
 				return $adt === $bdt ? 0 : ($adt > $bdt ? -1 : 1);
 			});
-			*/
 
 			set_transient("rmse_vat_results_team_played_$team", $games_played, MINUTE_IN_SECONDS * 1);
 			set_transient("rmse_vat_results_team_planned_$team", $games_planned, MINUTE_IN_SECONDS * 1);
