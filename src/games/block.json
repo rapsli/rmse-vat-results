@@ -2,7 +2,7 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "rmse-vat-results/games",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"title": "Club Games and Results",
 	"category": "widgets",
 	"icon": "list-view",
