@@ -268,6 +268,7 @@ function rmse_vat_results_retrieve_team_schedule($team)
 				return $game->gameStatusId !== 1;
 			});
 
+			/*
 			usort($games_planned, function ($a, $b) {
 				$adt = $a->gameDateTime;
 				$bdt = $b->gameDateTime;
@@ -281,6 +282,7 @@ function rmse_vat_results_retrieve_team_schedule($team)
 
 				return $adt === $bdt ? 0 : ($adt > $bdt ? -1 : 1);
 			});
+			*/
 
 			set_transient("rmse_vat_results_team_played_$team", $games_played, MINUTE_IN_SECONDS * 1);
 			set_transient("rmse_vat_results_team_planned_$team", $games_planned, MINUTE_IN_SECONDS * 1);
