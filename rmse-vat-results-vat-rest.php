@@ -161,6 +161,7 @@ function rmse_vat_results_retrieve_club_games()
 				return $game->gameStatusId !== 1;
 			});
 
+			/*
 			usort($club_games_planned, function ($a, $b) {
 				$adt = $a->gameDateTime;
 				$bdt = $b->gameDateTime;
@@ -174,6 +175,7 @@ function rmse_vat_results_retrieve_club_games()
 
 				return $adt === $bdt ? 0 : ($adt > $bdt ? -1 : 1);
 			});
+			*/
 
 			set_transient('rmse_vat_results_club_games_played', $club_games_played, MINUTE_IN_SECONDS * 1);
 			set_transient('rmse_vat_results_club_games_planned', $club_games_planned, MINUTE_IN_SECONDS * 1);
