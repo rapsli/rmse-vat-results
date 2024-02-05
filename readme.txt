@@ -4,7 +4,7 @@ Plugin Name:        handball.ch Club API
 Plugin URI:         https://github.com/titaniumcoder/tc-shv-results
 Contributors:       metzgric
 Tags:               handball, results, schweiz, switzerland, suisse, vat
-Version:            1.0.3
+Version:            1.0.4
 Requires at least:  6.1
 Requires PHP:       7.0
 Tested up to:       6.2.2
@@ -30,7 +30,7 @@ and block quotes will be available for
 1. Download from Plugins Directory or upload the ZIP from the Github Releases Page.
 2. Activate the plugin through the 'Plugins' menu in WordPress. It should take you to the settings page.
 3. From VAT interface (https://vat.handball.ch), copy club id, username and password into the options form and save it. After saving it will try to load the teams.
-4. Check if the teams could be loaded. If that's the case, you can use the blocks
+4. Check if the teams could be loaded. If that's the case, you can use the blocks.
 
 == Frequently Asked Questions ==
 
@@ -41,6 +41,9 @@ My recommended way of development is using wp-env: https://developer.wordpress.o
 == Screenshots ==
 
 == Changelog ==
+
+= 1.0.4 =
+* Bugfix in ranking logic for relegation and relegation candidates
 
 = 1.0.3 =
 * Fix applied to teams too
