@@ -139,6 +139,14 @@ function rmse_vat_results_enrich_game_info($game, $club_teams)
 	}
 }
 
+function rmse_vat_results_sort_games_by_date($game1, $game2) {
+	$game1Timestamp = $game1->gameDateTime.getTimestamp();
+	$game2Timestamp = $game2->gameDateTime.getTimestamp();
+
+	return $game1Timestamp === $game2Timestamp ? 0 : ($game1Timestamp < $game2Timestamp ? -1 : 1);
+}
+
+
 function rmse_vat_results_retrieve_club_games()
 {
 	$club_games_played = get_transient('rmse_vat_results_club_games_played');
@@ -161,19 +169,8 @@ function rmse_vat_results_retrieve_club_games()
 				return $game->gameStatusId === 2;
 			});
 
-			usort($club_games_planned, function ($a, $b) {
-				$adt = $a->gameDateTime.getTimestamp();
-				$bdt = $b->gameDateTime.getTimestamp();
-
-				return $adt === $bdt ? 0 : ($adt < $bdt ? -1 : 1);
-			});
-
-			usort($club_games_played, function ($a, $b) {
-				$adt = $a->gameDateTime.getTimestamp();
-				$bdt = $b->gameDateTime.getTimestamp();
-
-				return $adt === $bdt ? 0 : ($adt > $bdt ? -1 : 1);
-			});
+			usort($club_games_planned, "rmse_vat_results_sort_games_by_date");
+			usort($club_games_played, "rmse_vat_results_sort_games_by_date");
 
 			set_transient('rmse_vat_results_club_games_played', $club_games_played, MINUTE_IN_SECONDS * 1);
 			set_transient('rmse_vat_results_club_games_planned', $club_games_planned, MINUTE_IN_SECONDS * 1);
