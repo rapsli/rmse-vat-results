@@ -83,22 +83,6 @@ if ($group_info !== false) { ?>
 				<?php } ?>
 			</tbody>
 		</table>
-		<?php if ($group_info->modus && !$group_info->modusHtml) { ?>
-			<div class="rmse-vat-results-ranking-modus">
-				<h4><?php _e('Modus', 'rmse-vat-results') ?></h4>
-				<div>
-					<?php echo $group_info->modus ?>
-				</div>
-			</div>
-		<?php } ?>
-		<?php if ($group_info->modusHtml) { ?>
-			<div class="rmse-vat-results-ranking-modus">
-			<h4><?php _e('Modus', 'rmse-vat-results') ?></h4>
-				<div>
-					<?php echo $group_info->modusHtml ?>
-				</div>
-			</div>
-		<?php } ?>
 	</div>
 	<?php
 } else {

@@ -2,7 +2,7 @@
 # This file is distributed under the Apache License, Version 2.0.
 msgid ""
 msgstr ""
-"Project-Id-Version: Handball VAT Results ClubAPI Integration 1.0.4\n"
+"Project-Id-Version: Handball VAT Results ClubAPI Integration 1.0.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/rmse-vat-results\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -171,15 +171,6 @@ msgstr ""
 #: build/rankings/index.js:1
 #: src/rankings/edit.js:83
 msgid "Pts"
-msgstr ""
-
-#: build/rankings/render.php:88
-#: build/rankings/render.php:96
-#: src/rankings/render.php:88
-#: src/rankings/render.php:96
-#: build/rankings/index.js:1
-#: src/rankings/edit.js:169
-msgid "Modus"
 msgstr ""
 
 #: build/rankings/render.php:106

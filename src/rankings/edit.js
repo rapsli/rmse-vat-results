@@ -165,12 +165,6 @@ export default function Edit({ attributes, setAttributes }) {
 						</tr>
 					</tbody>
 				</table>
-				<div class="rmse-vat-results-ranking-modus">
-					<h4>{__('Modus', 'rmse-vat-results')}</h4>
-					<div>
-						{__('Long Description of the mode of this ranking', 'rmse-vat-results')}
-					</div>
-				</div>
 			</div>
 		</div>
 	);

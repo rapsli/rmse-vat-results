@@ -43,7 +43,7 @@
 }
 
 .rmse-vat-results-rankings-promotion {
-	background-color: rgb(9, 49, 20);
+	background-color: rgb(17, 136, 51);
 	color: white;
 }
 
@@ -52,12 +52,12 @@
 }
 
 .rmse-vat-results-rankings-relegation {
-	background-color: rgb(39, 0, 0);
+	background-color: rgb(124, 0, 0);
 	color: white;
 }
 
 .rmse-vat-results-rankings-relegation-candidate {
-	background-color: rgb(210, 33, 33);
+	background-color: rgb(216, 56, 56);
 	color: white;
 }
 .rmse-vat-results-rankings-own-team {
@@ -101,22 +101,6 @@ table.rmse-vat-results-table {
 
 .rmse-vat-results-rankings-team-logo img {
 	object-fit: contain;
-}
-
-.rmse-vat-results-ranking-modus {
-	padding-top: 1.25em;
-}
-
-.rmse-vat-results-ranking-modus h4 {
-	padding: 0;
-	margin: 0;
-}
-
-.rmse-vat-results-ranking-modus div {
-	border-left: 10px solid #ccc;
-	background: #f9f9f9;
-	margin: 1.5em 10px;
-	padding: 0.5em 10px;
 }
 
 .rmse-vat-results-highlight-result {

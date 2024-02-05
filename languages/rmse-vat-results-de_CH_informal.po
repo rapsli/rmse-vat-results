@@ -111,12 +111,6 @@ msgstr "+/-"
 msgid "Pts"
 msgstr "Pkt"
 
-#: build/rankings/render.php:88 build/rankings/render.php:96
-#: src/rankings/edit.js:169 src/rankings/render.php:88
-#: src/rankings/render.php:96
-msgid "Modus"
-msgstr "Modus"
-
 #: build/rankings/render.php:106 src/rankings/render.php:106
 msgid "Team could not be loaded"
 msgstr "Team konnte nicht geladen werden"
@@ -283,10 +277,6 @@ msgstr "Abstiegsrunden-Teilnehmer"
 #: src/rankings/edit.js:158
 msgid "Relegation"
 msgstr "Direktabsteiger"
-
-#: src/rankings/edit.js:171
-msgid "Long Description of the mode of this ranking"
-msgstr "Der Modus wie er vom SHV übermittelt wird"
 
 #. Plugin Name of the plugin/theme
 msgid "Handball VAT Results ClubAPI Integration"
