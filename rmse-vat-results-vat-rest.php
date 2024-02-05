@@ -162,15 +162,15 @@ function rmse_vat_results_retrieve_club_games()
 			});
 
 			usort($club_games_planned, function ($a, $b) {
-				$adt = $a->gameDateTime;
-				$bdt = $b->gameDateTime;
+				$adt = $a->gameDateTime.getTimestamp();
+				$bdt = $b->gameDateTime.getTimestamp();
 
 				return $adt === $bdt ? 0 : ($adt < $bdt ? -1 : 1);
 			});
 
 			usort($club_games_played, function ($a, $b) {
-				$adt = $a->gameDateTime;
-				$bdt = $b->gameDateTime;
+				$adt = $a->gameDateTime.getTimestamp();
+				$bdt = $b->gameDateTime.getTimestamp();
 
 				return $adt === $bdt ? 0 : ($adt > $bdt ? -1 : 1);
 			});
