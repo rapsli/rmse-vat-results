@@ -140,10 +140,10 @@ function rmse_vat_results_enrich_game_info($game, $club_teams)
 }
 
 function rmse_vat_results_sort_games_by_date($game1, $game2) {
-	$game1Timestamp = $game1->gameDateTime.getTimestamp();
-	$game2Timestamp = $game2->gameDateTime.getTimestamp();
+	$game1TDateTime = $game1->gameDateTime;
+	$game2TDateTime = $game2->gameDateTime;
 
-	return $game1Timestamp === $game2Timestamp ? 0 : ($game1Timestamp < $game2Timestamp ? -1 : 1);
+	return $game1TDateTime === $game2TDateTime ? 0 : ($game1TDateTime < $game2TDateTime ? -1 : 1);
 }
 
 
