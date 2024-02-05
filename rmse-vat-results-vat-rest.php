@@ -215,17 +215,17 @@ function rmse_vat_results_retrieve_team_group($id)
 			$promotion_max_idx = $group_info->directPromotion;
 			$promotion_candidate_max_idx = $promotion_max_idx + $group_info->promotionCandidate;
 
-			$relegation_min_idx = $team_count - $group_info->directRelegation;
-			$relegation_candidate_min_idx = $team_count - $group_info->directRelegation - $group_info->relegationCandidate;
+			$relegation_min_idx = $team_count - $group_info->directRelegation + 1;
+			$relegation_candidate_min_idx = $relegation_min_idx - $group_info->relegationCandidate + 1;
 
 			$rankings = $group_info->ranking;
 
-			foreach ($rankings as $idx => $ranking) {
-				$ranking->promotion = $idx + 1 <= $promotion_max_idx;
-				$ranking->promotion_candidate = !$ranking->promotion && $idx + 1 <= $promotion_candidate_max_idx;
+			foreach ($rankings as $ranking) {
+				$ranking->promotion = $ranking->rank <= $promotion_max_idx;
+				$ranking->promotion_candidate = !$ranking->promotion && $ranking->rank <= $promotion_candidate_max_idx;
 
-				$ranking->relegation = $idx > $relegation_min_idx;
-				$ranking->relegation_candidate = !$ranking->relegation && $idx > $relegation_candidate_min_idx;
+				$ranking->relegation = $ranking->rank >= $relegation_min_idx;
+				$ranking->relegation_candidate = !$ranking->relegation && $ranking->rank >= $relegation_candidate_min_idx;
 			}
 
 			set_transient('rmse_vat_results_team_group_' . $id, $group_info, MINUTE_IN_SECONDS * 5);
