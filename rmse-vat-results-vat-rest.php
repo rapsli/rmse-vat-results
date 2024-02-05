@@ -216,7 +216,7 @@ function rmse_vat_results_retrieve_team_group($id)
 			$promotion_candidate_max_idx = $promotion_max_idx + $group_info->promotionCandidate;
 
 			$relegation_min_idx = $team_count - $group_info->directRelegation + 1;
-			$relegation_candidate_min_idx = $relegation_min_idx - $group_info->relegationCandidate + 1;
+			$relegation_candidate_min_idx = $relegation_min_idx - $group_info->relegationCandidate;
 
 			$rankings = $group_info->ranking;
 
