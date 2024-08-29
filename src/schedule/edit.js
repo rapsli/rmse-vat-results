@@ -45,6 +45,24 @@ export default function Edit({ attributes, setAttributes }) {
 					<div className="instructions">
 						{__('Choose how many elements (last results and next games) should be displayed. 0 or less means it will not be shown at all. Will add a preview in a future version.', 'rmse-vat-results')}
 					</div>
+					<FlexBlock>
+						<NumberControl
+							isShiftStepEnabled={true}
+							label={__('Last Results', 'rmse-vat-results')}
+							shiftStep={5}
+							value={attributes.results}
+							onChange={(val) => setAttributes({ results: parseInt(val) })}
+						/>
+					</FlexBlock>
+					<FlexBlock>
+						<NumberControl
+							isShiftStepEnabled={true}
+							label={__('Scheduled Games', 'rmse-vat-results')}
+							shiftStep={5}
+							value={attributes.scheduled}
+							onChange={(val) => setAttributes({ scheduled: parseInt(val) })}
+						/>
+					</FlexBlock>
 					<SelectControl
 						label={__('Team', 'rmse-vat-results')}
 						value={attributes.team}
