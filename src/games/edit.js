@@ -47,7 +47,7 @@ export default function Edit({ attributes, setAttributes }) {
 								label={__('Last Results', 'rmse-vat-results')}
 								shiftStep={5}
 								value={attributes.results}
-								onChange={(val) => setAttributes({ results: val })}
+								onChange={(val) => setAttributes({ results: parseInt(val) })}
 							/>
 						</FlexBlock>
 						<FlexBlock>
@@ -56,7 +56,7 @@ export default function Edit({ attributes, setAttributes }) {
 								label={__('Scheduled Games', 'rmse-vat-results')}
 								shiftStep={5}
 								value={attributes.scheduled}
-								onChange={(val) => setAttributes({ scheduled: val })}
+								onChange={(val) => setAttributes({ scheduled: parseInt(val) })}
 							/>
 						</FlexBlock>
 					</Flex>
