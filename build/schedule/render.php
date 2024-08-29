@@ -6,8 +6,9 @@
 $games = rmse_vat_results_retrieve_team_schedule($attributes['team']);
 
 if ($games !== false) {
-	$played = $games[0];
-	$planned = $games[1];
+	$played = array_reverse(array_slice($games[0], 0, $attributes['results']));
+	$planned = array_slice($games[1], 0, $attributes['scheduled']);
+
 
 	?>
 	<div <?php echo get_block_wrapper_attributes(); ?>>
