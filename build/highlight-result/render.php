@@ -42,17 +42,7 @@ if ($games !== false) {
 						</div>
 					<?php } ?>
 					<div class="rmse-vat-results-highlight-info-date">
-						<?php
-							$formatter = new IntlDateFormatter(
-							    get_locale(),
-							    IntlDateFormatter::FULL,
-							    IntlDateFormatter::FULL,
-							    null,
-							    IntlDateFormatter::GREGORIAN,
-							    'EEEE, dd.MM., HH:mm'
-							);
-							echo $formatter->format($game->gameDateTime);
-						?>
+						<?php echo date_i18n($attributes['dateformat'], $game->gameDateTime->getTimestamp()); ?>
 					</div>
 					<?php if ($attributes['venue']) { ?>
 						<div class="rmse-vat-results-highlight-info-venue">
