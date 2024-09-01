@@ -33,7 +33,7 @@ if ($games !== false) {
 
 				<div class="rmse-vat-results-highlight-info">
 					<div class="rmse-vat-results-highlight-info-date">
-						<?php echo date_format($game->gameDateTime, $attributes['dateformat']); ?>
+						<?php echo date_i18n($attributes['dateformat'], $game->gameDateTime->getTimestamp()); ?>
 					</div>
 					<?php if ($attributes['venue']) { ?>
 						<div class="rmse-vat-results-highlight-info-venue">
