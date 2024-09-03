@@ -4,7 +4,7 @@ Plugin Name:        handball.ch Club API
 Plugin URI:         https://github.com/titaniumcoder/tc-shv-results
 Contributors:       metzgric
 Tags:               handball, results, schweiz, switzerland, suisse, vat
-Version:            1.0.7
+Version:            1.0.8
 Requires at least:  6.1
 Requires PHP:       7.0
 Tested up to:       6.2.2
@@ -41,6 +41,11 @@ My recommended way of development is using wp-env: https://developer.wordpress.o
 == Screenshots ==
 
 == Changelog ==
+
+= 1.0.8 =
+* Highlight Dates, translated to locale (language of wordpress)
+* Value of "how many elements (last results and next games) should be displayed" didn't save correctly. Didn't displayed on backend (frontend worked fine)
+* allows to choose how many elements on "team shedule" element
 
 = 1.0.7 =
 * Hightlight Result was wrong.
