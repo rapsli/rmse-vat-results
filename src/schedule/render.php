@@ -6,7 +6,7 @@
 $games = rmse_vat_results_retrieve_team_schedule($attributes['team']);
 
 if ($games !== false) {
-	$played = array_reverse(array_slice($games[0], 0, $attributes['results']));
+	$played = array_slice($games[0], 0, $attributes['results']);
 	$planned = array_slice($games[1], 0, $attributes['scheduled']);
 
 
