@@ -41,7 +41,7 @@ export default function Edit({ attributes, setAttributes }) {
 		<div {...useBlockProps()}>
 			{
 				<InspectorControls key="settings">
-					<h5>{__('Next Games / Last Results of the club', 'rmse-vat-results')}</h5>
+					<h5>{__('Next Games / Last Results of a team', 'rmse-vat-results')}</h5>
 					<div className="instructions">
 						{__('Choose how many elements (last results and next games) should be displayed. 0 or less means it will not be shown at all. Will add a preview in a future version.', 'rmse-vat-results')}
 					</div>

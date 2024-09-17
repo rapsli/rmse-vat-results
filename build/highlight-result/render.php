@@ -12,7 +12,7 @@ if ($games !== false) {
 			<?php _e('No games played yet', 'rmse-vat-results') ?>
 		</div>
 	<?php } else {
-		$game = $played[0];
+		$game = $played[count($played) - 1];
 		?>
 		<div <?php echo get_block_wrapper_attributes(); ?>>
 			<div class="rmse-vat-results-highlight-result">
