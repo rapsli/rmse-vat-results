@@ -1,3 +1,8 @@
+=== Important Information ===
+
+As of 2025 I will not be able to continue to maintain this repository (I left the area of wordpress development a long time ago). 
+It will be archived. If someone wants to take over (or fork it and move on from there), please contact me. Assuming Wordpress will not slow down too much, I would not assume the plugin to work with any major upgrade version.
+
 === SHV Results ===
 
 Plugin Name:        handball.ch Club API
