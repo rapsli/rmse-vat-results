@@ -1,32 +1,38 @@
-name: Build release zip
+name: Build plugin zip
 
 on:
   push:
-    branches:
-    # - trunk
-    - main
+    branches: [ main ]
+  workflow_dispatch: {}   # optional: manuell startbar
 
 jobs:
   build:
     name: Build release zip
     runs-on: ubuntu-latest
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v3
 
-    - name: Build plugin # Remove or modify this step as needed
-      # composer install --no-dev
-      run: |
-        npm install
-        npm run build
-        
-    - name: 'Upload Artifact'
-      uses: actions/upload-artifact@v3
-      with:
-        name: rmse-vat-results
-        path: |
-          .
-          !node_modules/**
-          !.git/**
-          !.github/**
-        retention-days: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'     # oder deine Version
+
+      - name: Install deps
+        run: npm ci              # sauberer/fixer als "npm install"
+
+      - name: Build plugin
+        run: npm run build
+
+      # Optional, aber empfohlen: erzeuge ein sauberes Plugin-ZIP
+      - name: Create plugin zip
+        run: npm run plugin-zip  # erzeugt z.B. rmse-vat-results.zip im Repo-Root
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: rmse-vat-results
+          path: rmse-vat-results.zip   # falls du lieber alles hochlädst, s. Alternative unten
+          if-no-files-found: error
+          retention-days: 5
