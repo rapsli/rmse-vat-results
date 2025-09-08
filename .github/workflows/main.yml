@@ -1,15 +1,17 @@
-name: Build plugin zip
+name: Build & Release plugin zip
 
 on:
   push:
-    branches: [ main ]
-  workflow_dispatch: {}   # optional: manuell startbar
+    tags:
+      - 'v*'         # läuft bei Tags wie v0.1.0
+  workflow_dispatch: {}  # optional: manuell starten
+
+permissions:
+  contents: write       # nötig, um Releases anzulegen
 
 jobs:
-  build:
-    name: Build release zip
+  build-and-release:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -17,22 +19,29 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '20'     # oder deine Version
+          node-version: '20'
 
       - name: Install deps
-        run: npm ci              # sauberer/fixer als "npm install"
+        run: npm ci
 
-      - name: Build plugin
+      - name: Build
         run: npm run build
 
-      # Optional, aber empfohlen: erzeuge ein sauberes Plugin-ZIP
       - name: Create plugin zip
-        run: npm run plugin-zip  # erzeugt z.B. rmse-vat-results.zip im Repo-Root
+        run: npm run plugin-zip   # erzeugt z. B. rmse-vat-results.zip
 
+      # optional: zusätzlich als Action-Artefakt ablegen
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: rmse-vat-results
-          path: rmse-vat-results.zip   # falls du lieber alles hochlädst, s. Alternative unten
+          path: rmse-vat-results.zip
           if-no-files-found: error
           retention-days: 5
+
+      # Release anlegen + ZIP anhängen
+      - name: Publish GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: rmse-vat-results.zip
+          generate_release_notes: true
