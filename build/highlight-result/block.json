@@ -4,7 +4,7 @@
   "name": "rmse-vat-results/highlight-result",
   "version": "1.0.9",
   "title": "Highlight of the last results",
-  "category": "widgets",
+  "category": "club-api",
   "icon": "format-status",
   "description": "Show a highlight of the last result",
   "supports": {

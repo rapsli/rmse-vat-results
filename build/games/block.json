@@ -4,7 +4,7 @@
   "name": "rmse-vat-results/games",
   "version": "1.0.9",
   "title": "Club Games and Results",
-  "category": "widgets",
+  "category": "club-api",
   "icon": "list-view",
   "description": "Show the next games / last results of the club as a whole",
   "supports": {

@@ -4,7 +4,7 @@
   "name": "rmse-vat-results/rankings",
   "version": "1.0.9",
   "title": "Team Ranking",
-  "category": "widgets",
+  "category": "club-api",
   "icon": "index-card",
   "description": "Show Ranking of the team and the general information",
   "supports": {
