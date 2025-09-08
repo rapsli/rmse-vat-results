@@ -30,6 +30,19 @@ jobs:
       - name: Create plugin zip
         run: npm run plugin-zip   # erzeugt z. B. rmse-vat-results.zip
 
+      - name: Make dist folder
+        run: |
+          rm -rf dist && mkdir -p dist/rmse-vat-results
+          rsync -a \
+            --exclude ".git" --exclude ".github" \
+            --exclude "node_modules" --exclude "src" \
+            --exclude ".wp-env.json" --exclude ".editorconfig" \
+            --exclude ".gitignore" --exclude ".distignore" \
+            --exclude "package*.json" --exclude "*.map" \
+            ./ dist/rmse-vat-results/
+          (cd dist && zip -r ../rmse-vat-results.zip rmse-vat-results)
+
+
       # optional: zusätzlich als Action-Artefakt ablegen
       - name: Upload artifact
         uses: actions/upload-artifact@v4
