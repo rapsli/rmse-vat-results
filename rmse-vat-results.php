@@ -3,9 +3,9 @@
 /**
  * Plugin Name: Handball VAT Results ClubAPI Integration
  * Description: Reads and actualizes results and rankings directly via VAT interface
- * Version:     1.0.9
- * Author:      Rico Metzger
- * Author URI:  https://rmse.ch
+ * Version:     1.0.10
+ * Author:      Rico Metzger, Raphael Schär
+ * Author URI:  https://wyssmann.llc
  * License:     Apache License, Version 2.0
  * License URI: https://www.apache.org/licenses/LICENSE-2.0
  * Text Domain: rmse-vat-results
