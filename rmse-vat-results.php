@@ -93,4 +93,18 @@ function rmse_vat_load_own_textdomain( $mofile, $domain ) {
 	return $mofile;
 }
 add_filter( 'load_textdomain_mofile', 'rmse_vat_load_own_textdomain', 10, 2 );
-?>
+
+
+// Add custom block category
+add_filter('block_categories_all', function ($categories, $post) {
+    return array_merge(
+        $categories,
+        [
+            [
+                'slug'  => 'club-api',
+                'title' => __('Club API', 'rmse-vat-results'),
+                // 'icon' => null, // optional
+            ],
+        ]
+    );
+}, 10, 2);

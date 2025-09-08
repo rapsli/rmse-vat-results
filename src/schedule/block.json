@@ -4,7 +4,7 @@
 	"name": "rmse-vat-results/schedule",
 	"version": "1.0.9",
 	"title": "Team Schedule",
-	"category": "widgets",
+	"category": "club-api",
 	"icon": "calendar",
 	"description": "Show the schedule and last results of a team",
 	"supports": {
