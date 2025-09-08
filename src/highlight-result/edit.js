@@ -36,7 +36,17 @@ import logo from '../../assets/demo-logo.svg';
 export default function Edit({ attributes, setAttributes }) {
 	// this is actually a little bit dirty with global variables, but...
 
-	const teams = rmse_vat_team_selection.map((x) => ({ label: x.name, value: x.id }));
+	const baseTeams = (window.rmse_vat_team_selection ?? []).map((x) => ({ label: x.name, value: String(x.id) }));
+
+	// Optionen: normale Teams + „ACF verwenden…“
+	const teamOptions = [
+		// { label: __('— Select team —', 'rmse-vat-results'), value: '' },
+		...baseTeams,
+		{ label: __('Use ACF field…', 'rmse-vat-results'), value: '__acf__' },
+	];
+
+	// aktueller Wert im Select: mappe Quelle → Select-Wert
+	const selectValue = attributes.teamSource === 'acf' ? '__acf__' : (attributes.team ?? '');
 
 	return (
 		<div {...useBlockProps()}>
@@ -46,12 +56,34 @@ export default function Edit({ attributes, setAttributes }) {
 					<div className="instructions">
 						{__('Choose how many elements (last results and next games) should be displayed. 0 or less means it will not be shown at all. Will add a preview in a future version.', 'rmse-vat-results')}
 					</div>
+
 					<SelectControl
 						label={__('Team', 'rmse-vat-results')}
-						value={attributes.team}
-						options={teams}
-						onChange={(val) => setAttributes({ team: val })}
+						value={selectValue}
+						options={teamOptions}
+						onChange={(val) => {
+							if (val === '__acf__') {
+								setAttributes({ teamSource: 'acf' });
+							} else {
+								setAttributes({ teamSource: 'static', team: val });
+							}
+						}}
+						help={
+							selectValue === '__acf__'
+								? __('Team ID is read from the specified ACF field.', 'rmse-vat-results')
+								: __('Select team manually.', 'rmse-vat-results')
+						}
 					/>
+
+					{attributes.teamSource === 'acf' && (
+						<TextControl
+							label={__('ACF field name/key (liefert Team-ID)', 'rmse-vat-results')}
+							value={attributes.teamAcfField ?? ''}
+							onChange={(val) => setAttributes({ teamAcfField: val })}
+							placeholder="z. B. team_id"
+							help={__('Specify the ACF field name that returns the team ID (or a select field with value=ID).', 'rmse-vat-results')}
+						/>
+					)}
 					<TextControl
 						label={__('Date Format', 'rmse-vat-results')}
 						value={attributes.dateformat}

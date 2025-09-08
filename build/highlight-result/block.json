@@ -15,6 +15,14 @@
       "type": "string",
       "default": ""
     },
+    "teamSource": {
+      "type": "string",
+      "default": "static"
+    },
+    "teamAcfField": {
+      "type": "string",
+      "default": ""
+    },
     "venue": {
       "type": "boolean",
       "default": true

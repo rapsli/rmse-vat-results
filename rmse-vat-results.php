@@ -29,6 +29,12 @@ require_once plugin_dir_path(__FILE__) . 'inc/rmse-vat-results-vat-rest.php';
  */
 require_once plugin_dir_path(__FILE__) . 'inc/rmse-vat-results-settings.php';
 
+
+/**
+ * Helper functions
+ */
+require_once plugin_dir_path(__FILE__) . 'inc/rmse-vat-helpers.php';
+
 /*
  *
  * @see https://developer.wordpress.org/reference/functions/register_block_type/

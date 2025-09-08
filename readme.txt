@@ -39,6 +39,11 @@ and block quotes will be available for
 
 == Frequently Asked Questions ==
 
+What are some Frequently used commands?
+- npm run start (Live build for development)
+- npm run plugin-zip (Build the plugin-zip)
+
+
 = WP-ENV local development =
 
 My recommended way of development is using wp-env: https://developer.wordpress.org/block-editor/reference-guides/packages/packages-env/
