@@ -19,10 +19,17 @@ $group_info = rmse_vat_results_retrieve_team_group($team_id);
 
 if ($group_info !== false) { ?>
 	<div <?php echo get_block_wrapper_attributes(); ?>>
-		<h3 class="rmse-vat-results-rankings-header">
-			<?php echo $group_info->leagueLong; ?> (
-			<?php echo $group_info->groupText; ?>)
-		</h3>
+
+	<?php
+	// print_r($attributes);
+	?>
+
+		<?php if ($attributes['title']) { ?>
+			<h3 class="rmse-vat-results-rankings-header">
+				<?php echo $group_info->leagueLong; ?> (
+				<?php echo $group_info->groupText; ?>)
+			</h3>
+		<?php } ?>
 		<table class="rmse-vat-results-table">
 			<?php if ($attributes['header']) { ?>
 				<thead>

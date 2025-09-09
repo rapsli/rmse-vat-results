@@ -89,6 +89,11 @@ export default function Edit({ attributes, setAttributes }) {
 					onChange={(val) => setAttributes({ header: val })}
 				/>
 				<CheckboxControl
+					label={__('Show Title?', 'rmse-vat-results')}
+					checked={attributes.title}
+					onChange={(val) => setAttributes({ title: val })}
+				/>
+				<CheckboxControl
 					label={__('Show Logo?', 'rmse-vat-results')}
 					checked={attributes.logo}
 					onChange={(val) => setAttributes({ logo: val })}
@@ -101,7 +106,7 @@ export default function Edit({ attributes, setAttributes }) {
 			</InspectorControls>
 
 			<div>
-				<h3 className="rmse-vat-results-rankings-header">Leaguename (LG)</h3>
+				{ attributes.title && <h3 className="rmse-vat-results-rankings-header">Leaguename (LG)</h3> }
 				<table className="rmse-vat-results-table">
 					{attributes.header &&
 						<thead>

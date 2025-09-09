@@ -21,6 +21,10 @@
 			"type": "boolean",
 			"default": true
 		},
+		"title": {
+			"type": "boolean",
+			"default": true
+		},
 		"logo": {
 			"type": "boolean",
 			"default": true
