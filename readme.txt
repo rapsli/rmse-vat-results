@@ -42,6 +42,8 @@ and block quotes will be available for
 What are some Frequently used commands?
 - npm run start (Live build for development)
 - npm run plugin-zip (Build the plugin-zip)
+- git tag v1.x.x
+- git push origin v1.x.x
 
 
 = WP-ENV local development =
