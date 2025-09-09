@@ -122,7 +122,6 @@ if ($games !== false) {
 							<td class="rmse-vat-results-result">
 							</td>
 						<?php } ?>
-						<td class="rmse-vat-results-result"></td>
 					</tr>
 					<?php
 				}

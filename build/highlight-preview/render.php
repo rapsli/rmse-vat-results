@@ -3,7 +3,18 @@
  * @see https://github.com/WordPress/gutenberg/blob/trunk/docs/reference-guides/block-api/block-metadata.md#render
  */
 
-$games = rmse_vat_results_retrieve_team_schedule($attributes['team']);
+// Team-ID ermitteln (statisch oder ACF)
+$team_id = rmse_vat_get_selected_team_id( $attributes, get_the_ID() );
+
+// Wenn keine Team-ID ermittelbar ist → leerer Zustand
+if ( empty($team_id) ) { ?>
+	<div class="rmse-vat-results-highlight-empty" <?php echo get_block_wrapper_attributes(); ?>>
+		<?php _e('No team selected', 'rmse-vat-results'); ?>
+	</div>
+<?php
+	return;
+}
+$games = rmse_vat_results_retrieve_team_schedule($team_id);
 
 if ($games !== false) {
 	$planned = $games[1];

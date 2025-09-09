@@ -3,7 +3,19 @@
  * @see https://github.com/WordPress/gutenberg/blob/trunk/docs/reference-guides/block-api/block-metadata.md#render
  */
 
-$group_info = rmse_vat_results_retrieve_team_group($attributes['team']);
+// Team-ID ermitteln (statisch oder ACF)
+$team_id = rmse_vat_get_selected_team_id( $attributes, get_the_ID() );
+
+// Wenn keine Team-ID ermittelbar ist → leerer Zustand
+if ( empty($team_id) ) { ?>
+	<div class="rmse-vat-results-highlight-empty" <?php echo get_block_wrapper_attributes(); ?>>
+		<?php _e('No team selected', 'rmse-vat-results'); ?>
+	</div>
+<?php
+	return;
+}
+
+$group_info = rmse_vat_results_retrieve_team_group($team_id);
 
 if ($group_info !== false) { ?>
 	<div <?php echo get_block_wrapper_attributes(); ?>>

@@ -3,7 +3,19 @@
  * @see https://github.com/WordPress/gutenberg/blob/trunk/docs/reference-guides/block-api/block-metadata.md#render
  */
 
-$games = rmse_vat_results_retrieve_team_schedule($attributes['team']);
+// Team-ID ermitteln (statisch oder ACF)
+$team_id = rmse_vat_get_selected_team_id( $attributes, get_the_ID() );
+
+// Wenn keine Team-ID ermittelbar ist → leerer Zustand
+if ( empty($team_id) ) { ?>
+	<div class="rmse-vat-results-highlight-empty" <?php echo get_block_wrapper_attributes(); ?>>
+		<?php _e('No team selected', 'rmse-vat-results'); ?>
+	</div>
+<?php
+	return;
+}
+
+$games = rmse_vat_results_retrieve_team_schedule($team_id);
 
 if ($games !== false) {
 	$played = array_slice($games[0], 0, $attributes['results']);
@@ -99,34 +111,33 @@ if ($games !== false) {
 					?>
 					<tr class="<?php echo $clz; ?>">
 						<td class="rmse-vat-results-date">
-							<?php echo date_format($game->gameDateTime, $attributes['dateformat']); ?>
+						<?php echo date_format($game->gameDateTime, $attributes['dateformat']); ?>
 						</td>
 						<?php if ($attributes['group'] === true) { ?>
-							<td class="rmse-vat-results-group">
-								<?php echo $game->groupCupText; ?>
-							</td>
+						<td class="rmse-vat-results-group">
+							<?php echo $game->groupCupText; ?>
+						</td>
 						<?php } ?>
 						<td class="rmse-vat-results-hometeam">
-							<?php echo $game->teamAName; ?>
+						<?php echo $game->teamAName; ?>
 						</td>
 						<td class="rmse-vat-results-guestteam">
-							<?php echo $game->teamBName; ?>
+						<?php echo $game->teamBName; ?>
 						</td>
 						<?php if ($attributes['venue'] === true) { ?>
-							<td class="rmse-vat-results-venue">
+						<td class="rmse-vat-results-venue">
 							<a href="<?php echo rmse_vat_results_venue_link($game); ?>" target="_blank">
-									<?php echo $game->venue; ?>
-								</a>
-							</td>
+							<?php echo $game->venue; ?>
+							</a>
+						</td>
 						<?php } ?>
 						<?php if ($attributes['with_result'] === true) { ?>
-							<td class="rmse-vat-results-result">
-							</td>
-						<?php } ?>
 						<td class="rmse-vat-results-result"></td>
+						<?php } ?>
 					</tr>
 					<?php
 				}
+
 				unset($game);
 				?>
 			</tbody>

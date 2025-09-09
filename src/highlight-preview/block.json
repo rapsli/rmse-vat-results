@@ -4,7 +4,7 @@
 	"name": "rmse-vat-results/highlight-preview",
 	"version": "1.0.9",
 	"title": "Highlight of the next game",
-	"category": "widgets",
+	"category": "club-api",
 	"icon": "format-status",
 	"description": "Show a highlight of the next game",
 	"supports": {
@@ -12,6 +12,14 @@
 	},
 	"attributes": {
 		"team": {
+			"type": "string",
+			"default": ""
+		},
+		"teamSource": {
+			"type": "string",
+			"default": "static"
+		},
+		"teamAcfField": {
 			"type": "string",
 			"default": ""
 		},
