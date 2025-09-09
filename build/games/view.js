@@ -1,1 +1,0 @@
-console.log("Hello World! (from rmse-vat-results games block)");
