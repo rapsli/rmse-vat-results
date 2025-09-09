@@ -9,10 +9,10 @@ Plugin Name:        handball.ch Club API
 Plugin URI:         https://github.com/titaniumcoder/tc-shv-results
 Contributors:       metzgric
 Tags:               handball, results, schweiz, switzerland, suisse, vat
-Version:            1.0.11
+Version:            1.1.0
 Requires at least:  6.1
 Requires PHP:       7.0
-Tested up to:       6.2.2
+Tested up to:       6.8.2
 Stable tag:         trunk
 License:            Apache License, Version 2.
 License URI:        http://www.apache.org/licenses/LICENSE-2.0
@@ -49,6 +49,9 @@ What are some Frequently used commands?
 My recommended way of development is using wp-env: https://developer.wordpress.org/block-editor/reference-guides/packages/packages-env/
 
 == Screenshots ==
+= 1.0.11 = 
+* Adding support for ACF
+* Fixing a bug in the table view
 
 == Changelog ==
 = 1.0.11 =
