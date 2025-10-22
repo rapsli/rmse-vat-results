@@ -51,6 +51,14 @@
       "type": "string",
       "default": "90"
     },
+    "matchreport": {
+      "type": "string",
+      "default": ""
+    },
+    "matchreportField": {
+      "type": "string",
+      "default": ""
+    },
     "layout": {
       "type": "string",
       "enum": [

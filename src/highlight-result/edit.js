@@ -45,8 +45,17 @@ export default function Edit({ attributes, setAttributes }) {
 		{ label: __('Use ACF field…', 'rmse-vat-results'), value: '__acf__' },
 	];
 
+	
+	const matchReportOptions = [
+		{ label: __('No match report', 'rmse-vat-results'), value: '' },
+		{ label: __('Static URL', 'rmse-vat-results'), value: 'static' },
+		{ label: __('Dynamic URL (from ACF)', 'rmse-vat-results'), value: 'acf' },
+	];
+
 	// aktueller Wert im Select: mappe Quelle → Select-Wert
 	const selectValue = attributes.teamSource === 'acf' ? '__acf__' : (attributes.team ?? '');
+
+	const selectMatchReportValue = attributes.matchreportSource === 'acf' ? '__acf__' : (attributes.matchreport ?? '');
 
 	return (
 		<div {...useBlockProps()}>
@@ -119,6 +128,33 @@ export default function Edit({ attributes, setAttributes }) {
 						value={attributes.logosize}
 						onChange={(val) => setAttributes({ logosize: val })}
 					/>
+					<SelectControl
+						label={__('Match report', 'rmse-vat-results')}
+						value={selectMatchReportValue}
+						options={matchReportOptions}
+						onChange={(val) => {
+							if (val === '__acf__') {
+								setAttributes({ matchreportSource: 'acf' });
+							} else {
+								setAttributes({ matchreportSource: 'static', matchreport: val });
+							}
+						}}
+						help={
+							selectMatchReportValue === '__acf__'
+								? __('Match report is read from the specified ACF field.', 'rmse-vat-results')
+								: __('Select match report manually.', 'rmse-vat-results')
+						}
+					/>
+
+					{(attributes.matchreportSource === 'acf' || attributes.matchreportSource === 'static') && (
+						<TextControl
+							label={__('ACF field URL (liefert Matchbericht URL)', 'rmse-vat-results')}
+							value={attributes.matchreportField ?? ''}
+							onChange={(val) => setAttributes({ matchreportField: val })}
+							placeholder="z. B. match_report_url or acf field name"
+							help={__('Specify the ACF field name that returns an valid URL or a static URL.', 'rmse-vat-results')}
+						/>
+					)}
 					<SelectControl
 						label={__('Layout', 'rmse-vat-results')}
 						value={attributes.layout}

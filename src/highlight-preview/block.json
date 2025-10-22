@@ -43,6 +43,10 @@
 			"type": "string",
 			"default": "90"
 		},
+		"matchcenter": {
+			"type": "boolean",
+			"default": false
+		},
 		"layout": {
 			"type": "string",
 			"enum": [ "legacy", "modern" ],

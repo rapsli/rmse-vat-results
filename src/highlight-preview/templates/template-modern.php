@@ -93,8 +93,12 @@ if ($planned === false || count($planned) === 0) { ?>
 			</div>
 		</div>
 
-		<div class="rmse-vat-results-highlight-result-bottom-info">
-			<div>Matchcenter</div>
-		</div>
+		<?php if (isset($attributes['matchcenter']) && $attributes['matchcenter']) : ?>
+			<a href="https://www.handball.ch/de/matchcenter/spiele/<?php echo $game->gameId; ?>" target="_blank">
+			<div class="rmse-vat-results-highlight-result-bottom-info">
+				<div>Matchcenter</div>
+			</div>
+			</a>
+		<?php endif; ?>
 	</div>
 <?php } ?>

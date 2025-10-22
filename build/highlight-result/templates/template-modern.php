@@ -33,6 +33,24 @@ $played = $games[0];
 
 		?>
 		<div <?php echo get_block_wrapper_attributes(); ?>>
+
+			<div class="rmse-vat-results-highlight-result-top-info">
+				<div class="rmse-vat-results-highlight-info-date">
+					<?php echo esc_html( date_i18n($fmt, $game->gameDateTime->getTimestamp()) ); ?>
+				</div>
+
+				<?php if ($venue) { ?>
+						<div class="rmse-vat-results-highlight-info-venue">
+							<a href="<?php echo esc_url( rmse_vat_results_venue_link($game) ); ?>" target="_blank" rel="noopener">
+								<?php echo esc_html($game->venue); ?>
+							</a>
+						</div>
+					<?php } ?>
+
+
+			</div>
+
+
 			<div class="rmse-vat-results-highlight-result">
 
 				<div class="rmse-vat-results-highlight-home">
@@ -60,22 +78,9 @@ $played = $games[0];
 							<?php echo esc_html("{$game->teamAScoreHT}:{$game->teamBScoreHT}"); ?>
 						</div>
 					<?php } ?>
-					<div class="rmse-vat-results-highlight-info-date">
-						<?php echo esc_html( date_i18n($fmt, $game->gameDateTime->getTimestamp()) ); ?>
-					</div>
-					<?php if ($venue) { ?>
-						<div class="rmse-vat-results-highlight-info-venue">
-							<a href="<?php echo esc_url( rmse_vat_results_venue_link($game) ); ?>" target="_blank" rel="noopener">
-								<?php echo esc_html($game->venue); ?>
-							</a>
-						</div>
-					<?php } ?>
-					<?php if ($spect) { ?>
-						<div class="rmse-vat-results-highlight-info-spectators">
-							<?php _e('Spectators', 'rmse-vat-results'); ?>
-							<?php echo ' ' . intval($game->spectators); ?>
-						</div>
-					<?php } ?>
+					
+					
+					
 				</div>
 
 				<div class="rmse-vat-results-highlight-guest">
@@ -95,5 +100,51 @@ $played = $games[0];
 				</div>
 
 			</div>
+			<?php
+			$showMatchReport = !empty($attributes['matchreportField']) && in_array($attributes['matchreport'], ['acf', 'static'], true);
+
+			if ($showMatchReport) {
+				$matchReportUrl = '';
+
+				if ($attributes['matchreport'] === 'acf' && !empty($attributes['matchreportField'])) {
+					$field = $attributes['matchreportField'];
+
+					// Prefer the current WP post ID (block context), fallback to queried object, then to game data
+					$postId = absint( get_the_ID() ?: get_queried_object_id() );
+					
+
+					if ($postId) {
+						// prefer ACF get_field if available, fallback to post meta
+						if (function_exists('get_field')) {
+							$value = get_field($field, $postId);
+						} else {
+							$value = get_post_meta($postId, $field, true);
+						}
+
+						// ACF file or link fields may return arrays/objects with ['url'] or ->url
+						if (is_array($value) && !empty($value['url'])) {
+							$matchReportUrl = $value['url'];
+						} elseif (is_object($value) && !empty($value->url)) {
+							$matchReportUrl = $value->url;
+						} elseif (is_string($value) && $value !== '') {
+							$matchReportUrl = $value;
+						}
+					}
+				} elseif ($attributes['matchreport'] === 'static' && !empty($attributes['matchreportField'])) {
+					$matchReportUrl = $attributes['matchreportField'];
+				}
+				?>
+				<div class="rmse-vat-results-highlight-result-bottom-info">
+					<?php if (!empty($matchReportUrl)) { ?>
+						<a href="<?php echo esc_url($matchReportUrl); ?>" target="_blank" rel="noopener">
+							<?php echo esc_html__('Spielbericht', 'rmse-vat-results'); ?>
+						</a>
+					<?php } else { ?>
+						<div><?php echo esc_html__('Spielbericht', 'rmse-vat-results'); ?></div>
+					<?php } ?>
+				</div>
+			<?php
+			}
+			?>
 		</div>
 	<?php }

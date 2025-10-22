@@ -45,6 +45,7 @@ export default function Edit({ attributes, setAttributes }) {
 		{ label: __('Use ACF field…', 'rmse-vat-results'), value: '__acf__' },
 	];
 
+
 	// aktueller Wert im Select: mappe Quelle → Select-Wert
 	const selectValue = attributes.teamSource === 'acf' ? '__acf__' : (attributes.team ?? '');
 
@@ -102,6 +103,11 @@ export default function Edit({ attributes, setAttributes }) {
 						label={__('Show Team Names?', 'rmse-vat-results')}
 						checked={attributes.names}
 						onChange={(val) => setAttributes({ names: val })}
+					/>
+					<CheckboxControl
+						label={__('Show Matchcenter? (only for Modern Layout)', 'rmse-vat-results')}
+						checked={attributes.matchcenter}
+						onChange={(val) => setAttributes({ matchcenter: val })}
 					/>
 					<TextControl
 						label={__('Logosize retrieved from server', 'rmse-vat-results')}

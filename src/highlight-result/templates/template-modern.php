@@ -100,8 +100,51 @@ $played = $games[0];
 				</div>
 
 			</div>
-			<div class="rmse-vat-results-highlight-result-bottom-info">
-					<div>Spielbericht</div>
-			</div>
+			<?php
+			$showMatchReport = !empty($attributes['matchreportField']) && in_array($attributes['matchreport'], ['acf', 'static'], true);
+
+			if ($showMatchReport) {
+				$matchReportUrl = '';
+
+				if ($attributes['matchreport'] === 'acf' && !empty($attributes['matchreportField'])) {
+					$field = $attributes['matchreportField'];
+
+					// Prefer the current WP post ID (block context), fallback to queried object, then to game data
+					$postId = absint( get_the_ID() ?: get_queried_object_id() );
+					
+
+					if ($postId) {
+						// prefer ACF get_field if available, fallback to post meta
+						if (function_exists('get_field')) {
+							$value = get_field($field, $postId);
+						} else {
+							$value = get_post_meta($postId, $field, true);
+						}
+
+						// ACF file or link fields may return arrays/objects with ['url'] or ->url
+						if (is_array($value) && !empty($value['url'])) {
+							$matchReportUrl = $value['url'];
+						} elseif (is_object($value) && !empty($value->url)) {
+							$matchReportUrl = $value->url;
+						} elseif (is_string($value) && $value !== '') {
+							$matchReportUrl = $value;
+						}
+					}
+				} elseif ($attributes['matchreport'] === 'static' && !empty($attributes['matchreportField'])) {
+					$matchReportUrl = $attributes['matchreportField'];
+				}
+				?>
+				<div class="rmse-vat-results-highlight-result-bottom-info">
+					<?php if (!empty($matchReportUrl)) { ?>
+						<a href="<?php echo esc_url($matchReportUrl); ?>" target="_blank" rel="noopener">
+							<?php echo esc_html__('Spielbericht', 'rmse-vat-results'); ?>
+						</a>
+					<?php } else { ?>
+						<div><?php echo esc_html__('Spielbericht', 'rmse-vat-results'); ?></div>
+					<?php } ?>
+				</div>
+			<?php
+			}
+			?>
 		</div>
 	<?php }
