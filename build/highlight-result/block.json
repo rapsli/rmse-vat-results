@@ -50,6 +50,14 @@
     "logosize": {
       "type": "string",
       "default": "90"
+    },
+    "layout": {
+      "type": "string",
+      "enum": [
+        "legacy",
+        "modern"
+      ],
+      "default": "legacy"
     }
   },
   "textdomain": "rmse-vat-results",

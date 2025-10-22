@@ -119,6 +119,15 @@ export default function Edit({ attributes, setAttributes }) {
 						value={attributes.logosize}
 						onChange={(val) => setAttributes({ logosize: val })}
 					/>
+					<SelectControl
+						label={__('Layout', 'rmse-vat-results')}
+						value={attributes.layout}
+						options={[
+							{ label: __('Legacy (old)', 'rmse-vat-results'), value: 'legacy' },
+							{ label: __('Modern (new)', 'rmse-vat-results'), value: 'modern' },
+						]}
+						onChange={(val) => setAttributes({ layout: val })}
+					/>
 				</InspectorControls>
 			}
 
