@@ -7,7 +7,7 @@
  * 
  * 
  * $context array contains:
- * - $games: array of games
+ * - $games: array of games: [0 => past games, 1 => planned games]
  * - $attributes: block attributes
  * - $wrapper_attrs: attributes for the block wrapper
  * 
@@ -17,8 +17,21 @@ if ($planned === false || count($planned) === 0) { ?>
 	<div class="rmse-vat-results-highlight-empty" <?php echo get_block_wrapper_attributes(); ?>>
 		<?php _e('No games planned yet', 'rmse-vat-results') ?>
 	</div>
-<?php } else {
-	$game = $planned[0];
+<?php } 
+	else {
+	// Apply offset to get the correct game
+	$offset = isset($attributes['offset_games']) ? intval($attributes['offset_games']) : 0;
+	if ($offset >= 0 && count($planned) > $offset) {
+		$game = $planned[$offset];
+	} 
+	else {
+		?>
+		<div class="rmse-vat-results-highlight-empty" <?php echo get_block_wrapper_attributes(); ?>>
+		<?php _e('No games planned yet', 'rmse-vat-results'); ?>
+		</div>
+	<?php
+		return;
+	}
 
 	// Date/time handling
 	$format = isset($attributes['dateformat']) && $attributes['dateformat'] !== '' ? $attributes['dateformat'] : get_option('date_format');

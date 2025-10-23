@@ -54,6 +54,9 @@ My recommended way of development is using wp-env: https://developer.wordpress.o
 
 
 == Changelog ==
+= 1.4.0 =
+* feat: Add offset control for next games in highlight preview block
+
 = 1.3.1 =
 * Links to external Spielberichte should open in a new tab
 * Minor adjustment to the HTML for the Spielbericht link

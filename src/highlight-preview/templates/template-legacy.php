@@ -19,8 +19,21 @@
 		<div class="rmse-vat-results-highlight-empty" <?php echo get_block_wrapper_attributes(); ?>>
 			<?php _e('No games planned yet', 'rmse-vat-results') ?>
 		</div>
-	<?php } else {
-		$game = $planned[0];
+	<?php } 
+		else {
+		// Apply offset to get the correct game
+		$offset = isset($attributes['offset_games']) ? intval($attributes['offset_games']) : 0;
+		if ($offset >= 0 && count($planned) > $offset) {
+			$game = $planned[$offset];
+		} 
+		else {
+		?>
+		<div class="rmse-vat-results-highlight-empty" <?php echo get_block_wrapper_attributes(); ?>>
+			<?php _e('No games planned yet', 'rmse-vat-results'); ?>
+			</div>
+		<?php
+			return;
+		}
 		?>
 		<div <?php echo get_block_wrapper_attributes(); ?>>
 			<div class="rmse-vat-results-highlight-result">

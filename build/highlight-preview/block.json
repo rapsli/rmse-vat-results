@@ -54,6 +54,10 @@
         "modern"
       ],
       "default": "legacy"
+    },
+    "offset_games": {
+      "type": "number",
+      "default": 0
     }
   },
   "textdomain": "rmse-vat-results",

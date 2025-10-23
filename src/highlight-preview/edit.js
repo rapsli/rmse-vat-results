@@ -123,6 +123,12 @@ export default function Edit({ attributes, setAttributes }) {
 						]}
 						onChange={(val) => setAttributes({ layout: val })}
 					/>
+					<NumberControl
+						label={__('Offset (for next games)', 'rmse-vat-results')}
+						value={attributes.offset_games}
+						onChange={(val) => setAttributes({ offset_games: Number(val) || 0 })}
+						min={0}
+					/>
 				</InspectorControls>
 			}
 
