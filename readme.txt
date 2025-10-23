@@ -9,7 +9,7 @@ Plugin Name:        handball.ch Club API
 Plugin URI:         https://github.com/titaniumcoder/tc-shv-results
 Contributors:       metzgric
 Tags:               handball, results, schweiz, switzerland, suisse, vat
-Version:            1.3.0
+Version:            1.3.1
 Requires at least:  6.1
 Requires PHP:       7.0
 Tested up to:       6.8.2
@@ -54,6 +54,10 @@ My recommended way of development is using wp-env: https://developer.wordpress.o
 
 
 == Changelog ==
+= 1.3.1 =
+* Links to external Spielberichte should open in a new tab
+* Minor adjustment to the HTML for the Spielbericht link
+
 = 1.3.0 =
 * Introducing option to display a link to the matchcenter for Hightlight of the next game
 * Introducing option to display a link to a match review either statically or with a value from an ACF field

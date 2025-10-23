@@ -30,3 +30,22 @@ function rmse_vat_get_selected_team_id( $attributes, $post_id = null ) {
 
     return null;
 }
+
+
+
+/**
+ * Check if a URL is external (not on the same domain). The URL can also be relative. In that case it is considered internal.
+ * @param string $url The URL to check.
+ * @return bool True if the URL is external, false otherwise.
+ */
+function rmse_vat_results_is_external_url($url) {
+    $site_url = parse_url( home_url() );
+    $input_url = parse_url( $url );
+
+    if ( empty( $input_url['host'] ) ) {
+        // Relative URL, consider it internal
+        return false;
+    }
+
+    return ( $input_url['host'] !== $site_url['host'] );
+}

@@ -136,11 +136,23 @@ $played = $games[0];
 				?>
 				<div class="rmse-vat-results-highlight-result-bottom-info">
 					<?php if (!empty($matchReportUrl)) { ?>
-						<a href="<?php echo esc_url($matchReportUrl); ?>" target="_blank" rel="noopener">
-							<?php echo esc_html__('Spielbericht', 'rmse-vat-results'); ?>
-						</a>
+
+						<?php
+						// if URL is external, add target and rel attributes, if it's relative or same-domain, don't
+						$isExternal = rmse_vat_results_is_external_url($matchReportUrl);
+						?>
+
+						<?php if ($isExternal) { ?>
+							<a href="<?php echo esc_url($matchReportUrl); ?>" target="_blank" rel="noopener">
+								<?php echo esc_html__('Match report', 'rmse-vat-results'); ?>
+							</a>
+						<?php } else { ?>
+							<a href="<?php echo esc_url($matchReportUrl); ?>">
+								<?php echo esc_html__('Match report', 'rmse-vat-results'); ?>
+							</a>
+						<?php } ?>
 					<?php } else { ?>
-						<div><?php echo esc_html__('Spielbericht', 'rmse-vat-results'); ?></div>
+						<div><?php echo esc_html__('no Match report available', 'rmse-vat-results'); ?></div>
 					<?php } ?>
 				</div>
 			<?php
