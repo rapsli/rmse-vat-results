@@ -3,7 +3,7 @@
 /**
  * Plugin Name: Handball VAT Results ClubAPI Integration
  * Description: Reads and actualizes results and rankings directly via VAT interface
- * Version:     1.4.0
+ * Version:     1.4.1
  * Author:      Rico Metzger, Raphael Schär
  * Author URI:  https://wyssmann.llc
  * License:     Apache License, Version 2.0

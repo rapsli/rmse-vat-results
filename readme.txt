@@ -9,7 +9,7 @@ Plugin Name:        handball.ch Club API
 Plugin URI:         https://github.com/titaniumcoder/tc-shv-results
 Contributors:       metzgric
 Tags:               handball, results, schweiz, switzerland, suisse, vat
-Version:            1.3.1
+Version:            1.4.1
 Requires at least:  6.1
 Requires PHP:       7.0
 Tested up to:       6.8.2
@@ -60,6 +60,9 @@ My recommended way of development is using wp-env: https://developer.wordpress.o
 
 
 == Changelog ==
+= 1.4.1 =
+* Updating Translation.
+
 = 1.4.0 =
 * feat: Add offset control for next games in highlight preview block
 
