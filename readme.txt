@@ -45,6 +45,12 @@ What are some Frequently used commands?
 - git tag v1.x.x
 - git push origin v1.x.x
 
+How to update the translation?
+1. Update pot-file: wp i18n make-pot . languages/rmse-vat-results.pot
+2. Open po file in Poedit and click button "Aus Quellcode aktualisieren"
+3. translated
+4. Click Datei > MO-Datei erstellen
+
 
 = WP-ENV local development =
 
