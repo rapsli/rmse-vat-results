@@ -194,3 +194,103 @@ table.rmse-vat-results-table {
 	color: darkred;
 	text-align: center;
 }
+
+
+/* New CSS */
+
+.result-blue-bg .wp-block-rmse-vat-results-highlight-result *{
+    color: white;
+    text-align: center;
+    flex: 1 !important;
+}
+
+.wp-block-rmse-vat-results-highlight-preview  *{
+        text-align: center
+}
+
+.rmse-vat-results-highlight-name {
+    font-size: .75rem;
+}
+
+
+.rmse-vat-results-highlight-info-venue a{
+    text-decoration: none !important;
+    font-size: .75rem;
+    color: #000;
+	
+    
+}
+
+.rmse-vat-results-highlight-info-date {
+    color: #000;
+    margin: 0;
+	    text-transform: uppercase;
+}
+
+.rmse-vat-results-highlight-info-venue {
+    margin: 0;
+}
+
+.rmse-vat-results-highlight-result-bottom-info {
+    border: 1px solid #000;
+    padding: 6px 20px;
+     text-transform: uppercase;
+    color: black;
+    font-weight: 700
+}
+.wp-block-rmse-vat-results-highlight-result .rmse-vat-results-highlight-result-bottom-info{
+    border-color: white;
+}
+.wp-block-rmse-vat-results-highlight-result a,
+.wp-block-rmse-vat-results-highlight-preview a{
+    text-decoration: none !important;
+}
+
+
+.rmse-vat-results-highlight-result {
+    margin: 24px 0;
+}
+
+
+.rmse-vat-results-highlight-logo {
+      background: white;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      padding: 16px;
+}
+
+.rmse-vat-results-highlight-guest,
+.rmse-vat-results-highlight-home
+{display: flex;
+ align-items: center;
+ justify-content: center;
+ flex-direction: column;
+ gap: 8px;
+}
+
+
+
+.rmse-vat-results-highlight-info-halftime {
+    font-size: 1rem;
+    margin: 0;
+}
+
+.rmse-vat-results-highlight-info-result {
+    font-size: 2.25rem;
+    line-height: 2.25rem;
+}
+
+.rmse-vat-results-highlight-info-time {
+    font-size: 2.25rem;
+}
+
+.wp-block-uagb-container.team-page-highlight-box {
+    text-align: center;
+    color: white !important;
+}
+
+.wp-block-uagb-container.team-page-highlight-box *{
+    text-align: center;
+    color: white !important;
+}
